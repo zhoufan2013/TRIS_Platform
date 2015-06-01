@@ -6,4 +6,7 @@ package com.ai.tris.server;
  * Created by Sam on 2015/6/2.
  */
 public class TrisServer {
+    public TrisServer() {
+
+    }
 }

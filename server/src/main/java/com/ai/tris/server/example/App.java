@@ -21,8 +21,6 @@ public class App {
     public static void main(String[] args) {
         try {
             System.out.println("\"Hello World\" Jersey Example App");
-
-
             final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
             resourceConfig.setApplicationName("HelloWorld");
             // how to bind another resource
@@ -31,7 +29,10 @@ public class App {
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig);
             System.out.println(String.format("Application started.\nTry out %s%s\nHit enter to stop it...",
                     BASE_URI, ROOT_PATH));
-            System.in.read();
+            int result = System.in.read();
+            if(logger.isInfoEnabled()) {
+                logger.info(String.format("Exit code: %d", result));
+            }
             server.shutdownNow();
         } catch (IOException ex) {
             logger.error(null, ex);

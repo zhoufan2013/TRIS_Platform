@@ -38,7 +38,7 @@
 
 var tris = angular.module('tris', ['ngRoute']);
 
-tris.controller('homeController', function($scope){
+tris.controller('homeController', function($scope, $http){
     $scope.message = "zhoufan";
 
     //TODO call restful API
@@ -54,7 +54,18 @@ tris.controller('homeController', function($scope){
         }
     ];
 
+
+    $http.get('/api/category'
+        ).success(function(data, status, headers, config) {
+            //加载成功之后做一些事
+            debugger;
+            $scope.caseGroups = data;
+        }).error(function(data, status, headers, config) {
+            //处理错误
+        });
+
     //TODO call restful API
+    /*
     $scope.caseGroups =
     [
         {
@@ -89,7 +100,7 @@ tris.controller('homeController', function($scope){
                 }
             ]
         }
-    ];
+    ];*/
 
 
 

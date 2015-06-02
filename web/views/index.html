@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="tris">
+
+    <% include header.html %>
+
+    <body ng-controller="homeController">
+
+        <!-- HEADER -->
+        <header class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar" id="menu-list">
+                    <img alt="AI_logo" src="/images/AI-logo.png" style="width: 184px; height: 80px; margin-bottom: 5px;">
+                    <div class="sidebar-br"></div>
+                    <ul class="nav nav-sidebar">
+                        <li id="overview" class="active"><a style="cursor: pointer" href="#/">Overview</a></li>
+                        <li id="start"><a href="#start">Getting Started</a></li>
+                        <li id="api"><a href="#api">API</a></li>
+                        <li id="download"><a href="#download">Download</a></li>
+                    </ul>
+                    <div class="sidebar-br"></div>
+                    <ul class="nav nav-sidebar">
+                        <li id=""><a href="#upc">Veris UPC</a></li>
+                        <li><a href="#">Test Case</a></li>
+                        <li id="upc_execution"><a style="cursor: pointer" href="#upc_execute">Execution Unit</a></li>
+                        <li id="upc_analytics"><a style="cursor: pointer" href="#upc_analysis">Analytics</a></li>
+                    </ul>
+                    <div class="sidebar-br"></div>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- define angular controller -->
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                    <!-- angular templating -->
+                    <!-- this is where content will be injected -->
+                    <div ng-view></div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- copyright infomation & included Javascript -->
+        <% include footer.html %>
+    </body>
+</html>
+<script type="text/javascript">
+    $('#menu-list li').click(function(){
+        $('#menu-list li').removeClass('active');
+        $(this).addClass('active');
+    });
+
+</script>

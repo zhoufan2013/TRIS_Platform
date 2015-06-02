@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Class-Path: validation-api-1.1.0.Final.jar log4j-1.2.17.jar junit-4.12
+ .jar hk2-api-2.4.0-b10.jar hamcrest-core-1.3.jar jersey-server-2.17.j
+ ar org.eclipse.persistence.core-2.5.0.jar grizzly-http-server-2.3.16.
+ jar hk2-locator-2.4.0-b10.jar javax.annotation-api-1.2.jar javax.ws.r
+ s-api-2.0.1.jar org.eclipse.persistence.asm-2.5.0.jar grizzly-framewo
+ rk-2.3.16.jar javax.inject-2.4.0-b10.jar javassist-3.18.1-GA.jar jers
+ ey-client-2.17.jar jersey-container-grizzly2-http-2.17.jar jersey-gua
+ va-2.17.jar commons-lang3-3.4.jar jersey-entity-filtering-2.17.jar je
+ rsey-common-2.17.jar aopalliance-repackaged-2.4.0-b10.jar jersey-medi
+ a-jaxb-2.17.jar jersey-media-moxy-2.17.jar hk2-utils-2.4.0-b10.jar or
+ g.eclipse.persistence.antlr-2.5.0.jar org.eclipse.persistence.moxy-2.
+ 5.0.jar grizzly-http-2.3.16.jar slf4j-api-1.7.12.jar osgi-resource-lo
+ cator-1.0.1.jar slf4j-log4j12-1.7.12.jar
+Main-Class: 
+

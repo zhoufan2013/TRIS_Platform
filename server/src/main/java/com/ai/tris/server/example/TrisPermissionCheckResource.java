@@ -32,7 +32,6 @@ public class TrisPermissionCheckResource {
     @Path("{userId:\\d+}")
     @Produces("application/json")
     public String check2(@PathParam("userId") String userId) {
-
         //  request.
         return "check2" + userId + "|" + request.getRequestUri().toString();
     }

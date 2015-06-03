@@ -7,16 +7,16 @@ public class Group {
 
     public String group;
 
+    /**
+     * Reserved for MoxyJson
+     */
+    @SuppressWarnings("unused")
     public Group() {
 
     }
 
     public Group(String g) {
         this.group = g;
-    }
-
-    public String getGroup() {
-        return group;
     }
 
 }

@@ -82,6 +82,9 @@ public class TrisServer {
                 && StringUtils.isNotEmpty(options.get("-port")) && options.get("-port").matches("\\d+")) {
             strUri += options.get("-port");
         } else {
+            if (log.isDebugEnabled()) {
+                log.debug("No port specified, using default {} instead.", DEFAULT_PORT);
+            }
             strUri += DEFAULT_PORT;
         }
 

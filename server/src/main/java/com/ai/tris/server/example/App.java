@@ -1,6 +1,5 @@
 package com.ai.tris.server.example;
 
-import com.ai.tris.server.resource.AdminResource;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -10,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.ext.ContextResolver;
-import java.io.IOException;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +26,11 @@ public class App {
 
     public static void main(String[] args) {
         try {
-            if(null == args || args.length < 1) {
+            if (null == args || args.length < 1) {
                 logger.error("Invalid input parameters, 'PORT' must be passed in.");
                 throw new RuntimeException("Exit 0");
             }
-            if(!args[0].matches("\\d+")) {
+            if (!args[0].matches("\\d+")) {
                 logger.error("Invalid input parameters, 'PORT' must be a integer");
                 throw new RuntimeException("Exit 0");
             }
@@ -47,7 +45,7 @@ public class App {
             .register(createMoxyJsonResolver());*/
 
             resourceConfig.packages(true, "com.ai.tris.server.resource")
-            .register(LoggingFilter.class).register(createMoxyJsonResolver());
+                    .register(LoggingFilter.class).register(createMoxyJsonResolver());
 
             server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig);
 /*            System.out.println(String.format("Application started.\nTry out %s%s\nHit enter to stop it...",

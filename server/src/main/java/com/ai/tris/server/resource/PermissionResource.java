@@ -4,7 +4,7 @@ import javax.ws.rs.Path;
 
 /**
  * Sign in resource module
- *
+ * <p/>
  * Created by Sam on 2015/6/2.
  */
 @Path("sign")

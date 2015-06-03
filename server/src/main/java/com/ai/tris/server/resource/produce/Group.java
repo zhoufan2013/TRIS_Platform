@@ -7,7 +7,7 @@ public class Group {
 
     public String group;
 
-    public Group(){
+    public Group() {
 
     }
 

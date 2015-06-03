@@ -19,7 +19,7 @@ import java.util.*;
 public class TrisServer {
     /*slf4j log*/
     private static transient Logger log = LoggerFactory.getLogger(TrisServer.class);
-    final static String PARAM_LIST = "-port 48000 -bPath api";
+    final static String OPTIONS_EXAMPLE = "-port 48000 -bPath api -MoxyJson true -enableLog true";
     final static String[] OPTIONS = new String[]{"-port", "-bPath", "-MoxyJson", "-enableLog"};
     final static String V_URI = "http://0.0.0.0";
     final static String DEFAULT_PORT = "48000";
@@ -154,7 +154,7 @@ public class TrisServer {
     boolean validMainInput(String[] args) {
         if (null == args || args.length == 0 || args.length % 2 != 0) {
             if (log.isErrorEnabled()) {
-                log.error("Wrong input parameters. See the input params: [{}]", PARAM_LIST);
+                log.error("Wrong input parameters. See the input params: [{}]", OPTIONS_EXAMPLE);
             }
             throw new RuntimeException("Invalid Input Parameters. Please pass in key-value pair(s)");
         }

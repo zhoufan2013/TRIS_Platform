@@ -3,7 +3,6 @@ package com.ai.tris.server.resource;
 import com.ai.tris.server.resource.produce.Category;
 import com.ai.tris.server.resource.produce.Group;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

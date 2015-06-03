@@ -9,7 +9,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
- *
  * Created by Sam on 2015/6/2.
  */
 @Path("check")

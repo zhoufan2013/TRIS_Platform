@@ -32,7 +32,7 @@ fi
 ````
 使用这个模板，只需要修改二进制包的目录`/home/cnode1/lib/mongodb`。修改完保存文件，并`source .bash_profile`立即生效。
 
-* 使用`mongod -version`检查环境变量是否设置成功，以及检查MongoDB是否可能正常使用。如果提示类似如下信息，就说明MongoDB第一步安装就OK了。
+* 使用`mongod -version`检查环境变量是否设置成功，以及检查MongoDB是否可以正常使用。如果提示类似如下信息，就说明MongoDB第一步安装就OK了。
 ````
 [cnode1@pmc lib]$ mongod -version
 db version v3.0.3

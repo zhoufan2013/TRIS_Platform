@@ -48,7 +48,16 @@ public class TrisMongoClient {
         return (com.mongodb.MongoClient) clientPool.get(clientKey);
     }
 
+    /**
+     * Create mongo database access client. If Client uri initializes failed or just is empty,
+     * give up the creation.
+     *
+     * @return mongo database client.
+     */
     private static MongoClient createMongoClient() {
+        if (StringUtils.isEmpty(clientUri)) {
+            throw new RuntimeException("Give up trying to create a client using empty uri.");
+        }
         return new MongoClient(new MongoClientURI(clientUri));
     }
 
@@ -62,8 +71,14 @@ public class TrisMongoClient {
         return borrowOneClient("_mc").getDatabase(dbName);
     }
 
-    private static void poolMongoClient(String clientKey, com.mongodb.MongoClient mc) {
-        clientPool.put(clientKey, mc);
+    /**
+     * Pool mongo client.
+     *
+     * @param clientKey client name
+     * @param client    client instance
+     */
+    private static void poolMongoClient(String clientKey, MongoClient client) {
+        clientPool.put(clientKey, client);
     }
 
     /**

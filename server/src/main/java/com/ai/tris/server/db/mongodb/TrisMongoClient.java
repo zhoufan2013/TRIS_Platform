@@ -16,13 +16,14 @@
  */
 package com.ai.tris.server.db.mongodb;
 
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -32,12 +33,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class TrisMongoClient {
 
-    private final static String HOST = "10.1.231.4";
-    private final static int PORT = 27017;
+    private final static String SERVER_PROP_NAME = "server.properties";
+    private final static String SERVER_INFO_KEY = "db.mongo.server";
 
-    private final static String[][] credentialMatrix = new String[][]{
-            {"tris", "tris_base", "tris-123"}
-    };
+    private static String clientUri = null;
 
     /**
      * Mongodb client pool
@@ -49,24 +48,8 @@ public class TrisMongoClient {
         return (com.mongodb.MongoClient) clientPool.get(clientKey);
     }
 
-    /**
-     * create mongodb connection credential.
-     *
-     * @return credential
-     */
-    private static List<MongoCredential> createCredentials() {
-        List<MongoCredential> credentialList = new ArrayList<MongoCredential>();
-        MongoCredential credential;
-        for (String[] _credential : credentialMatrix) {
-            credential = MongoCredential.createCredential(_credential[0], _credential[1], _credential[2].toCharArray());
-            credentialList.add(credential);
-        }
-        return credentialList;
-    }
-
-    private static com.mongodb.MongoClient createMongoClient() {
-        ServerAddress address = new ServerAddress(HOST, PORT);
-        return new com.mongodb.MongoClient(address, createCredentials());
+    private static MongoClient createMongoClient() {
+        return new MongoClient(new MongoClientURI(clientUri));
     }
 
     /**
@@ -83,7 +66,30 @@ public class TrisMongoClient {
         clientPool.put(clientKey, mc);
     }
 
+    /**
+     * Load mongo server information from server.properties file. After calling this
+     * method, Ip, port, user, db and pwd will be got.
+     *
+     * @throws IOException
+     */
+    private static void loadServerProp() throws IOException {
+        Properties prop = new Properties();
+        prop.load(TrisMongoClient.class.getClassLoader().getResourceAsStream(SERVER_PROP_NAME));
+        clientUri = prop.getProperty(SERVER_INFO_KEY);
+        if (StringUtils.isEmpty(clientUri)) {
+            throw new RuntimeException(
+                    String.format("Load mongo auth info failed, please check %s in file %s",
+                            SERVER_INFO_KEY, SERVER_PROP_NAME));
+        }
+    }
+
     static {
+        try {
+            loadServerProp();
+        } catch (IOException ioe) {
+            throw new RuntimeException(
+                    String.format("Load mongo server information from file (%s) failed.", SERVER_PROP_NAME));
+        }
         poolMongoClient("_mc", createMongoClient());
     }
 }

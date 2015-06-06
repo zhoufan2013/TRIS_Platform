@@ -1,5 +1,6 @@
 package com.ai.tris.server;
 
+import com.ai.tris.server.security.SecurityTokenFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.filter.LoggingFilter;
@@ -24,7 +25,7 @@ public class TrisServer {
     final static String V_URI = "http://0.0.0.0";
     final static String DEFAULT_PORT = "48000";
 
-
+    public static String BASE_PATH = "/";
     public static HttpServer httpServer;
 
     ContextResolver<MoxyJsonConfig> createMoxyJsonResolver() {
@@ -91,10 +92,14 @@ public class TrisServer {
         if (options.containsKey("-bPath") && StringUtils.isNotEmpty(options.get("-bPath"))) {
             strUri += "/";
             strUri += options.get("-bPath");
+            BASE_PATH += options.get("-bPath");
         }
 
         instance.enableMoxyJson(options);
         instance.enableLoggingFilter(options);
+
+        // register request filter
+        TrisResourceManager.RES_CONF.registerClasses(SecurityTokenFilter.class);
 
         // start http server.
         httpServer = GrizzlyHttpServerFactory.createHttpServer(java.net.URI.create(strUri), TrisResourceManager.RES_CONF);

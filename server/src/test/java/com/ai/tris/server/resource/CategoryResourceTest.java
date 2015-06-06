@@ -11,7 +11,11 @@ import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -42,5 +46,13 @@ public class CategoryResourceTest {
         String responseMsg = target.path("category").request().get(String.class);
         logger.error(responseMsg);
         Assert.assertEquals("Hello World!", responseMsg);
+    }
+
+    @Test
+    public void testPostCategory() {
+        Map<String, String> postData = new HashMap<String, String>();
+        postData.put("name", "caiwm");
+        Entity entity = Entity.json(postData);
+        target.path("category").request(MediaType.APPLICATION_JSON_TYPE).post(entity);
     }
 }

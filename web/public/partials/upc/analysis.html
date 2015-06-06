@@ -1,219 +1,50 @@
-<link rel="stylesheet" href="/stylesheets/jquery.dataTables.min.css" media="screen">
-<script src="/javascripts/jquery.dataTables.min.js"></script>
 <script src="/javascripts/highcharts.js"></script>
+
+
+
+<form class="form-inline case-version-form">
+    <div class="form-group">
+        <label for="executeCaseVersion" class="case-version-label">Case Version</label>
+        <select class="form-control" id="executeCaseVersion">
+            <option value="0.32">Veris UPC SR0.32</option>
+            <option value="0.8">Veris UPC SR0.8</option>
+            <option value="1.0">Veris UPC SR1.0</option>
+            <option value="1.1">Veris UPC SR1.1</option>
+        </select>
+    </div>
+</form>
+
 
 
 <form class="form-horizontal" role="form">
     <fieldset>
-        <legend>Overview</legend>
-
-        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
-
-
+        <div id="today" class="col-sm-6"></div>
+        <div id="lastweek" class="col-sm-6"></div>
     </fieldset>
-</form>
-
-<form class="form-horizontal" role="form" style="padding-bottom: 30px">
     <fieldset>
-        <legend style="margin-bottom: 30px;">Overall Analysis</legend>
-        <div class="col-sm-10 col-sm-offset-1">
-
-            <table class="display" cellspacing="0" width="100%" id="testResultTable">
-                <thead>
-                <tr>
-                    <th>Case Unit</th>
-                    <th>Executor</th>
-                    <th>Execution Time</th>
-                    <th>Pass Rate</th>
-                    <th>Detailed Report</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>100%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                <tr>
-                    <td>medium+low</td>
-                    <td>zhoufan</td>
-                    <td>31/05/2015 22:42</td>
-                    <td>98%</td>
-                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <div id="container"></div>
     </fieldset>
 </form>
+
+
 
 <script type="text/javascript">
 
     $(document).ready(function() {
 
-        table = $('#testResultTable').DataTable({
-            "searching": true,
-            "paging":   true,
-            "ordering": true,//为SEQ排序开，其他列禁用
-            "info":     false,
-            "scrollCollapse": false,
-            "columnDefs": [
-                {
-                    "targets": [ 0 ],
-                    "searchable": true,
-                    "orderable": false
-                },
-                {
-                    "targets": [ 1 ],
-                    "searchable": true,
-                    "orderable": false,
-                    className: "center"
-                },
-                {
-                    "targets": [ 2 ],
-                    "searchable": true,
-                    "orderable": false,
-                    className: "center"
-                },
-                {
-                    "targets": [ 3 ],
-                    "searchable": true,
-                    "orderable": true,
-                    className: "center"
-                },
-                {
-                    "targets": [ 4 ],
-                    "searchable": false,
-                    "orderable": false,
-                    className: "center"
-                }
-            ]
-        });
-
-
-        $('#container').highcharts({
+         $('#today').highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false
             },
+            colors: [
+                '#9F9F9D',
+                '#F48038',
+                '#46B454'
+            ],
             title: {
-                text: 'Overall Pass Rate'
+                text: 'Today'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -233,7 +64,7 @@
             },
             series: [{
                 type: 'pie',
-                name: 'Browser share',
+                name: 'Rate',
                 data: [
                     ['Skipped',   18],
                     ['Failed',       32],
@@ -246,6 +77,97 @@
                 ]
             }]
         });
+
+
+        $('#lastweek').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Last week'
+            },
+            colors: [
+
+                '#F48038',
+                '#9F9F9D',
+                '#46B454'
+            ],
+            xAxis: {
+                categories: ['31-05-2015', '01-06-2015', '02-06-2015', '03-06-2015', '04-06-2015', '05-06-2015', '06-06-2015']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Test Result Rate'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Failed',
+                data: [5, 3, 4, 7, 2, 3, 1]
+            }, {
+                name: 'Skipped',
+                data: [2, 2, 3, 2, 1, 1, 2]
+            }, {
+                name: 'Passed',
+                data: [3, 4, 4, 2, 5, 4, 6]
+            }]
+        });
+
+        $('#container').highcharts({
+            title: {
+                text: 'Last month',
+                x: -20 //center
+            },
+            colors: [
+                '#F48038',
+                '#9F9F9D',
+
+                '#46B454'
+            ],
+            xAxis: {
+                categories: ['16/05 - 22/05', '23/05 - 29/05', '30/05 - 05/06', '06-06 - now']
+            },
+            yAxis: {
+                title: {
+                    text: 'Test Result Rate'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '°C'
+            },
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Failed',
+                data: [7.0, 6.9, 9.5, 14.5]
+            }, {
+                name: 'Skipped',
+                data: [-0.2, 0.8, 5.7, 11.3]
+            }, {
+                name: 'Passed',
+                data: [-0.9, 0.6, 3.5, 8.4]
+            }]
+        });
+
+
 
 
     } );

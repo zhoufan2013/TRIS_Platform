@@ -3,43 +3,107 @@
  *
  * Based on Angular JS
  */
-/**
- *
-    var tris = angular.module('tris', ['ngRoute']);
-
-     tris.controller('homeController', function($scope){
-        $scope.message = "zhoufan";
-    });
-
-
-     tris.config(function($routeProvider, $locationProvider){
-
-        $routeProvider.
-            when('/', {
-                templateUrl: 'html/index.html'
-
-            })
-            when('/upc_execute', {
-                templateUrl: '/upc/execute.html',
-                controller: 'upcExecuteController'
-            })
-
-        // use the HTML5 History API
-        $locationProvider.html5Mode(true);
-    });
-
-     tris.controller('upcExecuteController', function($scope){
-        $scope.message = "zhoufan";
-    });
- *
- *
- *
- */
 
 var tris = angular.module('tris', ['ngRoute']);
 
+
+tris.controller('menuController', function($scope){
+
+    //control Veris UPC Menu
+    $scope.upc_menu_control = false;
+
+    //control Veris CRM Menu
+    $scope.crm_menu_control = false;
+
+    $scope.$on("upc_menu_control",
+        function (event, msg) {
+            console.log("upc_menu_control", msg);
+            $scope.upc_menu_control = msg;
+        });
+});
+
+tris.controller('loginController', function($scope, $location){
+
+    $scope.user = {};
+    $scope.upc_login_result = false;
+
+    //登录校验监听事件
+    $scope.signin = function(){
+        var account = $scope.user.account;
+        var password = $scope.user.password;
+
+        //Mock verify user info
+        if (password == '123') {
+            // if not successful, bind errors to error variables
+            //$scope.errorName = data.errors.name;
+
+            //$scope.upc_menu_control = true;
+
+            $scope.$emit("upc_menu_control", true);
+
+
+            $scope.upc_login_result = true;
+
+            $location.path('/upc_home');
+            $location.replace();
+
+        } else {
+            // if successful, bind success message to message
+            $scope.errorName = '';
+        }
+    }
+
+});
+
+tris.controller('upcDetailController', function($scope){
+
+    $scope.executions = [
+        {
+            "case_version": "0.8",
+            "case_unit": "low",
+            "executor": "caojian",
+            "start_time": "22:42 31/05/2015",
+            "pass_rate": "65%"
+        },
+        {
+            "case_version": "0.8",
+            "case_unit": "low",
+            "executor": "tianhj",
+            "start_time": "22:42 19/09/2015",
+            "pass_rate": "70%"
+        },
+        {
+            "case_version": "0.8",
+            "case_unit": "low",
+            "executor": "zhaopy",
+            "start_time": "01:42 29/08/2015",
+            "pass_rate": "86%"
+        },
+        {
+            "case_version": "1.1",
+            "case_unit": "low",
+            "executor": "zhoufan",
+            "start_time": "22:42 30/01/2015",
+            "pass_rate": "76%"
+        },
+        {
+            "case_version": "0.8",
+            "case_unit": "low",
+            "executor": "caiwm",
+            "start_time": "22:42 11/04/2015",
+            "pass_rate": "96%"
+        }
+    ];
+
+});
+
 tris.controller('homeController', function($scope, $http){
-    $scope.message = "zhoufan";
+
+    $scope.$on("upc_menu_control",
+        function (event, msg) {
+            console.log("parent", msg);
+            $scope.$broadcast("upc_menu_control", msg);
+        });
 
     //TODO call restful API
     $scope.schedules =
@@ -106,6 +170,7 @@ tris.controller('homeController', function($scope, $http){
 
 });
 
+
 //Single Page 路由配置
 tris.config(function($routeProvider){
 
@@ -122,13 +187,23 @@ tris.config(function($routeProvider){
         .when('/upc_analysis', {
             templateUrl: '/partials/upc/analysis.html'
         })
+        .when('/upc_detail', {
+            templateUrl: '/partials/upc/detail.html'
+        })
         .when('/upc', {
             templateUrl: '/partials/upc/login.html'
+        })
+        .when('/upc_home', {
+            templateUrl: '/partials/upc/upc_home.html'
         });
+
+
+
 
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);
 });
+
 
 
 

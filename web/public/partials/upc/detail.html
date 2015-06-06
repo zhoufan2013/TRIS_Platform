@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/stylesheets/jquery.dataTables.min.css" media="screen">
+<script src="/javascripts/jquery.dataTables.min.js"></script>
+
+<form class="form-horizontal" role="form" ng-controller="upcDetailController">
+    <fieldset>
+        <legend style="margin-bottom: 30px;">Detailed Analysis</legend>
+
+        <div class="col-sm-10 col-sm-offset-1">
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Case Version</th>
+                        <th>Case Unit</th>
+                        <th>Executor</th>
+                        <th>Execution Time</th>
+                        <th>Pass Rate</th>
+                        <th>Detailed Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="execution in executions">
+                        <td>{{ execution.case_version }}</td>
+                        <td>{{ execution.case_unit }}</td>
+                        <td>{{ execution.executor }}</td>
+                        <td>{{ execution.start_time }}</td>
+                        <td>{{ execution.pass_rate }}</td>
+                        <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+
+
+
+    } );
+
+</script>

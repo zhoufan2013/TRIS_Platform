@@ -1,5 +1,8 @@
 ##TRIS server
 ....
+
+[How to setup and initialize MongoDB under Linux.](/server/pages/how-to-install-and-init-mongo.md)
+
 ### What's TRIS Server
 ....
 ### API List

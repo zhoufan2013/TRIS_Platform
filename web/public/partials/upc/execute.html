@@ -26,14 +26,14 @@
                     <td>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="caseGroup" value="">
+                                <input type="radio" name="caseGroup">
                                 {{ caseGroup.category }}
                             </label>
                         </div>
                     </td>
                     <td><!-- track by $index -->
                         <label class="checkbox-inline" ng-repeat="option in caseGroup.groups">
-                            <input type="checkbox" name="funcCheckBox" value="{{ option.group }}" disabled>
+                            <input type="checkbox" name="funcCheckBox" value="{{ option.group }}">
                             {{ option.group }}
                         </label>
                     </td>
@@ -84,14 +84,6 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 </div>
                 <input id="timePicking" type="hidden" value="" /><br/>
-                <!--
-                <div class="alert alert-warning">
-                    <a href="#" class="close" data-dismiss="alert">
-                        &times;
-                    </a>
-                    <strong>警告！</strong>您的网络连接有问题。
-                </div>
-                -->
             </div>
 
             <div class="col-sm-2">
@@ -154,10 +146,6 @@
                     }
                 });
             }
-
-            $.get("<%=request.getContextPath() %>/upcexecutetestcase.do", "&caseGroups="+caseGroups, function(data){
-
-            });
 
         });
 

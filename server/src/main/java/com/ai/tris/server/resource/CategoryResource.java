@@ -3,11 +3,10 @@ package com.ai.tris.server.resource;
 import com.ai.tris.server.resource.produce.Category;
 import com.ai.tris.server.resource.produce.Group;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -40,5 +39,17 @@ public class CategoryResource {
         category2.addToGroup(new Group("Low"));
         categories.add(category2);
         return categories;
+    }
+
+    @POST
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Category postSomething(HashMap obj) {
+        Category category1 = new Category();
+        category1.setCategory("Functional");
+        category1.addToGroup(new Group("BVTs"));
+        category1.addToGroup(new Group("Core Tests"));
+        category1.addToGroup(new Group("Func Tests"));
+        return category1;
     }
 }

@@ -36,8 +36,8 @@ public class App {
             }
             BASE_URI = URI.create(STR_URI + ":" + args[0] + "/api");
             System.out.println("\"Hello World\" Jersey Example App");
-            final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            resourceConfig.setApplicationName("HelloWorld");
+            final ResourceConfig resourceConfig = new ResourceConfig();
+            //resourceConfig.setApplicationName("HelloWorld");
             // how to bind another resource
             //resourceConfig.registerClasses(AdminResource.class, TrisPermissionCheckResource.class);
 /*            .packages(CategoryResource.class

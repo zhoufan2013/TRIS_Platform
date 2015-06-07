@@ -2,11 +2,12 @@ package com.ai.tris.server.resource;
 
 import com.ai.tris.server.resource.produce.Category;
 import com.ai.tris.server.resource.produce.Group;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,6 +17,8 @@ import java.util.List;
  */
 @Path("category")
 public class CategoryResource {
+
+    private transient static Logger logger = LoggerFactory.getLogger(CategoryResource.class);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,7 +47,10 @@ public class CategoryResource {
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    public Category postSomething(HashMap obj) {
+    public Category postSomething(String reqInfo) {
+        if (logger.isInfoEnabled()) {
+            logger.info(reqInfo);
+        }
         Category category1 = new Category();
         category1.setCategory("Functional");
         category1.addToGroup(new Group("BVTs"));

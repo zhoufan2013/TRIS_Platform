@@ -64,7 +64,10 @@ public class App {
         if (logger.isErrorEnabled()) {
             logger.error(String.format("Starting %s", "Server"));
         }
-        final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
+        //final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
+        final ResourceConfig resourceConfig = new ResourceConfig();
+        resourceConfig.packages(true, "com.ai.tris.server.resource")
+                .register(LoggingFilter.class).register(createMoxyJsonResolver());
         return GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig);
     }
 

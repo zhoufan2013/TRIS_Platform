@@ -1,6 +1,8 @@
 package com.ai.tris.server.resource;
 
 import com.ai.tris.server.example.App;
+import com.ai.tris.server.resource.produce.Category;
+import com.ai.tris.server.resource.produce.Group;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.Assert;
@@ -14,6 +16,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,9 +53,11 @@ public class CategoryResourceTest {
 
     @Test
     public void testPostCategory() {
-        Map<String, String> postData = new HashMap<String, String>();
-        postData.put("name", "caiwm");
-        Entity entity = Entity.json(postData);
-        target.path("category").request(MediaType.APPLICATION_JSON_TYPE).post(entity);
+        Category category = new Category();
+        category.setCategory("InputCategory");
+        category.addToGroup(new Group("group1"));
+        Entity entity = Entity.json(category);
+        Response response = target.path("category").request(MediaType.APPLICATION_JSON_TYPE).post(entity);
+        System.out.println(response.toString());
     }
 }

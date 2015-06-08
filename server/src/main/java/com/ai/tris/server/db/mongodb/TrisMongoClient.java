@@ -44,7 +44,7 @@ public class TrisMongoClient {
     private final static Map<String, Object> clientPool = new ConcurrentHashMap<String, Object>();
 
 
-    private static com.mongodb.MongoClient borrowOneClient(String clientKey) {
+    private static com.mongodb.MongoClient borrowClient(String clientKey) {
         return (com.mongodb.MongoClient) clientPool.get(clientKey);
     }
 
@@ -68,7 +68,7 @@ public class TrisMongoClient {
      * @return database handler
      */
     public static MongoDatabase get(String dbName) {
-        return borrowOneClient("_mc").getDatabase(dbName);
+        return borrowClient("_mc").getDatabase(dbName);
     }
 
     /**

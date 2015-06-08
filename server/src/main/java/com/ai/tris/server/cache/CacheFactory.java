@@ -46,12 +46,13 @@ public class CacheFactory {
      */
     public static Object getCacheData(String cacheItem, String cacheKey) {
         readWriteLock.lock();
+        Object cachedData = null;
         Map<String, Object> cachedItem = CACHE.get(cacheItem);
         if (null != cachedItem) {
-            return cachedItem.get(cacheKey);
+            cachedData = cachedItem.get(cacheKey);
         }
         readWriteLock.unlock();
-        return null;
+        return cachedData;
     }
 
     /**
@@ -95,7 +96,7 @@ public class CacheFactory {
             }
             String[] cachePieces = cacheClasses.split(Pattern.quote(","));
             for (String cacheClassName : cachePieces) {
-                Class cacheClass = Class.forName(cacheClassName);
+                Class cacheClass = Class.forName(cacheClassName.trim());
                 Class[] interfaces = cacheClass.getInterfaces();
                 for (Class _interface : interfaces) {
                     if (_interface.getName().equals(ICache.class.getName())) {

@@ -56,7 +56,7 @@ public class PermissionResource {
     @Produces("application/json")
     public String auth(String reqData) {
         // todo re-code later!!!!!
-        if (!JsonUtil.mayBeJSON(reqData)) {
+        if (!JsonUtil.mayBeJSON(reqData.trim())) {
             String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Invalid json content", 1).toJson();
             log.error(errorInfo);
             return errorInfo;

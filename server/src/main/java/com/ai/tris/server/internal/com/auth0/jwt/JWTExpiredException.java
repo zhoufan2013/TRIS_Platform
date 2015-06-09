@@ -14,5 +14,7 @@ public class JWTExpiredException extends JWTVerifyException {
 
     public long getExpiration() {
         return expiration;
-    };
+    }
+
+    ;
 }

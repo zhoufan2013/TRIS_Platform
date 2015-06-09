@@ -2,8 +2,8 @@ package com.ai.tris.server.resource;
 
 import com.ai.tris.server.cache.CacheFactory;
 import com.ai.tris.server.cache.impl.ClientIdSecretCacheImpl;
-import com.ai.tris.server.cache.impl.StaticDataCacheImpl;
 import com.ai.tris.server.security.ResponseBuilder;
+import com.ai.tris.server.security.TrisJwtHelper;
 import com.ai.tris.server.utils.JsonUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -16,6 +16,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Sign in resource module
@@ -33,26 +35,28 @@ public class PermissionResource {
      * <code>{appId:"xxxx", reqInfo:"String or JsonObject", infoType: 1} </code> or
      * <code>{appId:"xxxx", reqInfo:{userId:"xxxx", password:"xxxxx"}, infoType:2 }</code>
      * <p/>
-     *
-     *
+     * <p/>
+     * <p/>
      * response:
      * response body content template {rspCode:"1000", rspInfo:"this is optional", infoType: 1}
      * infoType=1 means that rspInfo only has string content.
      * <p/>
      * 1- normal string content, 2-Json object content 3-Json array.
-     *
-     *
+     * <p/>
+     * <p/>
      * This api only obtains Json object which infoType is 2, just like this:
      * {appId:"xxxx", reqInfo:{userId:"xxxx", password:"xxxxx"}, infoType:2 }
      *
      * @param reqData json string, see the request info template
      * @return auth result
      */
-    @POST    @Consumes("application/json")    @Produces("application/json")
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
     public String auth(String reqData) {
         // todo re-code later!!!!!
         if (!JsonUtil.mayBeJSON(reqData)) {
-            String errorInfo = new ResponseBuilder().buildInvalidRsp("90001", "Invalid json content.", 1).toJson();
+            String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Invalid json content.", 1).toJson();
             log.error(errorInfo);
             return errorInfo;
         }
@@ -62,8 +66,8 @@ public class PermissionResource {
         }
 
         BsonInt32 infoType = reqBsonDoc.getInt32("infoType");
-        if(null == infoType || infoType.intValue() != 2) {
-            return new ResponseBuilder().buildInvalidRsp("90001", "Only obtains json like {....,infoType:2...}.", 1).toJson();
+        if (null == infoType || infoType.intValue() != 2) {
+            return new ResponseBuilder().buildRspDocument("90001", "Only obtains json like {....,infoType:2...}.", 1).toJson();
         }
         //BsonDocument reqInfo = reqBsonDoc.getDocument("reqInfo");
         String appId = reqBsonDoc.getString("appId").getValue();
@@ -71,13 +75,22 @@ public class PermissionResource {
         if (log.isDebugEnabled()) {
             log.debug(String.format("App[%s] secret key is [%s]", appId, secretKey));
         }
-        if(StringUtils.isEmpty(secretKey)) {
-            return new ResponseBuilder().buildInvalidRsp("90002", "Invalid appId.", 1).toJson();
+        if (StringUtils.isEmpty(secretKey)) {
+            return new ResponseBuilder().buildRspDocument("90002", "Invalid appId.", 1).toJson();
         }
-        BsonDocument bd = new BsonDocument();
-        bd.put("token", new BsonString("11Aft#$FAWEF@"));
-        Object signPath = CacheFactory.getCacheData(StaticDataCacheImpl.class.getName(), "signPath");
-        bd.put("signPath", new BsonString(String.valueOf(signPath)));
-        return bd.toJson();
+
+        Map<String, Object> claims = new HashMap<String, Object>();
+        claims.put("appId", appId);
+        claims.put("signedTimestamp", System.currentTimeMillis());
+        String signedToken = TrisJwtHelper.getInstance().sign(claims, secretKey, 86400);
+
+        BsonDocument signResult = new ResponseBuilder()
+                .buildRspDocument("2000", "Logged in", 1)
+                .appendRspInfo("token", new BsonString(signedToken))
+                .export();
+        if (log.isDebugEnabled()) {
+            log.debug(String.format("Signed result %s", signResult));
+        }
+        return signResult.toJson();
     }
 }

@@ -18,55 +18,14 @@ import java.util.*;
  * Created by Sam on 2015/6/2.
  */
 public class TrisServer {
-    /*slf4j log*/
-    private static transient Log log = LogFactory.getLog(TrisServer.class);
     final static String OPTIONS_EXAMPLE = "-port 48000 -bPath api -MoxyJson true -enableLog true";
     final static String[] OPTIONS = new String[]{"-port", "-bPath", "-MoxyJson", "-enableLog"};
     final static String V_URI = "http://0.0.0.0";
     final static String DEFAULT_PORT = "48000";
-
     public static String BASE_PATH = "/";
     public static HttpServer httpServer;
-
-    ContextResolver<MoxyJsonConfig> createMoxyJsonResolver() {
-        final MoxyJsonConfig moxyJsonConfig = new MoxyJsonConfig();
-        Map<String, String> namespacePrefixMapper = new HashMap<String, String>(1);
-        namespacePrefixMapper.put("http://www.w3.org/2001/XMLSchema-instance", "xsi");
-        moxyJsonConfig.setNamespacePrefixMapper(namespacePrefixMapper).setNamespaceSeparator(':');
-        return moxyJsonConfig.resolver();
-    }
-
-    /**
-     * Enable logging filter
-     *
-     * @param options options
-     * @return ..
-     */
-    boolean enableLoggingFilter(Map<String, String> options) {
-        if (options.containsKey("-enableLog")
-                && StringUtils.isNotEmpty(options.get("-enableLog"))
-                && StringUtils.equalsIgnoreCase("true", options.get("-enableLog"))) {
-            if (log.isDebugEnabled()) {
-                log.debug("LoggingFilter is Enabled.");
-            }
-            TrisResourceManager.RES_CONF.register(LoggingFilter.class);
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
-    }
-
-    boolean enableMoxyJson(Map<String, String> options) {
-        if (options.containsKey("-MoxyJson")
-                && StringUtils.isNotEmpty(options.get("-MoxyJson"))
-                && StringUtils.equalsIgnoreCase("true", options.get("-MoxyJson"))) {
-            if (log.isDebugEnabled()) {
-                log.debug("MoxyJsonResolver is requested to be registered.");
-            }
-            TrisResourceManager.RES_CONF.register(createMoxyJsonResolver());
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
-    }
+    /*slf4j log*/
+    private static transient Log log = LogFactory.getLog(TrisServer.class);
 
     /**
      * Start a process.
@@ -106,6 +65,46 @@ public class TrisServer {
         if (log.isDebugEnabled()) {
             log.debug(String.format("http server [%s] is running.", strUri));
         }
+    }
+
+    ContextResolver<MoxyJsonConfig> createMoxyJsonResolver() {
+        final MoxyJsonConfig moxyJsonConfig = new MoxyJsonConfig();
+        Map<String, String> namespacePrefixMapper = new HashMap<String, String>(1);
+        namespacePrefixMapper.put("http://www.w3.org/2001/XMLSchema-instance", "xsi");
+        moxyJsonConfig.setNamespacePrefixMapper(namespacePrefixMapper).setNamespaceSeparator(':');
+        return moxyJsonConfig.resolver();
+    }
+
+    /**
+     * Enable logging filter
+     *
+     * @param options options
+     * @return ..
+     */
+    boolean enableLoggingFilter(Map<String, String> options) {
+        if (options.containsKey("-enableLog")
+                && StringUtils.isNotEmpty(options.get("-enableLog"))
+                && StringUtils.equalsIgnoreCase("true", options.get("-enableLog"))) {
+            if (log.isDebugEnabled()) {
+                log.debug("LoggingFilter is Enabled.");
+            }
+            TrisResourceManager.RES_CONF.register(LoggingFilter.class);
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    boolean enableMoxyJson(Map<String, String> options) {
+        if (options.containsKey("-MoxyJson")
+                && StringUtils.isNotEmpty(options.get("-MoxyJson"))
+                && StringUtils.equalsIgnoreCase("true", options.get("-MoxyJson"))) {
+            if (log.isDebugEnabled()) {
+                log.debug("MoxyJsonResolver is requested to be registered.");
+            }
+            TrisResourceManager.RES_CONF.register(createMoxyJsonResolver());
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
     }
 
     /**

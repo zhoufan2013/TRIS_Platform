@@ -18,11 +18,11 @@ import java.util.Map;
  * Created by Sam on 2015/6/2.
  */
 public class App {
+    public static final String ROOT_PATH = "helloworld";
     public static String STR_URI = "http://0.0.0.0";
     public static URI BASE_URI = URI.create("http://0.0.0.0:8080/");
-    public static final String ROOT_PATH = "helloworld";
-    private static transient Log logger = LogFactory.getLog(App.class);
     public static HttpServer server;
+    private static transient Log logger = LogFactory.getLog(App.class);
 
     public static void main(String[] args) {
         try {

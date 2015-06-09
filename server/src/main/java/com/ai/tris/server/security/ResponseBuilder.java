@@ -7,7 +7,7 @@ import org.bson.BsonValue;
 
 /**
  * Response builder.
- *
+ * <p/>
  * Created by Sam on 2015/6/9.
  */
 public class ResponseBuilder {
@@ -15,13 +15,15 @@ public class ResponseBuilder {
     /**
      * response code, remaining to be defined.
      */
-    final static String rspCode = "rspCode";
+    final static String RSP_CODE = "RSP_CODE";
     /**
      * response content.
      */
-    final static String rspInfo = "rspInfo";
+    final static String RSP_INFO = "RSP_INFO";
 
-    final static String infoType = "infoType";
+    final static String INFO_TYPE = "INFO_TYPE";
+
+    final static int CONTENT_TYPE_STRING = 1;
 
     /**
      * response document.
@@ -31,17 +33,30 @@ public class ResponseBuilder {
     /**
      * build invalid response document.
      *
-     * @param code
-     * @param content
-     * @param contentType
-     * @return
+     * @param code        response status
+     * @param content     response information
+     * @param contentType response body information type
+     * @return ResponseBuilder itself
      */
-    public ResponseBuilder buildInvalidRsp(String code, String content, int contentType) {
-        rspDoc.put(rspCode, new BsonString(code));
-        rspDoc.put(rspInfo, new BsonString(content));
-        rspDoc.put(infoType, new BsonInt32(contentType));
+    public ResponseBuilder buildRspDocument(String code, String content, int contentType) {
+        if (contentType == CONTENT_TYPE_STRING) {
+            return buildRspDocument(code, new BsonDocument(), contentType);
+        }
+        rspDoc.clear();
+        rspDoc.put(RSP_CODE, new BsonString(code));
+        rspDoc.put(RSP_INFO, new BsonString(content));
+        rspDoc.put(INFO_TYPE, new BsonInt32(contentType));
         return this;
     }
+
+    public ResponseBuilder buildRspDocument(String code, BsonDocument content, int contentType) {
+        rspDoc.clear();
+        rspDoc.put(RSP_CODE, new BsonString(code));
+        rspDoc.put(INFO_TYPE, new BsonInt32(contentType));
+        rspDoc.put(RSP_INFO, content);
+        return this;
+    }
+
 
     public ResponseBuilder appendElement(String key, BsonValue value) {
         this.rspDoc.append(key, value);
@@ -49,7 +64,26 @@ public class ResponseBuilder {
     }
 
     /**
+     * Append BsonValue to RspInfo. If it doesn't exist, create it and then do append work.
+     *
+     * @param key   Bson value name
+     * @param value BsonValue
+     * @return ResponseBuilder
+     */
+    public ResponseBuilder appendRspInfo(String key, BsonValue value) {
+        BsonDocument rspInfo = rspDoc.getDocument(RSP_INFO);
+        if (null == rspInfo) {
+            rspInfo = new BsonDocument();
+            rspDoc.append(RSP_INFO, rspInfo);
+        }
+        rspInfo.append(key, value);
+        return this;
+    }
+
+
+    /**
      * generate json string content.
+     *
      * @return String
      */
     public String toJson() {

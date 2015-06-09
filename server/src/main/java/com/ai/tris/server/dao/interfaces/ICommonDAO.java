@@ -1,7 +1,6 @@
 package com.ai.tris.server.dao.interfaces;
 
 import com.ai.tris.server.orm.impl.ClientAppInfoBean;
-import com.ai.tris.server.orm.interfaces.IClientAppInfoValue;
 
 import java.util.List;
 

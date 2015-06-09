@@ -7,13 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
  * Created by Sam on 2015/6/9.
  */
 public class ClientAppInfoBean extends AbstractDataObject implements IClientAppInfoValue {
 
 
-    public ClientAppInfoBean achieveData(ResultSet resultSet) throws SQLException{
+    public ClientAppInfoBean achieveData(ResultSet resultSet) throws SQLException {
         super.bindData(resultSet);
         return this;
     }

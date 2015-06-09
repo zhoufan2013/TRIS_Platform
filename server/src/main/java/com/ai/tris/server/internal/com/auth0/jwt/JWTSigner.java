@@ -1,25 +1,17 @@
 package com.ai.tris.server.internal.com.auth0.jwt;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.naming.OperationNotSupportedException;
-
-import org.apache.commons.codec.binary.Base64;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
 
 /**
  * JwtSigner implementation based on the Ruby implementation from http://jwt.io
@@ -37,22 +29,46 @@ public class JWTSigner {
     }
 
     /**
+     * Switch the signing algorithm based on input, RSA not supported
+     */
+    private static byte[] sign(Algorithm algorithm, String msg, byte[] secret) throws Exception {
+        switch (algorithm) {
+            case HS256:
+            case HS384:
+            case HS512:
+                return signHmac(algorithm, msg, secret);
+            case RS256:
+            case RS384:
+            case RS512:
+            default:
+                throw new OperationNotSupportedException("Unsupported signing method");
+        }
+    }
+
+    /**
+     * Sign an input string using HMAC and return the encrypted bytes
+     */
+    private static byte[] signHmac(Algorithm algorithm, String msg, byte[] secret) throws Exception {
+        Mac mac = Mac.getInstance(algorithm.getValue());
+        mac.init(new SecretKeySpec(secret, algorithm.getValue()));
+        return mac.doFinal(msg.getBytes());
+    }
+
+    /**
      * Generate a JSON Web Token.
-     *  using the default algorithm HMAC SHA-256 ("HS256")
+     * using the default algorithm HMAC SHA-256 ("HS256")
      * and no claims automatically set.
      *
-     * @param claims A map of the JWT claims that form the payload. Registered claims
-     *               must be of appropriate Java datatype as following:
-     *               <ul>
-     *                  <li>iss, sub: String
-     *                  <li>exp, nbf, iat, jti: numeric, eg. Long
-     *                  <li>aud: String, or Collection&lt;String&gt;
-     *               </ul>
-     *               All claims with a null value are left out the JWT.
-     *               Any claims set automatically as specified in
-     *               the "options" parameter override claims in this map.
-     *
-     *
+     * @param claims  A map of the JWT claims that form the payload. Registered claims
+     *                must be of appropriate Java datatype as following:
+     *                <ul>
+     *                <li>iss, sub: String
+     *                <li>exp, nbf, iat, jti: numeric, eg. Long
+     *                <li>aud: String, or Collection&lt;String&gt;
+     *                </ul>
+     *                All claims with a null value are left out the JWT.
+     *                Any claims set automatically as specified in
+     *                the "options" parameter override claims in this map.
      * @param options Allow choosing the signing algorithm, and automatic setting of some registered claims.
      */
     public String sign(Map<String, Object> claims, Options options) {
@@ -98,6 +114,7 @@ public class JWTSigner {
 
     /**
      * Generate the JSON web token payload string from the claims.
+     *
      * @param options
      */
     private String encodedPayload(Map<String, Object> _claims, Options options) throws Exception {
@@ -147,7 +164,7 @@ public class JWTSigner {
         if (values == null)
             return;
         if (values instanceof Collection) {
-            @SuppressWarnings({ "unchecked" })
+            @SuppressWarnings({"unchecked"})
             Iterator<Object> iterator = ((Collection<Object>) values).iterator();
             while (iterator.hasNext()) {
                 Object value = iterator.next();
@@ -178,7 +195,7 @@ public class JWTSigner {
     }
 
     private Object handleNullValue(Map<String, Object> claims, String claimName) {
-        if (! claims.containsKey(claimName))
+        if (!claims.containsKey(claimName))
             return null;
         Object value = claims.get(claimName);
         if (value == null) {
@@ -217,32 +234,6 @@ public class JWTSigner {
         return new String(Base64.encodeBase64URLSafe(str));
     }
 
-    /**
-     * Switch the signing algorithm based on input, RSA not supported
-     */
-    private static byte[] sign(Algorithm algorithm, String msg, byte[] secret) throws Exception {
-        switch (algorithm) {
-        case HS256:
-        case HS384:
-        case HS512:
-            return signHmac(algorithm, msg, secret);
-        case RS256:
-        case RS384:
-        case RS512:
-        default:
-            throw new OperationNotSupportedException("Unsupported signing method");
-        }
-    }
-
-    /**
-     * Sign an input string using HMAC and return the encrypted bytes
-     */
-    private static byte[] signHmac(Algorithm algorithm, String msg, byte[] secret) throws Exception {
-        Mac mac = Mac.getInstance(algorithm.getValue());
-        mac.init(new SecretKeySpec(secret, algorithm.getValue()));
-        return mac.doFinal(msg.getBytes());
-    }
-
     private String join(List<String> input, String on) {
         int size = input.size();
         int count = 1;
@@ -272,6 +263,7 @@ public class JWTSigner {
         public Algorithm getAlgorithm() {
             return algorithm;
         }
+
         /**
          * Algorithm to sign JWT with. Default is <code>HS256</code>.
          */
@@ -284,6 +276,7 @@ public class JWTSigner {
         public Integer getExpirySeconds() {
             return expirySeconds;
         }
+
         /**
          * Set JWT claim "exp" to current timestamp plus this value.
          * Overrides content of <code>claims</code> in <code>sign()</code>.
@@ -296,6 +289,7 @@ public class JWTSigner {
         public Integer getNotValidBeforeLeeway() {
             return notValidBeforeLeeway;
         }
+
         /**
          * Set JWT claim "nbf" to current timestamp minus this value.
          * Overrides content of <code>claims</code> in <code>sign()</code>.
@@ -308,6 +302,7 @@ public class JWTSigner {
         public boolean isIssuedAt() {
             return issuedAt;
         }
+
         /**
          * Set JWT claim "iat" to current timestamp. Defaults to false.
          * Overrides content of <code>claims</code> in <code>sign()</code>.
@@ -320,6 +315,7 @@ public class JWTSigner {
         public boolean isJwtId() {
             return jwtId;
         }
+
         /**
          * Set JWT claim "jti" to a pseudo random unique value (type 4 UUID). Defaults to false.
          * Overrides content of <code>claims</code> in <code>sign()</code>.

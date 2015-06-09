@@ -9,7 +9,7 @@
         <!-- HEADER -->
         <header class="container-fluid">
             <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar" id="menu-list" ng-controller="menuController">
+                <div class="col-sm-3 col-md-2 sidebar" id="menu-list">
                     <img alt="AI_logo" src="/images/AI-logo.png" style="width: 184px; height: 80px; margin-bottom: 5px;">
                     <div class="sidebar-br"></div>
                     <ul class="nav nav-sidebar">
@@ -21,18 +21,14 @@
                     <div class="sidebar-br"></div>
                     <ul class="nav nav-sidebar">
                         <li id="upc"><a href="#upc">Veris UPC</a></li>
-                        <li ng-show="upc_menu_control"><a href="#upc_case">Test Case</a></li>
-                        <li ng-show="upc_menu_control"><a style="cursor: pointer" href="#upc_execute">Execution Unit</a></li>
-                        <li ng-show="upc_menu_control"><a style="cursor: pointer" href="#upc_analysis">Overall Trends</a></li>
-                        <li ng-show="upc_menu_control"><a style="cursor: pointer" href="#upc_detail">Detailed Analysis</a></li>
+                        <li><a href="#upc_case">Test Case</a></li>
+                        <li><a style="cursor: pointer" href="#upc_execute">Execution Unit</a></li>
+                        <li><a style="cursor: pointer" href="#upc_analysis">Overall Trends</a></li>
+                        <li><a style="cursor: pointer" href="#upc_detail">Detailed Analysis</a></li>
                     </ul>
                     <div class="sidebar-br"></div>
                     <ul class="nav nav-sidebar">
                         <li id="crm"><a href="#crm">Veris CRM</a></li>
-                        <li ng-show="crm_menu_control"><a href="#crm_case">Test Case</a></li>
-                        <li ng-show="crm_menu_control"><a style="cursor: pointer" href="#crm_execute">Execution Unit</a></li>
-                        <li ng-show="crm_menu_control"><a style="cursor: pointer" href="#crm_analysis">Overall Trends</a></li>
-                        <li ng-show="crm_menu_control"><a style="cursor: pointer" href="#crm_detail">Detailed Analysis</a></li>
                     </ul>
                     <div class="sidebar-br"></div>
                     <ul class="nav nav-sidebar">
@@ -52,7 +48,7 @@
         </header>
 
         <!-- copyright infomation & included Javascript -->
-        <% include footer.html %>
+        <!--<% include footer.html %>-->
     </body>
 </html>
 <script type="text/javascript">

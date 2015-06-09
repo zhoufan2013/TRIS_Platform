@@ -1,8 +1,8 @@
 package com.ai.tris.server.example;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.jersey.server.ContainerRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 @Path("check")
 public class TrisPermissionCheckResource {
 
-    private static transient Logger log = LoggerFactory.getLogger(TrisPermissionCheckResource.class);
+    private static transient Log log = LogFactory.getLog(TrisPermissionCheckResource.class);
 
     ContainerRequest request;
 

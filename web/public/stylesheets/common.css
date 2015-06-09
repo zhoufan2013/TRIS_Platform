@@ -296,3 +296,12 @@ table.dataTable tbody td {
     height: 20px;
 }
 /***** footer.html End*******/
+
+/***** Common Start*******/
+.div-padding{
+
+    padding: 40px;
+
+}
+
+/***** Common End*******/

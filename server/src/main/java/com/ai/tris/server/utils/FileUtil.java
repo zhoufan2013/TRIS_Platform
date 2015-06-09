@@ -1,8 +1,8 @@
 package com.ai.tris.server.utils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  */
 public class FileUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
+    private static Log logger = LogFactory.getLog(FileUtil.class);
 
     /**
      * Read file content. This kind of file are packaged to jar file, or set to

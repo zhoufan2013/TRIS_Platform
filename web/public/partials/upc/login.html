@@ -1,4 +1,4 @@
-<div style="padding-top: 100px;background-color: #1a8fb4; height: 300px;" ng-controller="loginController">
+<div style="padding-top: 100px;background-color: #1a8fb4; height: 300px;" class="div-padding" ng-controller="loginController">
     <form class="form-signin" ng-submit="signin()">
         <div id="owl-login" class="">
             <div class="hand"></div>
@@ -21,7 +21,7 @@
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input type="checkbox" ng-model="user.remenber"> Remember me
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

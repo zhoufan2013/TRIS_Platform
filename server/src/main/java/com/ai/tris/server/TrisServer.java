@@ -2,12 +2,12 @@ package com.ai.tris.server;
 
 import com.ai.tris.server.security.SecurityTokenFilter;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.moxy.json.MoxyJsonConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.ext.ContextResolver;
 import java.util.*;
@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class TrisServer {
     /*slf4j log*/
-    private static transient Logger log = LoggerFactory.getLogger(TrisServer.class);
+    private static transient Log log = LogFactory.getLog(TrisServer.class);
     final static String OPTIONS_EXAMPLE = "-port 48000 -bPath api -MoxyJson true -enableLog true";
     final static String[] OPTIONS = new String[]{"-port", "-bPath", "-MoxyJson", "-enableLog"};
     final static String V_URI = "http://0.0.0.0";
@@ -84,7 +84,8 @@ public class TrisServer {
             strUri += options.get("-port");
         } else {
             if (log.isDebugEnabled()) {
-                log.debug("No port specified, using default {} instead.", DEFAULT_PORT);
+                log.debug(String.format("No port specified, using default %s instead.", DEFAULT_PORT));
+
             }
             strUri += DEFAULT_PORT;
         }
@@ -94,7 +95,6 @@ public class TrisServer {
             strUri += options.get("-bPath");
             BASE_PATH += options.get("-bPath");
         }
-
         instance.enableMoxyJson(options);
         instance.enableLoggingFilter(options);
 
@@ -104,7 +104,7 @@ public class TrisServer {
         // start http server.
         httpServer = GrizzlyHttpServerFactory.createHttpServer(java.net.URI.create(strUri), TrisResourceManager.RES_CONF);
         if (log.isDebugEnabled()) {
-            log.debug("http server [{}] is running.", strUri);
+            log.debug(String.format("http server [%s] is running.", strUri));
         }
     }
 
@@ -123,7 +123,7 @@ public class TrisServer {
         }
         validInputOptions(options);
         if (log.isDebugEnabled()) {
-            log.debug("passed-in options: {}", options);
+            log.debug(String.format("passed-in options: %s", options));
         }
         return options;
     }
@@ -142,7 +142,7 @@ public class TrisServer {
         Collection<String> knownOptions = Arrays.asList(OPTIONS);
         for (String optionKey : optionKeys) {
             if (log.isDebugEnabled()) {
-                log.debug("{} = {}", optionKey.substring(1, optionKey.length()), options.get(optionKey));
+                log.debug(String.format("%s = %s", optionKey.substring(1, optionKey.length()), options.get(optionKey)));
             }
             if (!knownOptions.contains(optionKey)) {
                 throw new RuntimeException(String.format("unknown option [%s]", optionKey));
@@ -159,11 +159,10 @@ public class TrisServer {
     boolean validMainInput(String[] args) {
         if (null == args || args.length == 0 || args.length % 2 != 0) {
             if (log.isErrorEnabled()) {
-                log.error("Wrong input parameters. See the input params: [{}]", OPTIONS_EXAMPLE);
+                log.error(String.format("Wrong input parameters. See the input params: [%s]", OPTIONS_EXAMPLE));
             }
             throw new RuntimeException("Invalid Input Parameters. Please pass in key-value pair(s)");
         }
         return Boolean.TRUE;
     }
-
 }

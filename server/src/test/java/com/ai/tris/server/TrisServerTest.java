@@ -1,15 +1,15 @@
 package com.ai.tris.server;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * NA
  * Created by Sam on 2015/6/2.
  */
 public class TrisServerTest {
-    private Logger log = LoggerFactory.getLogger(getClass());
+    private Log log = LogFactory.getLog(getClass());
 
     @Test
     public void testTrisServer() {

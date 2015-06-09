@@ -3,13 +3,13 @@ package com.ai.tris.server.resource;
 import com.ai.tris.server.example.App;
 import com.ai.tris.server.resource.produce.Category;
 import com.ai.tris.server.resource.produce.Group;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -17,15 +17,13 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * Created by Vin on 2015/6/3.
  */
 public class CategoryResourceTest {
-    private static transient Logger logger = LoggerFactory.getLogger(CategoryResourceTest.class);
+    private static transient Log logger = LogFactory.getLog(CategoryResourceTest.class);
     private HttpServer server;
     private WebTarget target;
 

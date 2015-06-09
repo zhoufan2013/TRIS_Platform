@@ -5,9 +5,9 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.bson.Document;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,7 +20,7 @@ import javax.ws.rs.Produces;
  */
 @Path("mongo")
 public class MongoTestResource {
-    private transient static Logger log = LoggerFactory.getLogger(MongoTestResource.class);
+    private transient static Log log = LogFactory.getLog(MongoTestResource.class);
 
     @Path("/get_something")
     @GET
@@ -40,7 +40,7 @@ public class MongoTestResource {
             retJson = mongoCursor.tryNext();
         }
         if (log.isDebugEnabled()) {
-            log.debug("return data {}", retJson.toJson());
+            log.debug(String.format("return data %s", retJson.toJson()));
         }
         return retJson.toJson();
     }

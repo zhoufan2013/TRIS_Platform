@@ -1,12 +1,12 @@
 package com.ai.tris.server.example;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.moxy.json.MoxyJsonConfig;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.ext.ContextResolver;
 import java.net.URI;
@@ -21,7 +21,7 @@ public class App {
     public static String STR_URI = "http://0.0.0.0";
     public static URI BASE_URI = URI.create("http://0.0.0.0:8080/");
     public static final String ROOT_PATH = "helloworld";
-    private static transient Logger logger = LoggerFactory.getLogger(App.class);
+    private static transient Log logger = LogFactory.getLog(App.class);
     public static HttpServer server;
 
     public static void main(String[] args) {

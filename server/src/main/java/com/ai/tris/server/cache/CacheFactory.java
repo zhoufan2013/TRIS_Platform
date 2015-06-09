@@ -1,8 +1,8 @@
 package com.ai.tris.server.cache;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
 import java.util.*;
@@ -25,7 +25,7 @@ public class CacheFactory {
 
     private static ReentrantLock readWriteLock = new ReentrantLock();
 
-    private static transient Logger logger = LoggerFactory.getLogger(CacheFactory.class);
+    private static transient Log logger = LogFactory.getLog(CacheFactory.class);
 
     /**
      * Get cached map.
@@ -46,14 +46,26 @@ public class CacheFactory {
      */
     public static Object getCacheData(String cacheItem, String cacheKey) {
         readWriteLock.lock();
-        Object cachedData = null;
         Map<String, Object> cachedItem = CACHE.get(cacheItem);
-        if (null != cachedItem) {
-            cachedData = cachedItem.get(cacheKey);
-        }
         readWriteLock.unlock();
-        return cachedData;
+        if (null != cachedItem) {
+            return cachedItem.get(cacheKey);
+        }
+        return null;
     }
+
+    /**
+     * Get cache data. Using ReentrantLock is used for for synchronization control.
+     *
+     * @param cacheItem cache item key
+     * @param cacheKey  cache key
+     * @return cached data.
+     */
+    public static String getCacheDataString(String cacheItem, String cacheKey) {
+        Object temp;
+        return (temp = getCacheData(cacheItem, cacheKey)) == null ? null : String.valueOf(temp);
+    }
+
 
     /**
      * Load all data to cache.

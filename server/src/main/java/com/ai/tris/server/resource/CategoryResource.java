@@ -2,8 +2,8 @@ package com.ai.tris.server.resource;
 
 import com.ai.tris.server.resource.produce.Category;
 import com.ai.tris.server.resource.produce.Group;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,7 +18,7 @@ import java.util.List;
 @Path("category")
 public class CategoryResource {
 
-    private transient static Logger logger = LoggerFactory.getLogger(CategoryResource.class);
+    private transient static Log log = LogFactory.getLog(CategoryResource.class);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,8 +48,8 @@ public class CategoryResource {
     @Produces("application/json")
     @Consumes("application/json")
     public Category postSomething(String reqInfo) {
-        if (logger.isInfoEnabled()) {
-            logger.info(reqInfo);
+        if (log.isInfoEnabled()) {
+            log.info(reqInfo);
         }
         Category category1 = new Category();
         category1.setCategory("Functional");

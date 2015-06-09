@@ -13,14 +13,22 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Common Database Access Object implementation.
+ * Common Database Access Object implementation. It is still in the initial coding stage,
+ * a lot of code is not perfect. I believe that after two weeks, everything will be better.
  * <p/>
  * Created by Sam on 2015/6/9.
  */
 public class CommonDaoImpl implements ICommonDao {
 
+    /**
+     * Log4j implementation. If you want to know more about the log, please
+     * visit the official website for more information.
+     */
     private transient static Log log = LogFactory.getLog(CommonDaoImpl.class);
 
+    /**
+     * Spring jdbc template
+     */
     private JdbcTemplate jdbcTemplate;
 
     public void querySomething() {

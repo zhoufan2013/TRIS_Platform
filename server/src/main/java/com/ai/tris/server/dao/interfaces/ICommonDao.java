@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Common Database Access Object.
- *
+ * <p/>
  * Created by Sam on 2015/6/9.
  */
 public interface ICommonDao {

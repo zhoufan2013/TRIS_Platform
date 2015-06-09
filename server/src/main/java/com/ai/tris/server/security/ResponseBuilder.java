@@ -15,15 +15,16 @@ public class ResponseBuilder {
     /**
      * response code, remaining to be defined.
      */
-    final static String RSP_CODE = "RSP_CODE";
+    final static String RSP_CODE = "rspCode";
     /**
      * response content.
      */
-    final static String RSP_INFO = "RSP_INFO";
+    final static String RSP_INFO = "rspInfo";
 
-    final static String INFO_TYPE = "INFO_TYPE";
+    final static String INFO_TYPE = "infoType";
 
     final static int CONTENT_TYPE_STRING = 1;
+    final static int CONTENT_TYPE_DOCUMENT = 2;
 
     /**
      * response document.
@@ -39,7 +40,7 @@ public class ResponseBuilder {
      * @return ResponseBuilder itself
      */
     public ResponseBuilder buildRspDocument(String code, String content, int contentType) {
-        if (contentType == CONTENT_TYPE_STRING) {
+        if (contentType == CONTENT_TYPE_DOCUMENT) {
             return buildRspDocument(code, new BsonDocument(), contentType);
         }
         rspDoc.clear();

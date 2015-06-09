@@ -41,7 +41,7 @@ public class PermissionResource {
      * response body content template {rspCode:"1000", rspInfo:"this is optional", infoType: 1}
      * infoType=1 means that rspInfo only has string content.
      * <p/>
-     * 1- normal string content, 2-Json object content 3-Json array.
+     * 1- normal string content, 2-Json object 3-Json array.
      * <p/>
      * <p/>
      * This api only obtains Json object which infoType is 2, just like this:
@@ -56,7 +56,7 @@ public class PermissionResource {
     public String auth(String reqData) {
         // todo re-code later!!!!!
         if (!JsonUtil.mayBeJSON(reqData)) {
-            String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Invalid json content.", 1).toJson();
+            String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Invalid json content", 1).toJson();
             log.error(errorInfo);
             return errorInfo;
         }
@@ -67,7 +67,7 @@ public class PermissionResource {
 
         BsonInt32 infoType = reqBsonDoc.getInt32("infoType");
         if (null == infoType || infoType.intValue() != 2) {
-            return new ResponseBuilder().buildRspDocument("90001", "Only obtains json like {....,infoType:2...}.", 1).toJson();
+            return new ResponseBuilder().buildRspDocument("90001", "Only obtains json like {....,infoType:2...}", 1).toJson();
         }
         //BsonDocument reqInfo = reqBsonDoc.getDocument("reqInfo");
         String appId = reqBsonDoc.getString("appId").getValue();
@@ -76,7 +76,7 @@ public class PermissionResource {
             log.debug(String.format("App[%s] secret key is [%s]", appId, secretKey));
         }
         if (StringUtils.isEmpty(secretKey)) {
-            return new ResponseBuilder().buildRspDocument("90002", "Invalid appId.", 1).toJson();
+            return new ResponseBuilder().buildRspDocument("90002", "Invalid appId", 1).toJson();
         }
 
         Map<String, Object> claims = new HashMap<String, Object>();
@@ -85,7 +85,7 @@ public class PermissionResource {
         String signedToken = TrisJwtHelper.getInstance().sign(claims, secretKey, 86400);
 
         BsonDocument signResult = new ResponseBuilder()
-                .buildRspDocument("2000", "Logged in", 1)
+                .buildRspDocument("2000", StringUtils.EMPTY, 2)
                 .appendRspInfo("token", new BsonString(signedToken))
                 .export();
         if (log.isDebugEnabled()) {

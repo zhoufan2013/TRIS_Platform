@@ -1,115 +1,119 @@
 <link rel="stylesheet" href="stylesheets/bootstrap-datetimepicker.min.css" media="screen">
 <script src="/javascripts/bootstrap-datetimepicker.min.js"></script>
 
-<form class="form-horizontal" role="form" style="padding-bottom: 30px">
-    <fieldset>
-        <legend>Execution</legend>
+<div class="div-padding">
 
-        <div class="col-sm-9 col-sm-offset-2">
-            <table class="table table-bordered box-shadow-table" id="123">
-                <tbody>
-                <tr>
-                    <td rowspan="{{ caseGroups.length+1 }}">
-                        <label class="control-label" for="executeCaseVersion">Case Version</label>
-                        <div style="padding-top: 15px;">
-                            <select class="form-control" id="executeCaseVersion">
-                                <option value="0.32">Veris UPC SR0.32</option>
-                                <option value="0.8">Veris UPC SR0.8</option>
-                                <option value="1.0">Veris UPC SR1.0</option>
-                                <option value="1.1">Veris UPC SR1.1</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
+    <form class="form-horizontal" role="form" style="padding-bottom: 30px">
+        <fieldset>
+            <legend>Execution</legend>
 
-                <tr ng-repeat="caseGroup in caseGroups" >
-                    <td>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="caseGroup">
-                                {{ caseGroup.category }}
+            <div class="col-sm-9 col-sm-offset-2">
+                <table class="table table-bordered box-shadow-table" id="123">
+                    <tbody>
+                    <tr>
+                        <td rowspan="{{ caseGroups.length+1 }}">
+                            <label class="control-label" for="executeCaseVersion">Case Version</label>
+                            <div style="padding-top: 15px;">
+                                <select class="form-control" id="executeCaseVersion">
+                                    <option value="0.32">Veris UPC SR0.32</option>
+                                    <option value="0.8">Veris UPC SR0.8</option>
+                                    <option value="1.0">Veris UPC SR1.0</option>
+                                    <option value="1.1">Veris UPC SR1.1</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr ng-repeat="caseGroup in caseGroups" >
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="caseGroup">
+                                    {{ caseGroup.category }}
+                                </label>
+                            </div>
+                        </td>
+                        <td><!-- track by $index -->
+                            <label class="checkbox-inline" ng-repeat="option in caseGroup.groups">
+                                <input type="checkbox" name="funcCheckBox" value="{{ option.group }}">
+                                {{ option.group }}
                             </label>
-                        </div>
-                    </td>
-                    <td><!-- track by $index -->
-                        <label class="checkbox-inline" ng-repeat="option in caseGroup.groups">
-                            <input type="checkbox" name="funcCheckBox" value="{{ option.group }}">
-                            {{ option.group }}
-                        </label>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
 
 
-                <tr>
-                    <td>
-                        <label class="checkbox-inline" >
-                            <input id="sendEmailCheckBox" type="checkbox" value="" onclick="whetherSendEmail()"> Send Email with Test Report
-                        </label>
-                    </td>
-                    <td colspan="2">
-                        <textarea id="emailTextarea" class="form-control" rows="2" placeholder="Enter email account, separated by ;" disabled></textarea>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary" id="execute">Execute</button>
-            </div>
-
-        </div>
-
-
-
-    </fieldset>
-</form>
-
-
-<form class="form-horizontal" role="form">
-    <fieldset>
-        <legend>Schedule</legend>
-        <div class="col-sm-offset-3">
-            <label class="col-sm-2 control-label" for="caseVersion">Case Version</label>
-            <div class="col-sm-2">
-                <select class="form-control" id="caseVersion">
-                    <option>0.32</option>
-                    <option>0.8</option>
-                    <option>1.0</option>
-                    <option>1.1</option>
-                </select>
-            </div>
-            <label class="col-sm-1 control-label time-picking-text" for="timePicking">Time Picking</label>
-            <div class="col-sm-2">
-                <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="timePicking" data-link-format="hh:ii">
-                    <input id="timePickingReadonly" class="form-control" size="16" type="text" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    <tr>
+                        <td>
+                            <label class="checkbox-inline" >
+                                <input id="sendEmailCheckBox" type="checkbox" value="" onclick="whetherSendEmail()"> Send Email with Test Report
+                            </label>
+                        </td>
+                        <td colspan="2">
+                            <textarea id="emailTextarea" class="form-control" rows="2" placeholder="Enter email account, separated by ;" disabled></textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="execute">Execute</button>
                 </div>
-                <input id="timePicking" type="hidden" value="" /><br/>
+
             </div>
 
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-primary" onclick="addNewSchedule()">Submit</button>
+
+
+        </fieldset>
+    </form>
+
+
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <legend>Schedule</legend>
+            <div class="col-sm-offset-3">
+                <label class="col-sm-2 control-label" for="caseVersion">Case Version</label>
+                <div class="col-sm-2">
+                    <select class="form-control" id="caseVersion">
+                        <option>0.32</option>
+                        <option>0.8</option>
+                        <option>1.0</option>
+                        <option>1.1</option>
+                    </select>
+                </div>
+                <label class="col-sm-1 control-label time-picking-text" for="timePicking">Time Picking</label>
+                <div class="col-sm-2">
+                    <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="timePicking" data-link-format="hh:ii">
+                        <input id="timePickingReadonly" class="form-control" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                    <input id="timePicking" type="hidden" value="" /><br/>
+                </div>
+
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" onclick="addNewSchedule()">Submit</button>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-9 col-sm-offset-2">
-            <table class="table table-bordered table-striped box-shadow-table" id="timePickingTable">
-                <thead>
-                <tr>
-                    <th>Case Version</th>
-                    <th>Time Picking</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="col-sm-9 col-sm-offset-2">
+                <table class="table table-bordered table-striped box-shadow-table" id="timePickingTable">
+                    <thead>
+                    <tr>
+                        <th>Case Version</th>
+                        <th>Time Picking</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr ng-repeat="schedule in schedules" >
                         <td>{{ schedule.case_version }}</td>
                         <td>{{ schedule.execute_time }}</td>
                         <td class='time-picking-table-action'><i class='glyphicon glyphicon-trash' style='cursor: pointer;' onclick='delRow($(this))'></i></td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </fieldset>
-</form>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
 
 <script type="text/javascript">
 

@@ -1,32 +1,28 @@
 <script src="/javascripts/highcharts.js"></script>
 
+<div class="div-padding" style="padding-top: 60px;">
+    <form class="form-inline case-version-form">
+        <div class="form-group">
+            <label for="executeCaseVersion" class="case-version-label">Case Version</label>
+            <select class="form-control" id="executeCaseVersion">
+                <option value="0.32">Veris UPC SR0.32</option>
+                <option value="0.8">Veris UPC SR0.8</option>
+                <option value="1.0">Veris UPC SR1.0</option>
+                <option value="1.1">Veris UPC SR1.1</option>
+            </select>
+        </div>
+    </form>
 
-
-<form class="form-inline case-version-form">
-    <div class="form-group">
-        <label for="executeCaseVersion" class="case-version-label">Case Version</label>
-        <select class="form-control" id="executeCaseVersion">
-            <option value="0.32">Veris UPC SR0.32</option>
-            <option value="0.8">Veris UPC SR0.8</option>
-            <option value="1.0">Veris UPC SR1.0</option>
-            <option value="1.1">Veris UPC SR1.1</option>
-        </select>
-    </div>
-</form>
-
-
-
-<form class="form-horizontal" role="form">
-    <fieldset>
-        <div id="today" class="col-sm-6"></div>
-        <div id="lastweek" class="col-sm-6"></div>
-    </fieldset>
-    <fieldset>
-        <div id="container"></div>
-    </fieldset>
-</form>
-
-
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div id="today" class="col-sm-6"></div>
+            <div id="lastweek" class="col-sm-6"></div>
+        </fieldset>
+        <fieldset>
+            <div id="container"></div>
+        </fieldset>
+    </form>
+</div>
 
 <script type="text/javascript">
 

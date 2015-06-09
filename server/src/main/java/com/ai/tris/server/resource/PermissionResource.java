@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import org.bson.BsonDocument;
 import org.bson.BsonInt32;
 import org.bson.BsonString;
+import org.bson.json.JsonParseException;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -60,7 +61,14 @@ public class PermissionResource {
             log.error(errorInfo);
             return errorInfo;
         }
-        BsonDocument reqBsonDoc = BsonDocument.parse(reqData);
+        BsonDocument reqBsonDoc;
+        try {
+            reqBsonDoc = BsonDocument.parse(reqData);
+        } catch (JsonParseException e) {
+            String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Parse json content failed", 1).toJson();
+            log.error(errorInfo);
+            return errorInfo;
+        }
         if (log.isDebugEnabled()) {
             log.debug(String.format("API-%s, Method-%s, request string-%s", "sign", "post", reqBsonDoc));
         }

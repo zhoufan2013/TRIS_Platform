@@ -19,7 +19,7 @@ public class SecurityTokenFilter implements ContainerRequestFilter {
 
     public void filter(ContainerRequestContext requestContext) throws IOException {
         ContainerRequest request = (ContainerRequest) requestContext;
-        System.out.println(request.getPath(false));
+        //System.out.println(request.getPath(false));
         MultivaluedMap<String, String> headers = requestContext.getHeaders();
         System.out.println(headers);
         //System.out.println();

@@ -1,14 +1,13 @@
 package com.ai.tris.server.cache.impl;
 
+import com.ai.tris.server.AppContextFactory;
 import com.ai.tris.server.cache.ICache;
-import com.ai.tris.server.db.mongodb.DbConstInfo;
-import com.ai.tris.server.db.mongodb.TrisMongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
+import com.ai.tris.server.orm.impl.ClientAppInfoBean;
+import com.ai.tris.server.orm.interfaces.IClientAppInfoValue;
+import com.ai.tris.server.service.interfaces.ICommonService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,21 +17,16 @@ import java.util.Map;
  */
 public class ClientIdSecretCacheImpl implements ICache {
 
-    final String APP_ID = "appId"; // field in tris_base.client_app_info
-    final String SECRET = "secret";
-
     public Map<String, Object> loadData() {
         Map<String, Object> retData = new HashMap<String, Object>();
-        MongoDatabase mongoDatabase = TrisMongoClient.get(DbConstInfo.DbName.base);
-        MongoCollection<Document> clientAppInfoDoc =
-                mongoDatabase.getCollection(DbConstInfo.Collection.clientAppInfo);
-        if (null != clientAppInfoDoc) {
-            MongoCursor<Document> findIterable = clientAppInfoDoc.find().iterator();
-            while (findIterable.hasNext()) {
-                Document doc = findIterable.tryNext();
-                if (null != doc) {
-                    retData.put(doc.getString(APP_ID), doc.getString(SECRET));
-                }
+
+        ICommonService iCommonService =
+                AppContextFactory.getAppContext().getBean(ICommonService.class.getName(), ICommonService.class);
+        List<ClientAppInfoBean> clientAppInfoBeans = iCommonService.getAllClientAppInfo();
+        if (null != clientAppInfoBeans && clientAppInfoBeans.size() > 0) {
+            for (ClientAppInfoBean clientAppInfoBean : clientAppInfoBeans) {
+                retData.put(clientAppInfoBean.getString(IClientAppInfoValue.S_APP_ID),
+                        clientAppInfoBean.get(IClientAppInfoValue.S_SECRET_KEY));
             }
         }
         return retData;

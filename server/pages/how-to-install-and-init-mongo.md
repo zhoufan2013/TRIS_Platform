@@ -18,7 +18,7 @@ MongoDB针对Linux的不同发行版本编译发布出来的二进制文件在�
 lrwxrwxrwx. 1 cnode1 cnode1   33 Jun  5 08:52 mongodb -> mongodb-linux-x86_64-rhel70-3.0.3
 drwxrwxr-x. 3 cnode1 cnode1   74 Jun  5 08:51 mongodb-linux-x86_64-rhel70-3.0.3
 ````
-* 设置环境变量。 已CentOS为例，修改~/.bash_profile文件即可。对于不同的Linux发行版本profile文件可能会有差别，如果对自己的Linux版本不是很了解，请自行Google解决。 附上一个自己一直使用的模板：
+* 设置环境变量。 以CentOS为例，修改~/.bash_profile文件即可。对于不同的Linux发行版本profile文件可能会有差别，如果对自己的Linux版本不是很了解，请自行Google解决。 附上一个自己一直使用的模板：
 ````
 # scripts for setting mongodb env
 if [ -d "/home/cnode1/lib/mongodb" ] ; then

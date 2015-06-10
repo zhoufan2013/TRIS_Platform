@@ -39,20 +39,20 @@ public class ResponseBuilder {
      * @param contentType response body information type
      * @return ResponseBuilder itself
      */
-    public ResponseBuilder buildRspDocument(String code, String content, int contentType) {
+    public ResponseBuilder buildRspDocument(int code, String content, int contentType) {
         if (contentType == CONTENT_TYPE_DOCUMENT) {
             return buildRspDocument(code, new BsonDocument(), contentType);
         }
         rspDoc.clear();
-        rspDoc.put(RSP_CODE, new BsonString(code));
+        rspDoc.put(RSP_CODE, new BsonInt32(code));
         rspDoc.put(RSP_INFO, new BsonString(content));
         rspDoc.put(INFO_TYPE, new BsonInt32(contentType));
         return this;
     }
 
-    public ResponseBuilder buildRspDocument(String code, BsonDocument content, int contentType) {
+    public ResponseBuilder buildRspDocument(int code, BsonDocument content, int contentType) {
         rspDoc.clear();
-        rspDoc.put(RSP_CODE, new BsonString(code));
+        rspDoc.put(RSP_CODE, new BsonInt32(code));
         rspDoc.put(INFO_TYPE, new BsonInt32(contentType));
         rspDoc.put(RSP_INFO, content);
         return this;

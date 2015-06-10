@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * XXX
  * Created by Sam on 2015/6/9.
  */
 public class ClientAppInfoBean extends AbstractDataObject implements IClientAppInfoValue {

@@ -1,17 +1,13 @@
 package com.ai.tris.server.example;
 
 
-import org.apache.commons.lang3.StringUtils;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Response;
 
 /**
  * Hello World Resource Test
@@ -35,12 +31,4 @@ public class HelloWorldTest {
         server.shutdownNow();
     }
 
-    /**
-     * Test to see that the message "Hello World!" is sent in the response.
-     */
-    @Test
-    public void testGetIt() {
-        String responseMsg = target.path("helloworld").request().get(String.class);
-        //Assert.assertEquals("Hello World!", responseMsg);
-    }
 }

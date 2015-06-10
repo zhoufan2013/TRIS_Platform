@@ -12,7 +12,6 @@ import org.apache.commons.logging.LogFactory;
 import org.bson.BsonDocument;
 import org.bson.BsonInt32;
 import org.bson.BsonString;
-import org.bson.json.JsonParseException;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -60,12 +59,7 @@ public class PermissionResource {
         if (!JsonUtil.mayBeJSON(reqData.trim())) {
             throw new UnauthorizedException("Invalid json content", 9001);
         }
-        BsonDocument reqBsonDoc;
-        try {
-            reqBsonDoc = BsonDocument.parse(reqData);
-        } catch (JsonParseException e) {
-            throw new UnauthorizedException("Parse json content failed", 9001);
-        }
+        BsonDocument reqBsonDoc = BsonDocument.parse(reqData);
         if (log.isDebugEnabled()) {
             log.debug(String.format("API-%s, Method-%s, request string-%s", "sign", "post", reqBsonDoc));
         }

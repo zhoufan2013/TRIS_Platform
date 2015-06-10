@@ -4,6 +4,7 @@ import com.ai.tris.server.cache.CacheFactory;
 import com.ai.tris.server.cache.impl.ClientIdSecretCacheImpl;
 import com.ai.tris.server.security.ResponseBuilder;
 import com.ai.tris.server.security.TrisJwtHelper;
+import com.ai.tris.server.security.exception.UnauthorizedException;
 import com.ai.tris.server.utils.JsonUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -11,7 +12,6 @@ import org.apache.commons.logging.LogFactory;
 import org.bson.BsonDocument;
 import org.bson.BsonInt32;
 import org.bson.BsonString;
-import org.bson.json.JsonParseException;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -57,48 +57,53 @@ public class PermissionResource {
     public String auth(String reqData) {
         // todo re-code later!!!!!
         if (!JsonUtil.mayBeJSON(reqData.trim())) {
-            String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Invalid json content", 1).toJson();
-            log.error(errorInfo);
-            return errorInfo;
+            throw new UnauthorizedException("Invalid json content", 9001);
         }
-        BsonDocument reqBsonDoc;
-        try {
-            reqBsonDoc = BsonDocument.parse(reqData);
-        } catch (JsonParseException e) {
-            String errorInfo = new ResponseBuilder().buildRspDocument("90001", "Parse json content failed", 1).toJson();
-            log.error(errorInfo);
-            return errorInfo;
-        }
+        BsonDocument reqBsonDoc = BsonDocument.parse(reqData);
         if (log.isDebugEnabled()) {
             log.debug(String.format("API-%s, Method-%s, request string-%s", "sign", "post", reqBsonDoc));
         }
 
         BsonInt32 infoType = reqBsonDoc.getInt32("infoType");
         if (null == infoType || infoType.intValue() != 2) {
-            return new ResponseBuilder().buildRspDocument("90001", "Only obtains json like {....,infoType:2...}", 1).toJson();
+            throw new UnauthorizedException("Only obtains json like {....,infoType:2...}", 9001);
         }
-        //BsonDocument reqInfo = reqBsonDoc.getDocument("reqInfo");
-        String appId = reqBsonDoc.getString("appId").getValue();
+        String signResult = buildToken(reqBsonDoc.getString("appId").getValue());
+        if (log.isDebugEnabled()) {
+            log.debug(String.format("Signed result %s", signResult));
+        }
+        return signResult;
+    }
+
+    /**
+     * Check appId secret. If secret is not empty, return to main flow.
+     *
+     * @param appId application id
+     * @return secret key
+     */
+    private String checkAppIdSecret(String appId) {
         String secretKey = CacheFactory.getCacheDataString(ClientIdSecretCacheImpl.class.getName(), appId);
         if (log.isDebugEnabled()) {
             log.debug(String.format("App[%s] secret key is [%s]", appId, secretKey));
         }
         if (StringUtils.isEmpty(secretKey)) {
-            return new ResponseBuilder().buildRspDocument("90002", "Invalid appId", 1).toJson();
+            throw new UnauthorizedException("Invalid appId", 9002);
         }
+        return secretKey;
+    }
 
+    /**
+     * build sign token string.
+     *
+     * @param appId application Id
+     * @return application token
+     */
+    private String buildToken(String appId) {
         Map<String, Object> claims = new HashMap<String, Object>();
         claims.put("appId", appId);
         claims.put("signedTimestamp", System.currentTimeMillis());
-        String signedToken = TrisJwtHelper.getInstance().sign(claims, secretKey, 86400);
-
-        BsonDocument signResult = new ResponseBuilder()
-                .buildRspDocument("2000", StringUtils.EMPTY, 2)
-                .appendRspInfo("token", new BsonString(signedToken))
-                .export();
-        if (log.isDebugEnabled()) {
-            log.debug(String.format("Signed result %s", signResult));
-        }
-        return signResult.toJson();
+        String signedToken = TrisJwtHelper.getInstance().sign(claims, checkAppIdSecret(appId), 86400);
+        return new ResponseBuilder().buildRspDocument(2000, StringUtils.EMPTY, 2)
+                .appendRspInfo("token", new BsonString(signedToken)).export().toJson();
     }
 }

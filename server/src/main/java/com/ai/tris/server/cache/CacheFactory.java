@@ -32,13 +32,17 @@ public class CacheFactory {
     }
 
     /**
-     * Get cached map.
+     * Get cached map. If list kind data is wanted, this method can do
+     * such the thing.
      *
      * @param cacheItem cache item key
      * @return cached map value
      */
     public static Map<String, Object> getCacheData(String cacheItem) {
-        return null;
+        readWriteLock.lock();
+        Map<String, Object> cachedMap = CACHE.get(cacheItem);
+        readWriteLock.unlock();
+        return (null != cachedMap && cachedMap.size() > 0) ? cachedMap : new HashMap<String, Object>(0);
     }
 
     /**

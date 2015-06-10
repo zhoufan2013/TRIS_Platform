@@ -1,5 +1,6 @@
 package com.ai.tris.server;
 
+import com.ai.tris.server.security.exception.mapper.BsonParseExceptionMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -34,6 +35,10 @@ public class TrisResourceManager {
         }
     }
 
+    public static void registerExceptionMapper(Properties properties) {
+        RES_CONF.register(BsonParseExceptionMapper.class);
+    }
+
     private static void load() throws IOException {
         Properties prop = new Properties();
         prop.load(TrisResourceManager.class.getClassLoader().getResourceAsStream("resource.properties"));
@@ -42,5 +47,7 @@ public class TrisResourceManager {
             RES_CONF = new ResourceConfig();
             RES_CONF.packages(Boolean.TRUE, resPackage.split(Pattern.quote(",")));
         }
+        // register exception mapper
+        registerExceptionMapper(prop);
     }
 }

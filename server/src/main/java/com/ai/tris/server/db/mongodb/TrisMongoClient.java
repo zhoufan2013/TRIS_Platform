@@ -35,14 +35,21 @@ public class TrisMongoClient {
 
     private final static String SERVER_PROP_NAME = "server.properties";
     private final static String SERVER_INFO_KEY = "db.mongo.server";
-
-    private static String clientUri = null;
-
     /**
      * Mongodb client pool
      */
     private final static Map<String, Object> clientPool = new ConcurrentHashMap<String, Object>();
+    private static String clientUri = null;
 
+    static {
+        try {
+            loadServerProp();
+        } catch (IOException ioe) {
+            throw new RuntimeException(
+                    String.format("Load mongo server information from file (%s) failed.", SERVER_PROP_NAME));
+        }
+        poolMongoClient("_mc", createMongoClient());
+    }
 
     private static com.mongodb.MongoClient borrowClient(String clientKey) {
         return (com.mongodb.MongoClient) clientPool.get(clientKey);
@@ -96,15 +103,5 @@ public class TrisMongoClient {
                     String.format("Load mongo auth info failed, please check %s in file %s",
                             SERVER_INFO_KEY, SERVER_PROP_NAME));
         }
-    }
-
-    static {
-        try {
-            loadServerProp();
-        } catch (IOException ioe) {
-            throw new RuntimeException(
-                    String.format("Load mongo server information from file (%s) failed.", SERVER_PROP_NAME));
-        }
-        poolMongoClient("_mc", createMongoClient());
     }
 }

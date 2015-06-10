@@ -8,6 +8,7 @@ public class JsonUtil {
 
     /**
      * 该字符串可能转为 JSONObject 或 JSONArray
+     *
      * @param string
      * @return
      */
@@ -19,6 +20,7 @@ public class JsonUtil {
 
     /**
      * 该字符串可能转为JSONObject
+     *
      * @param string
      * @return
      */
@@ -29,6 +31,7 @@ public class JsonUtil {
 
     /**
      * 该字符串可能转为 JSONArray
+     *
      * @param string
      * @return
      */

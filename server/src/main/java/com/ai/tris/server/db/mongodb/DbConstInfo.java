@@ -2,7 +2,7 @@ package com.ai.tris.server.db.mongodb;
 
 /**
  * specify database const info.
- *
+ * <p/>
  * Created by Sam on 2015/6/8.
  */
 public class DbConstInfo {

@@ -27,6 +27,10 @@ public class CacheFactory {
 
     private static transient Log logger = LogFactory.getLog(CacheFactory.class);
 
+    static {
+        loadAllData();
+    }
+
     /**
      * Get cached map.
      *
@@ -66,7 +70,6 @@ public class CacheFactory {
         return (temp = getCacheData(cacheItem, cacheKey)) == null ? null : String.valueOf(temp);
     }
 
-
     /**
      * Load all data to cache.
      */
@@ -93,7 +96,6 @@ public class CacheFactory {
 
     public static void reload(String cacheItem) {
     }
-
 
     private static void readCacheImpl() {
         try {
@@ -124,9 +126,5 @@ public class CacheFactory {
             throw new RuntimeException("Class not found exception.");
         }
 
-    }
-
-    static {
-        loadAllData();
     }
 }

@@ -17,9 +17,9 @@ import java.util.Set;
  */
 public abstract class AbstractDataObject {
 
+    private transient static Log log = LogFactory.getLog(AbstractDataObject.class);
     protected Set<String> colNames = new HashSet<String>();
     protected Map<String, Object> data = new HashMap<String, Object>();
-    private transient static Log log = LogFactory.getLog(AbstractDataObject.class);
 
     /**
      * Get all column names.

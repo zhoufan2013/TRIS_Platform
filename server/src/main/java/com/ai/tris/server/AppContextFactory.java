@@ -5,13 +5,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- *
  * Created by Sam on 2015/6/9.
  */
 public class AppContextFactory {
 
-    private ApplicationContext appContext;
     private static AppContextFactory appContextFactory = new AppContextFactory();
+    private ApplicationContext appContext;
 
     private AppContextFactory() {
         appContext = new ClassPathXmlApplicationContext("application.xml");

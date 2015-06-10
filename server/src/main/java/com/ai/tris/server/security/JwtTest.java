@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * Created by Sam on 2015/6/7.
  */
 public class JwtTest {

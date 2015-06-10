@@ -1,7 +1,6 @@
 package com.ai.tris.server.orm.interfaces;
 
 /**
- *
  * Created by Sam on 2015/6/9.
  */
 public interface IClientAppInfoValue {

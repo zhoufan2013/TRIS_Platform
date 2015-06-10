@@ -9,7 +9,6 @@ import org.apache.commons.logging.LogFactory;
 import java.util.List;
 
 /**
- *
  * Created by Sam on 2015/6/9.
  */
 public class CommonServiceImpl implements ICommonService {

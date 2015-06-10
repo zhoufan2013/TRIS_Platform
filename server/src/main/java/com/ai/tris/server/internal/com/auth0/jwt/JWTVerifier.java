@@ -1,5 +1,11 @@
 package com.ai.tris.server.internal.com.auth0.jwt;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.codec.binary.Base64;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
@@ -8,14 +14,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.codec.binary.Base64;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * JWT Java Implementation
@@ -27,7 +25,8 @@ public class JWTVerifier {
     private final byte[] secret;
     private final String audience;
     private final String issuer;
-    private final Base64 decoder = new Base64(true);;
+    private final Base64 decoder = new Base64(true);
+    ;
 
     private final ObjectMapper mapper;
 
@@ -50,7 +49,7 @@ public class JWTVerifier {
             throw new IllegalArgumentException("Secret cannot be null or empty");
         }
 
-    	mapper = new ObjectMapper();
+        mapper = new ObjectMapper();
 
         algorithms = new HashMap<String, String>();
         algorithms.put("HS256", "HmacSHA256");

@@ -26,6 +26,13 @@ public class TrisResourceManager {
      */
     private static Set<String> RES_LIST = new HashSet<String>();
 
+    static {
+        try {
+            load();
+        } catch (IOException ioe) {
+            throw new RuntimeException("Load resource from file (resource.properties) failed.");
+        }
+    }
 
     private static void load() throws IOException {
         Properties prop = new Properties();
@@ -34,14 +41,6 @@ public class TrisResourceManager {
         if (StringUtils.isNotEmpty(resPackage)) {
             RES_CONF = new ResourceConfig();
             RES_CONF.packages(Boolean.TRUE, resPackage.split(Pattern.quote(",")));
-        }
-    }
-
-    static {
-        try {
-            load();
-        } catch (IOException ioe) {
-            throw new RuntimeException("Load resource from file (resource.properties) failed.");
         }
     }
 }

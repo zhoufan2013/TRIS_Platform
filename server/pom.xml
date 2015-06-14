@@ -108,6 +108,11 @@
             <artifactId>spring-tx</artifactId>
             <version>4.1.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>4.1.6.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.transaction</groupId>
@@ -130,6 +135,12 @@
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.jotm</groupId>
+            <artifactId>jotm-core</artifactId>
+            <version>2.3.1-M1</version>
         </dependency>
 
     </dependencies>

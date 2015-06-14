@@ -9,46 +9,44 @@ var tris = angular.module('tris', ['ngRoute', 'LocalStorageModule']);
 
 //TODO 用 directives 重写 菜单控制
 
-tris.controller('loginController', ['$scope', '$location', 'localStorageService','Login', '$rootScope', function(scope, location, storageService, login, rootScope){
+tris.controller('loginController', ['$scope', '$location', 'localStorageService','Login', '$rootScope', '$http', function(scope, location, storageService, login, rootScope, http){
 
     scope.user = {};
 
     // 如果用户已经登录了$rootScope.user.token，则立即跳转到一个默认主页/upc_home上去，无需再登录
-    /*if($rootScope.user.token){
-        $location.path('/upc_home');
-        $location.$replace();
+    if(storageService.get('token')){
+        location.path('/upc_home');
+        location.replace();
         return;
-    }*/
-
+    }
 
     //登录校验监听事件
     scope.signin = function() {
 
+        var promise = login.sign(login.userInfo(scope.user));
+        promise.then(function(data) {
+            var rspCode = data.rspCode;
+            var token = data.rspInfo.token;
 
-        var promise = login.sign(scope.user);
-        promise.then(function(data){
-            var category = data;
-
-
-            //var account = scope.user.account;
-            //var password = scope.user.password;
-
-            var remenber = scope.user.remenber;
-
-            if(storageService.isSupported) {
-                if(remenber == 'true') {
-                    storageService.set('zhoufan', 'yes');
-                }
-            }
+            debugger;
+            rootScope.login_result = false;
 
             location.path('/upc_home');
             location.replace();
 
-            //Mock verify user info
-            if (password == '123') {
-
+            if(login.isRemember(scope.user)) {
                 debugger;
-                rootScope.login_result = false;
+                /**
+                 * 判断浏览器是否支持Cookies
+                 * 如果不支持提示建议启用Cookie
+                 */
+                if(storageService.isSupported) {
+                    storageService.set('token', token);
+                } else {
+
+                }
+
+            }
 
                 /*
                  $http.get('/images/owl-login-arm.png').then(function(response) {
@@ -56,17 +54,10 @@ tris.controller('loginController', ['$scope', '$location', 'localStorageService'
                  console.log('The request took ' + (time / 1000) + ' seconds.');
                  });*/
 
-                location.path('/upc_home');
-                location.replace();
-
-            } else {
-                scope.errorName = '';
-            }
-
-
         }, function(data){
             debugger;
         });
+
 
     }
 
@@ -114,6 +105,23 @@ tris.controller('upcDetailController', function($scope){
 
 });
 
+tris.controller('upcExecuteController', ['$http', function(http) {
+
+    http.get('/api/category'
+        ).success(function(data, status, headers, config) {
+            debugger;
+            //加载成功之后做一些事
+            $scope.caseGroups = data;
+        }).error(function(data, status, headers, config) {
+            //处理错误
+        });
+
+}]);
+
+tris.controller('userCaseController', [function(){
+
+}]);
+
 tris.controller('homeController', function($scope, $http, $rootScope){
 
     $rootScope.login_result = true;
@@ -131,14 +139,6 @@ tris.controller('homeController', function($scope, $http, $rootScope){
         }
     ];
 
-
-    $http.get('/api/category'
-        ).success(function(data, status, headers, config) {
-            //加载成功之后做一些事
-            $scope.caseGroups = data;
-        }).error(function(data, status, headers, config) {
-            //处理错误
-        });
 
     //TODO call restful API
     /*
@@ -210,11 +210,28 @@ tris.service('Login', ['$http', '$q', function(http, promise) {
 
     var login = {
 
-        sign: function(user) {
+        userInfo: function(user) {
+
+            var signInfo = {};
+            var userInfo = {};
+            userInfo.userId = user.account;
+            userInfo.password = user.password;
+            signInfo.appId = "tris-web";//tris_server defines app-id for each tris_client
+            signInfo.infoType = 2;//content_type:application/json
+            signInfo.reqInfo = userInfo;
+            return signInfo;
+        },
+
+        isRemember: function (user) {
+            return user.remenber;
+        },
+
+        sign: function(signInfo) {
             //申明异步等待
             var deferred = promise.defer();
-            http.get('/api/category')
+            http.post('/api/sign', signInfo)
                 .success(function(data, status, headers, config){
+                    debugger;
                     deferred.resolve(data);
                 }).error(function(data, status, headers, config){
                     deferred.reject(data);
@@ -283,7 +300,12 @@ tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider)
             templateUrl: '/partials/home.html'
         })
         .when('/upc_execute', {
-            templateUrl: '/partials/upc/execute.html'
+            templateUrl: '/partials/upc/execute.html',
+            controller: 'upcExecuteController'
+        })
+        .when('/user_case', {
+            templateUrl: '/partials/user_case.html',
+            controller: 'userCaseController'
         })
         .when('/upc_analysis', {
             templateUrl: '/partials/upc/analysis.html'
@@ -297,6 +319,9 @@ tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider)
         })
         .when('/upc_home', {
             templateUrl: '/partials/upc/upc_home.html'
+        })
+        .when('/case_set', {
+            templateUrl: '/partials/case_set.html'
         });
 
     localStorageServiceProvider

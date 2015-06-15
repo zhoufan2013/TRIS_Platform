@@ -1,78 +1,96 @@
-<link rel="stylesheet" href="/stylesheets/jquery.dataTables.min.css" media="screen">
-<script src="/javascripts/jquery.dataTables.min.js"></script>
+<div class="div-padding">
 
-<div class="div-padding" ng-controller="upcDetailController">
-    <fieldset>
-        <legend style="margin-bottom: 30px;">Detailed Analysis</legend>
+    <div class="daohang">
+        <span class="veris-product" style="margin-right: 10px;">Veris Product</span>
+        <select class="btn btn-primary" id="product">
+            <option value="1.0">Veris UPC</option>
+            <option value="0.32">Veris CRM 7.0</option>
+        </select>
+        <i class="fa fa-angle-right" style="margin-left: 10px; margin-right: 10px;"></i>
+        <select class="btn-primary">
+            <optgroup label="UPC">
+                <option>UPC</option>
+                <option>PCM</option>
+                <option>PCE3</option>
+                <option>DB Change</option>
+                <option>Cross PRD</option>
+            </optgroup>
+            <optgroup label="CRM">
+                <option>Order</option>
+                <option>Customer</option>
+                <option>Contract</option>
+            </optgroup>
+        </select>
+    </div>
 
-        <form class="form-horizontal col-sm-offset-1" role="form" style="padding-bottom: 20px;">
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="case_version">Case Version</label>
-                <div class="col-sm-2">
-                    <select class="form-control" id="case_version">
-                        <option value="0.32">Veris UPC SR0.32</option>
-                        <option value="0.8">Veris UPC SR0.8</option>
-                        <option value="1.0">Veris UPC SR1.0</option>
-                        <option value="1.1">Veris UPC SR1.1</option>
-                    </select>
-                </div>
-                <label class="col-sm-2 control-label" for="case_unit">Case Unit</label>
-                <div class="col-sm-2">
-                    <select class="form-control" id="case_unit">
-                    </select>
-                </div>
+
+    <div style="padding: 20px;
+  background-color: #FFF;
+  border-radius: 5px;
+}">
+        <div id="toolbar" class="col-sm-12" style="border-bottom: 1px solid #DDD;">
+            <div class="input-group col-sm-3 col-sm-offset-9" style="padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                <input name="userCase" type="text" class="form-control" placeholder="Search For...">
+                        <span class="input-group-btn">
+                            <button id="search" class="btn btn-primary" type="button">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="executor">Executor</label>
-                <div class="col-sm-2">
-                    <input type="text" class="form-control" id="executor" placeholder="zhoufan">
-                </div>
-                <label class="col-sm-2 control-label" for="executor">Execution Time</label>
-                <div class="col-sm-2">
-                    <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="timePicking" data-link-format="hh:ii">
-                        <input id="timePickingReadonly" class="form-control" size="16" type="text" value="" readonly>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                    </div>
-                    <input id="timePicking" type="hidden" value="" />
-                </div>
-                <button type="submit" class="btn btn-default">Query</button>
-            </div>
-        </form>
-
-        <div class="col-sm-10 col-sm-offset-1">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Case Version</th>
-                        <th>Case Unit</th>
-                        <th>Executor</th>
-                        <th>Execution Time</th>
-                        <th>Pass Rate</th>
-                        <th>Detailed Report</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="execution in executions">
-                        <td>{{ execution.case_version }}</td>
-                        <td>{{ execution.case_unit }}</td>
-                        <td>{{ execution.executor }}</td>
-                        <td>{{ execution.start_time }}</td>
-                        <td>{{ execution.pass_rate }}</td>
-                        <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-    </fieldset>
+
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Case Set</th>
+                    <th>Executor</th>
+                    <th>Execution Time</th>
+                    <th>Pass Rate</th>
+                    <th>Detailed Report</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>UPC Offer Case Set</td>
+                    <td>tianhj</td>
+                    <td>2011/04/25</td>
+                    <td>61%</td>
+                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
+                </tr>
+                <tr>
+                    <td>UPC Product Case Set</td>
+                    <td>hanll</td>
+                    <td>2011/04/25</td>
+                    <td>63%</td>
+                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
+                </tr>
+                <tr>
+                    <td>UPC Product Case Set</td>
+                    <td>hanll</td>
+                    <td>2011/04/25</td>
+                    <td>66%</td>
+                    <td class='time-picking-table-action'><i class='glyphicon glyphicon-send' style='cursor: pointer;' onclick=''></i></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
 </div>
 
 <script type="text/javascript">
 
     $(document).ready(function() {
-
-
-
-
+        $('#example').dataTable( {
+            "paging":   true,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "info":     false,
+            "bLengthChange": false
+        } );
     } );
+
 
 </script>

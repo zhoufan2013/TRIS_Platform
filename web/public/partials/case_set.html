@@ -1,1 +1,216 @@
-zhoufan
+<div class="div-padding">
+
+    <div class="daohang">
+        <span class="veris-product" style="margin-right: 10px;">Veris Product</span>
+        <select class="btn btn-primary" id="product">
+            <option value="1.0">Veris UPC</option>
+            <option value="0.32">Veris CRM 7.0</option>
+        </select>
+        <i class="fa fa-angle-right" style="margin-left: 10px; margin-right: 10px;"></i>
+        <select class="btn-primary">
+            <optgroup label="UPC">
+                <option>UPC</option>
+                <option>PCM</option>
+                <option>PCE3</option>
+                <option>DB Change</option>
+                <option>Cross PRD</option>
+            </optgroup>
+            <optgroup label="CRM">
+                <option>Order</option>
+                <option>Customer</option>
+                <option>Contract</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="col-sm-12 page-content" style="background-color: #fff; border-radius: 5px;">
+
+            <div id="toolbar" class="col-sm-12" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom: 1px solid #DDD;">
+                <div class="input-group col-sm-3 col-sm-offset-9" style="padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                    <input name="userCase" type="text" class="form-control" placeholder="Search For Case Set...">
+                    <span class="input-group-btn">
+                        <button id="search" class="btn btn-primary" type="button">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-primary" id="createCaseSet">Create</button>
+                    </span>
+                </div>
+            </div>
+
+            <!-- cell-border -->
+            <table class="row-border" id="table" style="clear: both" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Case Set</th>
+                        <th>Creator</th>
+                        <th>Date</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" id="caseset1" data-type="text" data-placement="top" data-title="Case Set Name">UPC Offer Case Set</a></td>
+                        <td>tianhj</td>
+                        <td>23/12/2013</td>
+                        <td>
+                            <a><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" id="caseset2" data-type="text" data-placement="top" data-title="Case Set Name">UPC Product Case Set</a></td>
+                        <td>hanll</td>
+                        <td>28/12/2013</td>
+                        <td>
+
+                            <a><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" id="caseset3" data-type="text" data-placement="top" data-title="Case Set Name">UPC Service Case Set</a></td>
+                        <td>hanll</td>
+                        <td>30/12/2013</td>
+                        <td>
+                            <a><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </div>
+
+
+    <div id="caseSetEditPanel" class="col-sm-12 page-content" style="background-color: #fff; border-radius: 5px; display: none;">
+
+        <div class="panel panel-default">
+            <form class="form-horizontal no-margin form-border" id="formWizard2" novalidate="">
+                <div class="panel-tab clearfix">
+                    <ul class="tab-bar wizard-demo" role="tablist" id="wizardDemo2">
+                        <li class="active"><a href="#first" data-toggle="tab" style="color: #000000;"><i class="fa fa-home"></i> New Case Set</a></li>
+                        <li class=""><a href="#second" data-toggle="tab"><i class="fa fa-pencil"></i> Associated with Cases</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="first">
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Case Set Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Case Set Name..." class="form-control input-sm parsley-validated" data-required="true" data-type="urlstrict">
+                                </div><!-- /.col -->
+                            </div><!-- /form-group -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Description</label>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Description..." class="form-control input-sm parsley-validated" data-required="true" data-type="urlstrict">
+                                </div><!-- /.col -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="second">
+
+                            <!-- cell-border -->
+                            <table class="row-border" id="assocCaseTable" style="clear: both" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>User Case</th>
+                                    <th>Control</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>23/12/2013</td>
+                                    <td>
+                                        <a><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>hanll</td>
+                                    <td>
+                                        <a><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>hanll</td>
+                                    <td>
+                                        <a><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="tab-pane fade" id="fourth">
+                            <h4>Finish!</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer text-right">
+                    <button type="submit" class="btn btn-sm btn-primary" id="saveCaseSet">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        var table = $('#table').dataTable( {
+            "paging":   true,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "info":     false,
+            "bLengthChange": false
+        } );
+
+        $('#assocCaseTable').dataTable( {
+            "paging":   true,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "info":     false,
+            "bLengthChange": false
+        } );
+
+        $('#saveCaseSet').click(function(){
+            debugger;
+            $('#second').addClass('active in');
+            $('#first').removeClass('active in');
+
+            $('#wizardDemo2 li:first').removeClass('active');
+            $('#wizardDemo2 li:first > a').css('color', '#ccc');
+            $('#wizardDemo2 li:last').addClass('active');
+            $('#wizardDemo2 li:last > a').css('color', 'black');
+
+        });
+
+        $.fn.editable.defaults.mode = 'popup';
+        $('#caseset1').editable();
+        $('#caseset2').editable();
+        $('#caseset3').editable();
+
+
+        $('#createCaseSet').click(function() {
+            $('#caseSetEditPanel').css('display', '');
+
+        });
+
+        $('#table tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+
+            }
+        } );
+
+
+
+    } );
+
+
+</script>

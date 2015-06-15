@@ -7,22 +7,43 @@
 var tris = angular.module('tris', ['ngRoute', 'LocalStorageModule']);
 
 
+tris.controller('dashboardController', ['$scope', function(scope){
+
+    debugger;
+    scope.user = {};
+
+}]);
+
+
 //TODO 用 directives 重写 菜单控制
 
 tris.controller('loginController', ['$scope', '$location', 'localStorageService','Login', '$rootScope', '$http', function(scope, location, storageService, login, rootScope, http){
 
+
+    debugger;
     scope.user = {};
 
     // 如果用户已经登录了$rootScope.user.token，则立即跳转到一个默认主页/upc_home上去，无需再登录
     if(storageService.get('token')){
-        location.path('/upc_home');
+        location.path('/dashboard');
         location.replace();
         return;
     }
 
     //登录校验监听事件
     scope.signin = function() {
+        debugger;
+        location.path('/dashboard');
+        location.replace();
 
+        rootScope.login_result = false;
+
+        $('#sidebar').css('display', '');
+        $('#person').css('display', '');
+        $('#wrapper').toggleClass('sidebar-hide');
+
+
+        /*
         var promise = login.sign(login.userInfo(scope.user));
         promise.then(function(data) {
             var rspCode = data.rspCode;
@@ -36,10 +57,6 @@ tris.controller('loginController', ['$scope', '$location', 'localStorageService'
 
             if(login.isRemember(scope.user)) {
                 debugger;
-                /**
-                 * 判断浏览器是否支持Cookies
-                 * 如果不支持提示建议启用Cookie
-                 */
                 if(storageService.isSupported) {
                     storageService.set('token', token);
                 } else {
@@ -48,20 +65,27 @@ tris.controller('loginController', ['$scope', '$location', 'localStorageService'
 
             }
 
-                /*
-                 $http.get('/images/owl-login-arm.png').then(function(response) {
-                 var time = response.config.responseTimestamp - response.config.requestTimestamp;
-                 console.log('The request took ' + (time / 1000) + ' seconds.');
-                 });*/
-
         }, function(data){
             debugger;
-        });
+        });*/
 
 
     }
 
+
+
 }]);
+
+function check() {
+    return true;
+}
+
+
+/*
+ $http.get('/images/owl-login-arm.png').then(function(response) {
+ var time = response.config.responseTimestamp - response.config.requestTimestamp;
+ console.log('The request took ' + (time / 1000) + ' seconds.');
+ });*/
 
 tris.controller('upcDetailController', function($scope){
 
@@ -124,17 +148,21 @@ tris.controller('userCaseController', [function(){
 
 tris.controller('homeController', function($scope, $http, $rootScope){
 
+    debugger;
+
+    $('#wrapper').toggleClass('sidebar-hide');
+
     $rootScope.login_result = true;
 
     //TODO call restful API
     $scope.schedules =
     [
         {
-            "case_version": "0.8",
+            "case_version": "UPC Offer Case Set",
             "execute_time": "06:45"
         },
         {
-            "case_version": "0.32",
+            "case_version": "UPC Service Case Set",
             "execute_time": "23:05"
         }
     ];
@@ -262,10 +290,11 @@ tris.directive('loginButton', [function(){
 tris.directive('hello', function() {
     return {
         restrict: 'E',
-        template: '<div>Hi there</div>',
+        templateUrl: '/partials/upc/login.html',
         replace: true
     };
 });
+
 
 
 
@@ -287,7 +316,7 @@ tris.directive('hello', function() {
 }]);*/
 
 //Single Page 路由配置
-tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider){
+tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider) {
 
     //$httpProvider.interceptors.push('UserInterceptor');
     //$httpProvider.interceptors.push('Login');
@@ -297,11 +326,12 @@ tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider)
 
         })
         .when('/', {
-            templateUrl: '/partials/home.html'
+            templateUrl: '/partials/upc/login.html',
+            controller: 'loginController'
         })
-        .when('/upc_execute', {
-            templateUrl: '/partials/upc/execute.html',
-            controller: 'upcExecuteController'
+        .when('/dashboard', {
+            templateUrl: '/partials/dashboard.html',
+            controller: 'dashboardController'
         })
         .when('/user_case', {
             templateUrl: '/partials/user_case.html',
@@ -319,6 +349,10 @@ tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider)
         })
         .when('/upc_home', {
             templateUrl: '/partials/upc/upc_home.html'
+        })
+        .when('/upc_execute', {
+            templateUrl: '/partials/upc/execute.html',
+            controller: 'upcExecuteController'
         })
         .when('/case_set', {
             templateUrl: '/partials/case_set.html'

@@ -1,4 +1,4 @@
-<div style="padding-top: 100px;background-color: #1a8fb4; height: 300px;" class="div-padding" ng-controller="loginController">
+<div style="padding-top: 100px;background-color: #3c8dbc; height: 300px; margin-left: -15px; margin-right: -15px;" class="div-padding" ng-controller="loginController">
     <form class="form-signin" ng-submit="signin()">
         <div id="owl-login" class="">
             <div class="hand"></div>
@@ -28,18 +28,19 @@
 
         </div>
     </form>
+    <script type="text/javascript">
+
+        $(function(){
+            $("#password").focus(function(){
+                $("#owl-login").addClass("password");
+            }).blur(function(){
+                        $("#owl-login").removeClass("password");
+                    });
+        })
+
+    </script>
 </div>
 
-<script type="text/javascript">
 
-    $(function(){
-        $("#password").focus(function(){
-            $("#owl-login").addClass("password");
-        }).blur(function(){
-            $("#owl-login").removeClass("password");
-        });
-    })
-
-</script>
 
 

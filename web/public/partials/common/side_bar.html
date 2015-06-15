@@ -1,0 +1,85 @@
+<!-- Side Bar START -->
+<aside class="fixed skin-1" id="sidebar" style="display: none;">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+        <div class="sidebar-inner scrollable-sidebar" style="overflow: hidden; width: auto; height: 100%;">
+            <div class="main-menu" id="menu-list">
+                <ul class="nav nav-sidebar">
+                    <li id="dashboard" class="active">
+                        <a href="#dashboard">
+                            <span class="text">
+                                <i class="fa fa-tachometer" ></i>
+                                Dashboard
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer" href="#user_case">
+                            <span class="text">
+                                <i class="fa fa-file-text"></i>
+                                User Case
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer" href="#case_set">
+                            <span class="text">
+                                <i class="fa fa-suitcase"></i>
+                                Case Set
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer" href="#upc_execute">
+                            <span class="text">
+                                <i class="fa fa-play"></i>
+                                Execution Unit
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer" href="#upc_analysis">
+                            <span class="text">
+                                <i class="fa fa-bar-chart"></i>
+                                Overall Trends
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer" href="#upc_detail">
+                            <span class="text">
+                                <i class="fa fa-list-ul"></i>
+                                Detailed Analysis
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li>
+                        <a href="#about">
+                            <span class="text">
+                                About
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <span class="text">
+                                Feedback
+                            </span>
+                </div>
+
+            </div><!-- /main-menu -->
+        </div>
+        <div class="slimScrollBar" style="width: 0px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 124.84076433121px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 0px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div><!-- /sidebar-inner -->
+</aside>
+<!-- Side Bar END -->
+
+
+<script type="text/javascript">
+    $('#menu-list li').click(function(){
+        $('#menu-list li').removeClass('active');
+        $(this).addClass('active');
+    });
+
+</script>

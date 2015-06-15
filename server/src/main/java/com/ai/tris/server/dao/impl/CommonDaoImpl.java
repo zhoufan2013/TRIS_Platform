@@ -1,5 +1,6 @@
 package com.ai.tris.server.dao.impl;
 
+import com.ai.tris.server.AppContextFactory;
 import com.ai.tris.server.dao.interfaces.ICommonDao;
 import com.ai.tris.server.orm.impl.ClientAppInfoBean;
 import org.apache.commons.logging.Log;
@@ -8,8 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -54,6 +57,16 @@ public class CommonDaoImpl implements ICommonDao {
             }
         });
     }
+
+
+    @Override
+    public void insertSomething(long id) {
+        int result = jdbcTemplate.update("insert into client_app_info(id, app_id, secret_key, state, create_date, expire_date) " +
+                "values (?,?,?,?,?,?)", id, "tris_web_10", "secret_key_10", "U", new Timestamp(System.currentTimeMillis()),
+                new Timestamp(System.currentTimeMillis() + 100000000));
+        log.debug(result);
+    }
+
 
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);

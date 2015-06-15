@@ -7,70 +7,85 @@
 var tris = angular.module('tris', ['ngRoute', 'LocalStorageModule']);
 
 
+tris.controller('dashboardController', ['$scope', function(scope){
+
+    debugger;
+    scope.user = {};
+
+}]);
+
+
 //TODO 用 directives 重写 菜单控制
 
-tris.controller('loginController', ['$scope', '$location', 'localStorageService','Login', '$rootScope', function(scope, location, storageService, login, rootScope){
+tris.controller('loginController', ['$scope', '$location', 'localStorageService','Login', '$rootScope', '$http', function(scope, location, storageService, login, rootScope, http){
 
+
+    debugger;
     scope.user = {};
 
     // 如果用户已经登录了$rootScope.user.token，则立即跳转到一个默认主页/upc_home上去，无需再登录
-    /*if($rootScope.user.token){
-        $location.path('/upc_home');
-        $location.$replace();
+    if(storageService.get('token')){
+        location.path('/dashboard');
+        location.replace();
         return;
-    }*/
-
+    }
 
     //登录校验监听事件
     scope.signin = function() {
+        debugger;
+        location.path('/dashboard');
+        location.replace();
+
+        rootScope.login_result = false;
+
+        $('#sidebar').css('display', '');
+        $('#person').css('display', '');
+        $('#wrapper').toggleClass('sidebar-hide');
 
 
-        var promise = login.sign(scope.user);
-        promise.then(function(data){
-            var category = data;
+        /*
+        var promise = login.sign(login.userInfo(scope.user));
+        promise.then(function(data) {
+            var rspCode = data.rspCode;
+            var token = data.rspInfo.token;
 
-
-            //var account = scope.user.account;
-            //var password = scope.user.password;
-
-            var remenber = scope.user.remenber;
-
-            if(storageService.isSupported) {
-                if(remenber == 'true') {
-                    storageService.set('zhoufan', 'yes');
-                }
-            }
+            debugger;
+            rootScope.login_result = false;
 
             location.path('/upc_home');
             location.replace();
 
-            //Mock verify user info
-            if (password == '123') {
-
+            if(login.isRemember(scope.user)) {
                 debugger;
-                rootScope.login_result = false;
+                if(storageService.isSupported) {
+                    storageService.set('token', token);
+                } else {
 
-                /*
-                 $http.get('/images/owl-login-arm.png').then(function(response) {
-                 var time = response.config.responseTimestamp - response.config.requestTimestamp;
-                 console.log('The request took ' + (time / 1000) + ' seconds.');
-                 });*/
+                }
 
-                location.path('/upc_home');
-                location.replace();
-
-            } else {
-                scope.errorName = '';
             }
-
 
         }, function(data){
             debugger;
-        });
+        });*/
+
 
     }
 
+
+
 }]);
+
+function check() {
+    return true;
+}
+
+
+/*
+ $http.get('/images/owl-login-arm.png').then(function(response) {
+ var time = response.config.responseTimestamp - response.config.requestTimestamp;
+ console.log('The request took ' + (time / 1000) + ' seconds.');
+ });*/
 
 tris.controller('upcDetailController', function($scope){
 
@@ -114,7 +129,28 @@ tris.controller('upcDetailController', function($scope){
 
 });
 
+tris.controller('upcExecuteController', ['$http', function(http) {
+
+    http.get('/api/category'
+        ).success(function(data, status, headers, config) {
+            debugger;
+            //加载成功之后做一些事
+            $scope.caseGroups = data;
+        }).error(function(data, status, headers, config) {
+            //处理错误
+        });
+
+}]);
+
+tris.controller('userCaseController', [function(){
+
+}]);
+
 tris.controller('homeController', function($scope, $http, $rootScope){
+
+    debugger;
+
+    $('#wrapper').toggleClass('sidebar-hide');
 
     $rootScope.login_result = true;
 
@@ -122,23 +158,15 @@ tris.controller('homeController', function($scope, $http, $rootScope){
     $scope.schedules =
     [
         {
-            "case_version": "0.8",
+            "case_version": "UPC Offer Case Set",
             "execute_time": "06:45"
         },
         {
-            "case_version": "0.32",
+            "case_version": "UPC Service Case Set",
             "execute_time": "23:05"
         }
     ];
 
-
-    $http.get('/api/category'
-        ).success(function(data, status, headers, config) {
-            //加载成功之后做一些事
-            $scope.caseGroups = data;
-        }).error(function(data, status, headers, config) {
-            //处理错误
-        });
 
     //TODO call restful API
     /*
@@ -210,11 +238,28 @@ tris.service('Login', ['$http', '$q', function(http, promise) {
 
     var login = {
 
-        sign: function(user) {
+        userInfo: function(user) {
+
+            var signInfo = {};
+            var userInfo = {};
+            userInfo.userId = user.account;
+            userInfo.password = user.password;
+            signInfo.appId = "tris-web";//tris_server defines app-id for each tris_client
+            signInfo.infoType = 2;//content_type:application/json
+            signInfo.reqInfo = userInfo;
+            return signInfo;
+        },
+
+        isRemember: function (user) {
+            return user.remenber;
+        },
+
+        sign: function(signInfo) {
             //申明异步等待
             var deferred = promise.defer();
-            http.get('/api/category')
+            http.post('/api/sign', signInfo)
                 .success(function(data, status, headers, config){
+                    debugger;
                     deferred.resolve(data);
                 }).error(function(data, status, headers, config){
                     deferred.reject(data);
@@ -245,10 +290,11 @@ tris.directive('loginButton', [function(){
 tris.directive('hello', function() {
     return {
         restrict: 'E',
-        template: '<div>Hi there</div>',
+        templateUrl: '/partials/upc/login.html',
         replace: true
     };
 });
+
 
 
 
@@ -270,7 +316,7 @@ tris.directive('hello', function() {
 }]);*/
 
 //Single Page 路由配置
-tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider){
+tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider) {
 
     //$httpProvider.interceptors.push('UserInterceptor');
     //$httpProvider.interceptors.push('Login');
@@ -280,10 +326,16 @@ tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider)
 
         })
         .when('/', {
-            templateUrl: '/partials/home.html'
+            templateUrl: '/partials/upc/login.html',
+            controller: 'loginController'
         })
-        .when('/upc_execute', {
-            templateUrl: '/partials/upc/execute.html'
+        .when('/dashboard', {
+            templateUrl: '/partials/dashboard.html',
+            controller: 'dashboardController'
+        })
+        .when('/user_case', {
+            templateUrl: '/partials/user_case.html',
+            controller: 'userCaseController'
         })
         .when('/upc_analysis', {
             templateUrl: '/partials/upc/analysis.html'
@@ -297,6 +349,13 @@ tris.config(function($routeProvider, localStorageServiceProvider, $httpProvider)
         })
         .when('/upc_home', {
             templateUrl: '/partials/upc/upc_home.html'
+        })
+        .when('/upc_execute', {
+            templateUrl: '/partials/upc/execute.html',
+            controller: 'upcExecuteController'
+        })
+        .when('/case_set', {
+            templateUrl: '/partials/case_set.html'
         });
 
     localStorageServiceProvider

@@ -16,4 +16,8 @@ public interface ICommonDao {
      * get all client app information from tris.client_app_info
      */
     List<ClientAppInfoBean> getTrisClientAppInfo();
+
+    void insertSomething(long id);
+
+
 }

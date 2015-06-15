@@ -1,0 +1,111 @@
+[
+    {
+        "status": 0,
+        "case_name": "测试新建 DSL Main Offer 正常流",
+        "exec_case_info": "UPC_CRM_001",
+        "case_owner": "zhoufan"
+    },
+    {
+        "status": 1,
+        "case_name": "测试发布 Offer 到 E2E 环境",
+        "exec_case_info": "UPC_CRM_002",
+        "case_owner": "tianhj"
+    },
+    {
+        "status": 2,
+        "case_name": "测试删除 Offer 功能",
+        "exec_case_info": "UPC_CRM_003",
+        "case_owner": "tianhj"
+    },
+    {
+        "status": 3,
+        "case_name": "测试销售品关联产品功能",
+        "exec_case_info": "UPC_CRM_004",
+        "case_owner": "tianhj"
+    },
+    {
+        "status": 4,
+        "case_name": "Item 4",
+        "exec_case_info": "$4"
+    },
+    {
+        "status": 5,
+        "case_name": "Item 5",
+        "exec_case_info": "$5"
+    },
+    {
+        "status": 6,
+        "case_name": "Item 6",
+        "exec_case_info": "$6"
+    },
+    {
+        "status": 7,
+        "case_name": "Item 7",
+        "exec_case_info": "$7"
+    },
+    {
+        "status": 8,
+        "case_name": "Item 8",
+        "exec_case_info": "$8"
+    },
+    {
+        "status": 9,
+        "case_name": "Item 9",
+        "exec_case_info": "$9"
+    },
+    {
+        "status": 10,
+        "case_name": "Item 10",
+        "exec_case_info": "$10"
+    },
+    {
+        "status": 11,
+        "case_name": "Item 11",
+        "exec_case_info": "$11"
+    },
+    {
+        "status": 12,
+        "case_name": "Item 12",
+        "exec_case_info": "$12"
+    },
+    {
+        "status": 13,
+        "case_name": "Item 13",
+        "exec_case_info": "$13"
+    },
+    {
+        "status": 14,
+        "case_name": "Item 14",
+        "exec_case_info": "$14"
+    },
+    {
+        "status": 15,
+        "case_name": "Item 15",
+        "exec_case_info": "$15"
+    },
+    {
+        "status": 16,
+        "case_name": "Item 16",
+        "exec_case_info": "$16"
+    },
+    {
+        "status": 17,
+        "case_name": "Item 17",
+        "exec_case_info": "$17"
+    },
+    {
+        "status": 18,
+        "case_name": "Item 18",
+        "exec_case_info": "$18"
+    },
+    {
+        "status": 19,
+        "case_name": "Item 19",
+        "exec_case_info": "$19"
+    },
+    {
+        "status": 20,
+        "case_name": "Item 20",
+        "exec_case_info": "$20"
+    }
+]

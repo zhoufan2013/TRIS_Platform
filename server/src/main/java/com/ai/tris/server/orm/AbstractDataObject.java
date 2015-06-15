@@ -15,7 +15,7 @@ import java.util.Set;
  * abstract datta object
  * Created by Sa, on 2015/6/9.
  */
-public abstract class AbstractDataObject {
+public abstract class AbstractDataObject implements IDataObject {
 
     private transient static Log log = LogFactory.getLog(AbstractDataObject.class);
     protected Set<String> colNames = new HashSet<String>();

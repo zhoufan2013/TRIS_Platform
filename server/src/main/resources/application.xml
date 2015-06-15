@@ -1,55 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-       <context:property-placeholder location="jdbc.properties"/>
+    <context:property-placeholder location="jdbc.properties"/>
 
-       <bean id="com.ai.tris.server.service.interfaces.ICommonService" class="com.ai.tris.server.service.impl.CommonServiceImpl">
-              <property name="commonDao" ref="com.ai.tris.server.dao.interfaces.ICommonDao"/>
-       </bean>
+    <bean id="com.ai.tris.server.service.interfaces.ICommonService"
+          class="com.ai.tris.server.service.impl.CommonServiceImpl">
+        <property name="commonDao" ref="com.ai.tris.server.dao.interfaces.ICommonDao"/>
+        <property name="baseService" ref="com.ai.tris.server.service.interfaces.IBaseService"/>
+    </bean>
 
-       <bean id="com.ai.tris.server.dao.interfaces.ICommonDao" class="com.ai.tris.server.dao.impl.CommonDaoImpl">
-              <property name="dataSource" ref="trisDataSource"/>
-       </bean>
+    <bean id="com.ai.tris.server.service.interfaces.IBaseService"
+          class="com.ai.tris.server.service.impl.BaseServiceImpl">
+        <property name="baseDao" ref="com.ai.tris.server.dao.interfaces.IBaseDao"/>
+    </bean>
 
-       <bean id="trisDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-              <property name="driverClassName" value="${jdbc.mysql.driverClassName}" />
-              <property name="url" value="${jdbc.mysql.tris.url}" />
-              <property name="username" value="${jdbc.mysql.tris.username}" />
-              <property name="password" value="${jdbc.mysql.tris.password}" />
-              <property name="defaultAutoCommit" value="false" />
-              <!-- pool properties -->
-              <property name="maxActive" value="10" />
-              <property name="maxIdle" value="5"/>
-              <property name="initialSize" value="2" />
-              <property name="testWhileIdle" value="true" />
-              <property name="testOnBorrow" value="false" />
-              <property name="validationQuery" value="select 1 from dual" />
-              <property name="testOnReturn" value="false" />
-              <property name="timeBetweenEvictionRunsMillis" value="20000" />
-              <property name="minEvictableIdleTimeMillis" value="-1" />
-       </bean>
+    <bean id="com.ai.tris.server.dao.interfaces.ICommonDao" class="com.ai.tris.server.dao.impl.CommonDaoImpl">
+        <property name="dataSource" ref="trisDataSource"/>
+    </bean>
+    <bean id="com.ai.tris.server.dao.interfaces.IBaseDao" class="com.ai.tris.server.dao.impl.BaseDaoImpl">
+        <property name="dataSource" ref="baseDataSource"/>
+    </bean>
 
-       <bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-              <property name="driverClassName" value="${jdbc.mysql.driverClassName}" />
-              <property name="url" value="${jdbc.mysql.base.url}" />
-              <property name="username" value="${jdbc.mysql.base.username}" />
-              <property name="password" value="${jdbc.mysql.base.password}" />
-              <!-- pool properties -->
-              <property name="maxActive" value="10" />
-              <property name="maxIdle" value="5"/>
-              <property name="initialSize" value="2" />
-              <property name="testWhileIdle" value="true" />
-              <property name="testOnBorrow" value="false" />
-              <property name="validationQuery" value="select 1 from dual" />
-              <property name="testOnReturn" value="false" />
-              <property name="timeBetweenEvictionRunsMillis" value="20000" />
-              <property name="minEvictableIdleTimeMillis" value="-1" />
-       </bean>
+
+    <bean id="trisTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--<qualifier value="trisTx" />-->
+        <property name="dataSource" ref="trisDataSource"/>
+    </bean>
+    <!--    <bean id="baseTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+            <qualifier value="baseTx" />
+            <property name="dataSource" ref="baseDataSource"/>
+        </bean>-->
+    <tx:annotation-driven transaction-manager="trisTxManager"/>
+    <!--<tx:annotation-driven transaction-manager="baseTxManager" />-->
+    <!--
+        <tx:advice id="txAdvice" transaction-manager="txManager">
+            &lt;!&ndash; the transactional semantics... &ndash;&gt;
+            <tx:attributes>
+                &lt;!&ndash; all methods starting with 'get' are read-only &ndash;&gt;
+                <tx:method name="get*" read-only="true"/>
+                &lt;!&ndash; other methods use the default transaction settings (see below) &ndash;&gt;
+                <tx:method name="*"/>
+            </tx:attributes>
+        </tx:advice>
+
+        <aop:config>
+            <aop:pointcut id="serviceOperation" expression="execution(* com.ai.tris.server.service.interfaces.*.*(..))"/>
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
+        </aop:config>-->
+
+    <!--    <tx:annotation-driven transaction-manager="chainedTransactionManager" />
+        <bean id="chainedTransactionManager" class="com.ai.tris.server.security.ChainedTransactionManager">
+            <property name="transactionManagers">
+                <list>
+                    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                        <property name="dataSource" ref="trisDataSource"/>
+                    </bean>
+                    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                        <property name="dataSource" ref="baseDataSource"/>
+                    </bean>
+                </list>
+            </property>
+        </bean>-->
+
+    <bean id="trisDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.mysql.driverClassName}"/>
+        <property name="url" value="${jdbc.mysql.tris.url}"/>
+        <property name="username" value="${jdbc.mysql.tris.username}"/>
+        <property name="password" value="${jdbc.mysql.tris.password}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <!-- pool properties -->
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+        <property name="initialSize" value="2"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="validationQuery" value="select 1 from dual"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="timeBetweenEvictionRunsMillis" value="20000"/>
+        <property name="minEvictableIdleTimeMillis" value="-1"/>
+    </bean>
+
+    <bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.mysql.driverClassName}"/>
+        <property name="url" value="${jdbc.mysql.base.url}"/>
+        <property name="username" value="${jdbc.mysql.base.username}"/>
+        <property name="password" value="${jdbc.mysql.base.password}"/>
+        <!-- pool properties -->
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+        <property name="initialSize" value="2"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="validationQuery" value="select 1 from dual"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="timeBetweenEvictionRunsMillis" value="20000"/>
+        <property name="minEvictableIdleTimeMillis" value="-1"/>
+    </bean>
 
 </beans>

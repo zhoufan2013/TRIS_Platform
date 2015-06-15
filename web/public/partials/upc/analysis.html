@@ -1,27 +1,67 @@
 <script src="/javascripts/highcharts.js"></script>
 
-<div class="div-padding" style="padding-top: 60px;">
-    <form class="form-inline case-version-form">
-        <div class="form-group">
-            <label for="executeCaseVersion" class="case-version-label">Case Version</label>
-            <select class="form-control" id="executeCaseVersion">
-                <option value="0.32">Veris UPC SR0.32</option>
-                <option value="0.8">Veris UPC SR0.8</option>
-                <option value="1.0">Veris UPC SR1.0</option>
-                <option value="1.1">Veris UPC SR1.1</option>
-            </select>
-        </div>
-    </form>
+<div class="div-padding">
 
-    <form class="form-horizontal" role="form">
-        <fieldset>
-            <div id="today" class="col-sm-6"></div>
-            <div id="lastweek" class="col-sm-6"></div>
-        </fieldset>
-        <fieldset>
-            <div id="container"></div>
-        </fieldset>
-    </form>
+    <div class="daohang">
+        <span class="veris-product" style="margin-right: 10px;">Veris Product</span>
+        <select class="btn btn-primary" id="product">
+            <option value="1.0">Veris UPC</option>
+            <option value="0.32">Veris CRM 7.0</option>
+        </select>
+        <i class="fa fa-angle-right" style="margin-left: 10px; margin-right: 10px;"></i>
+        <select class="btn-primary">
+            <optgroup label="UPC">
+                <option>UPC</option>
+                <option>PCM</option>
+                <option>PCE3</option>
+                <option>DB Change</option>
+                <option>Cross PRD</option>
+            </optgroup>
+            <optgroup label="CRM">
+                <option>Order</option>
+                <option>Customer</option>
+                <option>Contract</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="col-sm-12" style="padding: 20px;">
+        <div class="col-sm-6">
+            <div class="today-stats-chart">
+                <i class="fa fa-clock-o"></i>
+                Today
+            </div>
+            <div id="today" style="height: 300px;"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-12" style="padding: 20px;">
+        <div class="col-sm-6">
+            <div class="lastweek-stats-chart">
+                <i class="fa fa-area-chart"></i>
+                Last Week
+            </div>
+            <div id="lastweek" style="height: 300px;"></div>
+        </div>
+        <div class="col-sm-6">
+            <div class="today-stats-chart">
+                <i class="fa fa-clock-o"></i>
+                Top 10 in Last Week
+            </div>
+            <div id="today" style="height: 300px;"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-12" style="padding: 20px;">
+        <div class="col-sm-6">
+            <div class="today-stats-chart">
+                <i class="fa fa-bar-chart"></i>
+                Last Month
+            </div>
+            <div id="container" style="height: 300px;"></div>
+        </div>
+    </div>
+
 </div>
 
 <script type="text/javascript">
@@ -40,7 +80,7 @@
                 '#46B454'
             ],
             title: {
-                text: 'Today'
+                text: null
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -80,7 +120,7 @@
                 type: 'column'
             },
             title: {
-                text: 'Last week'
+                text: null
             },
             colors: [
 

@@ -1,0 +1,141 @@
+<div class="div-padding" ng-controller="userCaseController">
+
+    <div class="daohang">
+        <span class="veris-product" style="margin-right: 10px;">Veris Product</span>
+        <select class="btn btn-primary" id="product">
+            <option value="1.0">Veris UPC</option>
+            <option value="0.32">Veris CRM 7.0</option>
+        </select>
+        <i class="fa fa-angle-right" style="margin-left: 10px; margin-right: 10px;"></i>
+        <select class="btn-primary">
+            <optgroup label="UPC">
+                <option>UPC</option>
+                <option>PCM</option>
+                <option>PCE3</option>
+                <option>DB Change</option>
+                <option>Cross PRD</option>
+            </optgroup>
+            <optgroup label="CRM">
+                <option>Order</option>
+                <option>Customer</option>
+                <option>Contract</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="col-sm-12 user-case-panel">
+        <div id="toolbar" class="col-sm-12" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom: 1px solid #DDD;">
+            <div class="input-group col-sm-4 col-sm-offset-8" style="padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                <input name="userCase" type="text" class="form-control" placeholder="Search For...">
+                <span class="input-group-btn">
+                    <button id="search" class="btn btn-primary" type="button">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <table class="row-border" id="table" style="clear: both" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Requirement</th>
+                <th>User Case</th>
+                <th>Owner</th>
+                <th>Execution Info</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>【自优化】offer全景展示页面</td>
+                <td>测试新建 DSL Main Offer 正常流</td>
+                <td><a href="#" id="owner" data-type="text" data-placement="top" data-title="Case Owner">zhoufan</a></td>
+                <td><a href="#" id="username" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_001</a></td>
+                <td>
+                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='glyphicon glyphicon-ok'></i>" data-off-label="<i class='glyphicon glyphicon-remove'></i>">
+                        <input type="checkbox" name="my-checkbox" checked />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>【自优化】offer全景展示页面</td>
+                <td>测试发布 Offer 到 E2E 环境</td>
+                <td><a href="#" id="owner2" data-type="text" data-placement="top" data-title="Case Owner">tianhj</a></td>
+                <td><a href="#" id="execInfo2" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_002</a></td>
+                <td>
+                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+                        <input type="checkbox" name="my-checkbox" checked />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>【自优化】offer全景展示页面</td>
+                <td>测试删除 Offer 功能</td>
+                <td><a href="#" id="owner3" data-type="text" data-placement="top" data-title="Case Owner">tianhj</a></td>
+                <td><a href="#" id="execInfo3" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_003</a></td>
+
+                <td>
+                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+                        <input type="checkbox" name="my-checkbox" checked />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>【自优化】offer全景展示页面</td>
+                <td>测试销售品关联产品功能</td>
+                <td><a href="#" id="owner4" data-type="text" data-placement="top" data-title="Case Owner">zhoufan</a></td>
+                <td><a href="#" id="execInfo4" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_004</a></td>
+                <td>
+                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+                        <input type="checkbox" name="my-checkbox" checked />
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#table').dataTable( {
+            "paging":   true,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "info":     false,
+            "bLengthChange": false
+        } );
+    } );
+
+    $(document).ready(function() {
+        $.fn.editable.defaults.mode = 'popup';
+        $('#username').editable();
+        $('#owner').editable();
+
+        $('#owner2').editable();
+        $('#execInfo2').editable();
+
+        $('#owner3').editable();
+        $('#execInfo3').editable();
+
+        $('#owner4').editable();
+        $('#execInfo4').editable();
+
+    } );
+
+    $("[name='my-checkbox']").bootstrapSwitch();
+    //$("[name='my-checkbox']").bootstrapSwitch('state', false, true);
+
+</script>
+
+
+

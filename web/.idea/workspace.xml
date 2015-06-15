@@ -67,34 +67,71 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="27" selection-start="1367" selection-end="1367" vertical-scroll-proportion="-10.25" vertical-offset="144" max-vertical-offset="990">
+            <state line="32" column="54" selection-start="1284" selection-end="1284" vertical-scroll-proportion="-5.625" vertical-offset="345" max-vertical-offset="3195">
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#4;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="detail.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/partials/upc/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="68" selection-start="772" selection-end="772" vertical-scroll-proportion="-0.0" vertical-offset="195" max-vertical-offset="1245">
+            <state line="30" column="83" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.55252385" vertical-offset="0" max-vertical-offset="1470">
               <folding>
-                <element signature="n#style#0;n#legend#0;n#fieldset#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#fieldset#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/header.html">
+      <file leaf-file-name="case_set.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/partials/case_set.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="69" selection-start="948" selection-end="948" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="405">
-              <folding />
+            <state line="206" column="0" selection-start="8894" selection-end="8894" vertical-scroll-proportion="-75.625" vertical-offset="1275" max-vertical-offset="3330">
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#form#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="top_bar.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/partials/common/top_bar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="142" column="30" selection-start="6429" selection-end="6429" vertical-scroll-proportion="-88.75" vertical-offset="0" max-vertical-offset="2625">
+              <folding>
+                <element signature="n#style#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_case.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/partials/user_case.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="10" selection-start="945" selection-end="945" vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="2205">
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -102,31 +139,28 @@
       <file leaf-file-name="analysis.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/partials/upc/analysis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="21" selection-start="291" selection-end="612" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="2730">
+            <state line="25" column="10" selection-start="962" selection-end="962" vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="3330">
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1433764813000" expanded="false" signature="3083:3103" placeholder="..." />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <marker date="1434339537000" expanded="false" signature="4280:4300" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tris_angular.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tris_angular.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/tris_angular.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="220" column="19" selection-start="5206" selection-end="5206" vertical-scroll-proportion="0.53494626" vertical-offset="2902" max-vertical-offset="4800">
+            <state line="164" column="40" selection-start="3792" selection-end="3792" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="5685">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/partials/upc/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="27" selection-start="1592" selection-end="1592" vertical-scroll-proportion="-23.125" vertical-offset="0" max-vertical-offset="765">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -134,13 +168,17 @@
       <file leaf-file-name="execute.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/partials/upc/execute.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="74" selection-start="3713" selection-end="4176" vertical-scroll-proportion="-22.166666" vertical-offset="773" max-vertical-offset="3360">
+            <state line="139" column="40" selection-start="6444" selection-end="6444" vertical-scroll-proportion="-17.5" vertical-offset="1665" max-vertical-offset="4005">
               <folding>
-                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#0;n#!!top" expanded="true" />
-                <marker date="1433744594000" expanded="false" signature="7637:7653" placeholder="..." />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <marker date="1434339705000" expanded="false" signature="9512:9528" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -156,21 +194,31 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/upc/execute.html" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/public/javascripts/angular-cookies.js" />
-        <option value="$PROJECT_DIR$/views/header.html" />
         <option value="$PROJECT_DIR$/views/footer.html" />
-        <option value="$PROJECT_DIR$/public/stylesheets/common.css" />
-        <option value="$PROJECT_DIR$/public/partials/home.html" />
         <option value="$PROJECT_DIR$/public/partials/upc/upc_home.html" />
-        <option value="$PROJECT_DIR$/public/partials/upc/execute.html" />
+        <option value="$PROJECT_DIR$/public/stylesheets/bootstrap-switch.css" />
+        <option value="$PROJECT_DIR$/public/stylesheets/bootstrap-editable.css" />
+        <option value="$PROJECT_DIR$/public/javascripts/bootstrap-editable.js" />
+        <option value="$PROJECT_DIR$/public/data/data.json" />
+        <option value="$PROJECT_DIR$/views/back_index.html" />
+        <option value="$PROJECT_DIR$/views/header.html" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/partials/home.html" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/public/partials/dashboard.html" />
+        <option value="$PROJECT_DIR$/public/partials/common/top_bar.html" />
         <option value="$PROJECT_DIR$/public/partials/upc/login.html" />
-        <option value="$PROJECT_DIR$/views/index.html" />
+        <option value="$PROJECT_DIR$/public/stylesheets/common.css" />
+        <option value="$PROJECT_DIR$/public/partials/common/side_bar.html" />
+        <option value="$PROJECT_DIR$/public/partials/user_case.html" />
         <option value="$PROJECT_DIR$/public/partials/upc/analysis.html" />
-        <option value="$PROJECT_DIR$/public/partials/upc/detail.html" />
         <option value="$PROJECT_DIR$/public/javascripts/tris_angular.js" />
+        <option value="$PROJECT_DIR$/public/partials/upc/execute.html" />
+        <option value="$PROJECT_DIR$/views/index.html" />
+        <option value="$PROJECT_DIR$/public/partials/case_set.html" />
+        <option value="$PROJECT_DIR$/public/partials/upc/detail.html" />
       </list>
     </option>
   </component>
@@ -269,10 +317,6 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -328,7 +372,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -343,6 +391,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -364,13 +416,15 @@
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Work/Telenor/upc2.x-rm" />
     <property name="FullScreen" value="false" />
+    <property name="SearchEverywhereHistory" value="ana&#10;inde&#10;common&#10;ap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/javascripts" />
       <recent name="$PROJECT_DIR$/public/stylesheets" />
+      <recent name="$PROJECT_DIR$/public/javascripts" />
+      <recent name="$PROJECT_DIR$/public/fonts" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -621,12 +675,12 @@
       <updated>1433203209296</updated>
       <workItem from="1433203212379" duration="12840000" />
       <workItem from="1433274809664" duration="15981000" />
-      <workItem from="1433378768742" duration="27489000" />
+      <workItem from="1433378768742" duration="85287000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56310000" />
+    <option name="totallyTimeSpent" value="114108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
@@ -634,24 +688,24 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20373027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19225252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -678,108 +732,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="20" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="62" selection-start="280" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="3030">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="24" selection-start="3769" selection-end="3769" vertical-scroll-proportion="0.0" vertical-offset="1995" max-vertical-offset="2790">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1433764813000" expanded="false" signature="3083:3103" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="450">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="63" selection-start="48" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/tris_angular.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="11" selection-start="3415" selection-end="3415" vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="2610">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/angular-route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="160" column="0" selection-start="7832" selection-end="7832" vertical-scroll-proportion="0.0" vertical-offset="1923" max-vertical-offset="14925">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/upc_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="75" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/execute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="97" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="3300">
-          <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#0;n#!!top" expanded="true" />
-            <marker date="1433744594000" expanded="false" signature="7637:7653" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="18" selection-start="2825" selection-end="2842" vertical-scroll-proportion="0.0" vertical-offset="2044" max-vertical-offset="2865">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="25" selection-start="1534" selection-end="1534" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="450">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/tris_angular.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="103" column="9" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="1950">
@@ -790,9 +742,7 @@
     <entry file="file://$PROJECT_DIR$/public/partials/upc/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="11" selection-start="597" selection-end="597" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="270">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -807,8 +757,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="24" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="3960">
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1433764813000" expanded="false" signature="3083:3103" placeholder="..." />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <marker date="1434339537000" expanded="false" signature="4280:4300" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -817,18 +775,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="35" selection-start="2870" selection-end="2870" vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="3480">
           <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#0;n#!!top" expanded="true" />
-            <marker date="1433744594000" expanded="false" signature="7637:7653" placeholder="..." />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1434339705000" expanded="false" signature="9512:9528" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="300" />
+        <state line="10" column="27" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="300">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/header.html">
@@ -838,26 +802,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1200" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/highcharts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="84" selection-start="10454" selection-end="10454" vertical-scroll-proportion="0.4233871" vertical-offset="0" max-vertical-offset="4860">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/jquery.dataTables.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="79" selection-start="13404" selection-end="13404" vertical-scroll-proportion="0.56171983" vertical-offset="0" max-vertical-offset="2460" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/jquery.dataTables.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="13429" selection-end="13429" vertical-scroll-proportion="0.020804439" vertical-offset="0" max-vertical-offset="721">
           <folding />
         </state>
       </provider>
@@ -872,16 +819,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="734">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="203" selection-end="203" vertical-scroll-proportion="0.1839237" vertical-offset="0" max-vertical-offset="734" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="53" selection-start="254" selection-end="254" vertical-scroll-proportion="0.17833553" vertical-offset="0" max-vertical-offset="757" />
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
@@ -926,27 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="301" selection-end="301" vertical-scroll-proportion="0.06456241" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="12" selection-start="6542" selection-end="6553" vertical-scroll-proportion="0.84147954" vertical-offset="3863" max-vertical-offset="4680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="35" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/partials/upc/upc_home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="35" selection-start="35" selection-end="35" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="285">
@@ -954,71 +870,299 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/header.html">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap-switch.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="69" selection-start="948" selection-end="948" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="405">
+        <state line="21" column="79" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.041608877" vertical-offset="0" max-vertical-offset="721">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap-switch.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="27" selection-start="1367" selection-end="1367" vertical-scroll-proportion="-10.25" vertical-offset="144" max-vertical-offset="990">
+        <state line="9" column="42" selection-start="511" selection-end="511" vertical-scroll-proportion="0.18723994" vertical-offset="0" max-vertical-offset="721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap-switch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="635" column="59" selection-start="23320" selection-end="23320" vertical-scroll-proportion="0.27019498" vertical-offset="9331" max-vertical-offset="10740">
           <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#4;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap-table.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="80" selection-start="80" selection-end="80" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap-editable.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="72" selection-start="488" selection-end="488" vertical-scroll-proportion="0.22479564" vertical-offset="0" max-vertical-offset="10020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap-editable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6786" column="81" selection-start="237907" selection-end="237907" vertical-scroll-proportion="0.5603329" vertical-offset="101386" max-vertical-offset="102180">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap-table-editable.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="659" selection-start="807" selection-end="807" vertical-scroll-proportion="0.020804439" vertical-offset="0" max-vertical-offset="721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/data/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="15" selection-start="17" selection-end="23" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="1740">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap-table-all.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="6242" selection-start="70663" selection-end="70663" vertical-scroll-proportion="0.0647482" vertical-offset="0" max-vertical-offset="695">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="12" selection-start="301" selection-end="301" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/parsley.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="47" selection-start="32309" selection-end="32309" vertical-scroll-proportion="0.04032258" vertical-offset="0" max-vertical-offset="744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="46" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.52011096" vertical-offset="0" max-vertical-offset="8550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="86" selection-start="248" selection-end="248" vertical-scroll-proportion="0.062413316" vertical-offset="0" max-vertical-offset="721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="92" selection-start="12904" selection-end="12904" vertical-scroll-proportion="0.54091537" vertical-offset="0" max-vertical-offset="2460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/jquery.dataTables.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="13429" selection-end="13429" vertical-scroll-proportion="0.020804439" vertical-offset="0" max-vertical-offset="721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap-switch.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="9" selection-start="1583" selection-end="1583" vertical-scroll-proportion="0.5376197" vertical-offset="252" max-vertical-offset="3030">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="25" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="1155">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/back_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="17" selection-start="794" selection-end="794" vertical-scroll-proportion="0.3888131" vertical-offset="0" max-vertical-offset="945">
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#0;n#li#4;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#0;n#li#5;n#ul#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="59" selection-end="59" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="733">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="88" selection-start="1591" selection-end="1591" vertical-scroll-proportion="0.6548431" vertical-offset="0" max-vertical-offset="733">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/upc/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="56" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="554" column="0" selection-start="11883" selection-end="11883" vertical-scroll-proportion="0.6235139" vertical-offset="7838" max-vertical-offset="11295">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/common/side_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="62" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.5115962" vertical-offset="0" max-vertical-offset="1350">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/user_case.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="10" selection-start="945" selection-end="945" vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="2205">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/partials/upc/analysis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="21" selection-start="291" selection-end="612" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="2730">
+        <state line="25" column="10" selection-start="962" selection-end="962" vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="3330">
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1433764813000" expanded="false" signature="3083:3103" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/execute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="74" selection-start="3713" selection-end="4176" vertical-scroll-proportion="-22.166666" vertical-offset="773" max-vertical-offset="3360">
-          <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#0;n#!!top" expanded="true" />
-            <marker date="1433744594000" expanded="false" signature="7637:7653" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="68" selection-start="772" selection-end="772" vertical-scroll-proportion="-0.0" vertical-offset="195" max-vertical-offset="1245">
-          <folding>
-            <element signature="n#style#0;n#legend#0;n#fieldset#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#fieldset#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/upc/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="27" selection-start="1592" selection-end="1592" vertical-scroll-proportion="-23.125" vertical-offset="0" max-vertical-offset="765">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <marker date="1434339537000" expanded="false" signature="4280:4300" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/tris_angular.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="220" column="19" selection-start="5206" selection-end="5206" vertical-scroll-proportion="0.53494626" vertical-offset="2902" max-vertical-offset="4800">
+        <state line="164" column="40" selection-start="3792" selection-end="3792" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="5685">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/upc/execute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="40" selection-start="6444" selection-end="6444" vertical-scroll-proportion="-17.5" vertical-offset="1665" max-vertical-offset="4005">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#fieldset#0;n#form#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1434339705000" expanded="false" signature="9512:9528" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/common/top_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="30" selection-start="6429" selection-end="6429" vertical-scroll-proportion="-88.75" vertical-offset="0" max-vertical-offset="2625">
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="54" selection-start="1284" selection-end="1284" vertical-scroll-proportion="-5.625" vertical-offset="345" max-vertical-offset="3195">
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/case_set.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="0" selection-start="8894" selection-end="8894" vertical-scroll-proportion="-75.625" vertical-offset="1275" max-vertical-offset="3330">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#form#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/upc/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="83" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.55252385" vertical-offset="0" max-vertical-offset="1470">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

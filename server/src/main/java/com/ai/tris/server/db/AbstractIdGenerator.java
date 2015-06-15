@@ -18,5 +18,5 @@ public abstract class AbstractIdGenerator implements IdGenerator{
         return 0;
     }
 
-    public abstract void refreshCursor();
+    protected abstract void resetLastId();
 }

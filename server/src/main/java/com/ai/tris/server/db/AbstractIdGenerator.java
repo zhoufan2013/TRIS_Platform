@@ -41,7 +41,7 @@ public abstract class AbstractIdGenerator implements IdGenerator {
      * That will be a fact that there are a lot of tables(sequences) will be
      * requested at the same time.
      */
-    private ReentrantLock lock = new ReentrantLock(Boolean.TRUE);
+    private ReentrantLock lock = new ReentrantLock(Boolean.FALSE);
 
     /**
      * Constructor of Abstract class.

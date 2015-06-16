@@ -70,16 +70,19 @@ public abstract class AbstractIdGenerator implements IdGenerator {
      */
     @Override
     public long getNewId() {
-        lock.lock();
-        long newId;
-        if (stepLength-- > 0) {
-            newId = lastId++;
-        } else {
-            resetLastId();
-            newId = getNewId();
+        try {
+            lock.lock();
+            long newId;
+            if (stepLength-- > 0) {
+                newId = lastId++;
+            } else {
+                resetLastId();
+                newId = getNewId();
+            }
+            return newId;
+        } finally {
+            lock.unlock();
         }
-        lock.unlock();
-        return newId;
     }
 
     /**

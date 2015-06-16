@@ -11,9 +11,25 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by Sam on 2015/6/15.
  */
 public abstract class AbstractIdGenerator implements IdGenerator {
+    /**
+     * sequence name, this maybe a virtual concept for some kind of
+     * databases, such as MySQL.
+     */
     protected String sequenceName;
+
+    /**
+     * The latest id value
+     */
     long lastId;
+
+    /**
+     * step size.
+     */
     int stepLength;
+
+    /**
+     * table name
+     */
     String tableName;
 
     /**
@@ -26,6 +42,15 @@ public abstract class AbstractIdGenerator implements IdGenerator {
      */
     private ReentrantLock lock = new ReentrantLock();
 
+    /**
+     * Constructor of Abstract class.
+     * If sequence name ends with '$SEQ', after removing the last four
+     * characters it exactly will be the table name.
+     *
+     * @param lastId     last number
+     * @param seqName    sequence name
+     * @param stepLength step length
+     */
     protected AbstractIdGenerator(long lastId, String seqName, int stepLength) {
         this.lastId = lastId;
         this.stepLength = stepLength;
@@ -37,6 +62,11 @@ public abstract class AbstractIdGenerator implements IdGenerator {
         }
     }
 
+    /**
+     * The key method of generator.
+     *
+     * @return new long value
+     */
     @Override
     public long getNewId() {
         lock.lock();
@@ -51,7 +81,12 @@ public abstract class AbstractIdGenerator implements IdGenerator {
         return newId;
     }
 
+    /**
+     * Fetch new data (last_number and step_length) from database. Due to the different
+     * algorithm of different databases, so this method is defined as abstract.
+     */
     protected abstract void resetLastId();
+
 
     protected void updateCursor(long lastId, int stepLength) {
         this.lastId = lastId;

@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * (Unchecked) distributed transaction manager.
+ *
  * Created by Sam on 2015/6/13.
  */
 public class ChainedTransactionManager extends AbstractPlatformTransactionManager {

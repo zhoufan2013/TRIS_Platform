@@ -1,7 +1,10 @@
 package com.ai.tris.server.resource;
 
+import com.ai.tris.server.orm.impl.ClientAppInfoBean;
+import com.ai.tris.server.orm.impl.SysSequencesBean;
 import com.ai.tris.server.resource.produce.Category;
 import com.ai.tris.server.resource.produce.Group;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -40,6 +43,7 @@ public class CategoryResource {
         category2.addToGroup(new Group("High"));
         category2.addToGroup(new Group("Medium"));
         category2.addToGroup(new Group("Low"));
+        category2.addToGroup(new Group(String.valueOf(new ClientAppInfoBean().getNewId())));
         categories.add(category2);
         return categories;
     }

@@ -11,6 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by Sam on 2015/6/15.
  */
 public abstract class AbstractIdGenerator implements IdGenerator {
+
     /**
      * sequence name, this maybe a virtual concept for some kind of
      * databases, such as MySQL.
@@ -40,7 +41,7 @@ public abstract class AbstractIdGenerator implements IdGenerator {
      * That will be a fact that there are a lot of tables(sequences) will be
      * requested at the same time.
      */
-    private ReentrantLock lock = new ReentrantLock();
+    private ReentrantLock lock = new ReentrantLock(Boolean.TRUE);
 
     /**
      * Constructor of Abstract class.

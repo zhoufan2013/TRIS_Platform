@@ -1,7 +1,6 @@
 package com.ai.tris.server.orm.interfaces;
 
 /**
- *
  * Created by Sam on 2015/6/9.
  */
 public interface IClientAppInfoValue {
@@ -12,9 +11,5 @@ public interface IClientAppInfoValue {
     public final static String S_STATE = "STATE";
     public final static String S_CREATE_DATE = "CREATE_DATE";
     public final static String S_EXPIRE_DATE = "EXPIRE_DATE";
-
-    public Object get(String key);
-
-    public String getString(String key);
 
 }

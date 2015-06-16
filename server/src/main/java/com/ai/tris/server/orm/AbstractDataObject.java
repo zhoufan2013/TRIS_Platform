@@ -1,5 +1,6 @@
 package com.ai.tris.server.orm;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -12,14 +13,14 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * abstract datta object
+ * abstract data object
  * Created by Sa, on 2015/6/9.
  */
 public abstract class AbstractDataObject implements IDataObject {
 
     private transient static Log log = LogFactory.getLog(AbstractDataObject.class);
-    protected Set<String> colNames = new HashSet<String>();
-    protected Map<String, Object> data = new HashMap<String, Object>();
+    protected Set<String> colNames = new HashSet<>();
+    protected Map<String, Object> data = new HashMap<>();
 
     /**
      * Get all column names.
@@ -49,6 +50,37 @@ public abstract class AbstractDataObject implements IDataObject {
                 data.put(colName.toUpperCase(), resultSet.getObject(colName));
             }
         }
+    }
+
+    public Object get(String key) {
+        return data.get(key);
+    }
+
+    @Override
+    public void set(String key, Object object) {
+        data.put(key, object);
+    }
+
+    @Override
+    public Long getLong(String key) {
+        String object = String.valueOf(data.get(key));
+        if (StringUtils.isNotEmpty(object) && object.matches("\\d+")) {
+            return Long.valueOf(object);
+        }
+        return null;
+    }
+
+    @Override
+    public Integer getInt(String key) {
+        String object = String.valueOf(data.get(key));
+        if (StringUtils.isNotEmpty(object) && object.matches("\\d+")) {
+            return Integer.valueOf(object);
+        }
+        return null;
+    }
+
+    public String getString(String key) {
+        return String.valueOf(data.get(key));
     }
 
     private boolean checkColNameSet() {

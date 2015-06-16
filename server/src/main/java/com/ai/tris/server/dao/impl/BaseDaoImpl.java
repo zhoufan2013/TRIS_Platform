@@ -20,7 +20,7 @@ public class BaseDaoImpl implements IBaseDao {
     @Override
     public void insertBaseData() {
         int result = jdbcTemplate.update("insert into tris_static_data (data_code, data_value, data_group, state) " +
-                        "values (?,?,?,?)", "Auth", "tris_web_10", "secret_key_10", "U");
+                "values (?,?,?,?)", "Auth", "tris_web_10", "secret_key_10", "U");
         log.debug(result);
     }
 

@@ -12,10 +12,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
  * Created by Sam on 2015/6/13.
  */
-public class ChainedTransactionManager extends AbstractPlatformTransactionManager{
+public class ChainedTransactionManager extends AbstractPlatformTransactionManager {
     private List<PlatformTransactionManager> transactionManagers = new ArrayList<PlatformTransactionManager>();
     private ArrayList<PlatformTransactionManager> reversed;
 
@@ -80,7 +79,7 @@ public class ChainedTransactionManager extends AbstractPlatformTransactionManage
                 logger.error("Error in rollback", e);
             }
         }
-        if (lastException!=null) {
+        if (lastException != null) {
             throw lastException;
         }
     }

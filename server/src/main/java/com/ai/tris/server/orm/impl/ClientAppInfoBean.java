@@ -18,15 +18,6 @@ public class ClientAppInfoBean extends AbstractDataObject implements IClientAppI
         return this;
     }
 
-
-    public Object get(String key) {
-        return data.get(key);
-    }
-
-    public String getString(String key) {
-        return String.valueOf(data.get(key));
-    }
-
     @Override
     public String toString() {
         return "ClientAppInfoBean{" + "data=" + data + '}';

@@ -11,6 +11,7 @@
 
     <context:property-placeholder location="jdbc.properties"/>
 
+    <!-- app service -->
     <bean id="com.ai.tris.server.service.interfaces.ICommonService"
           class="com.ai.tris.server.service.impl.CommonServiceImpl">
         <property name="commonDao" ref="com.ai.tris.server.dao.interfaces.ICommonDao"/>
@@ -22,11 +23,19 @@
         <property name="baseDao" ref="com.ai.tris.server.dao.interfaces.IBaseDao"/>
     </bean>
 
+    <bean id="com.ai.tris.server.service.interfaces.ITrisCommService" class="com.ai.tris.server.service.impl.TrisCommServiceImpl" >
+        <property name="trisCommDao" ref="com.ai.tris.server.dao.interfaces.ITrisCommDao"/>
+    </bean>
+
+    <!-- app dao -->
     <bean id="com.ai.tris.server.dao.interfaces.ICommonDao" class="com.ai.tris.server.dao.impl.CommonDaoImpl">
         <property name="dataSource" ref="trisDataSource"/>
     </bean>
     <bean id="com.ai.tris.server.dao.interfaces.IBaseDao" class="com.ai.tris.server.dao.impl.BaseDaoImpl">
         <property name="dataSource" ref="baseDataSource"/>
+    </bean>
+    <bean id="com.ai.tris.server.dao.interfaces.ITrisCommDao" class="com.ai.tris.server.dao.impl.TrisCommDaoImpl" >
+        <property name="trisDataSource" ref="trisDataSource" />
     </bean>
 
 

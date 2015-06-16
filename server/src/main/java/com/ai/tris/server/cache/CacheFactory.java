@@ -19,9 +19,9 @@ public class CacheFactory {
     /**
      * Store cache data.
      */
-    private static Map<String, Map<String, Object>> CACHE = new HashMap<String, Map<String, Object>>();
+    private static Map<String, Map<String, Object>> CACHE = new HashMap<>();
 
-    private static Set<Class<?>> CACHE_IMPL_SET = new HashSet<Class<?>>();
+    private static Set<Class<?>> CACHE_IMPL_SET = new HashSet<>();
 
     private static ReentrantLock readWriteLock = new ReentrantLock();
 
@@ -83,10 +83,12 @@ public class CacheFactory {
         if (CACHE_IMPL_SET.size() > 0) {
             for (Class cacheImpl : CACHE_IMPL_SET) {
                 try {
-                    ICache iCache = (ICache) (cacheImpl.newInstance());
-                    CACHE.put(iCache.getClass().getName(), iCache.loadData());
-                } catch (InstantiationException ie) {
-                    logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), ie);
+                    try {
+                        ICache iCache = (ICache) (cacheImpl.newInstance());
+                        CACHE.put(iCache.getClass().getName(), iCache.loadData());
+                    } catch (InstantiationException ie) {
+                        logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), ie);
+                    }
                 } catch (IllegalAccessException iae) {
                     logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), iae);
                 }

@@ -7,10 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- *  Test annotation transactional
+ * Test annotation transactional
  * Created by Sam on 2015/6/9.
  */
-@Transactional(readOnly=true)
+@Transactional(readOnly = true)
 public interface ICommonService {
 
     void printCallStack();

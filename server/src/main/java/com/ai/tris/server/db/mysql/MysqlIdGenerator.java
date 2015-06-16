@@ -11,7 +11,7 @@ public class MysqlIdGenerator extends AbstractIdGenerator{
 
 
     @Override
-    public void refreshCursor() {
+    public void resetLastId() {
 
     }
 }

@@ -39,10 +39,13 @@ public class CacheFactory {
      * @return cached map value
      */
     public static Map<String, Object> getCacheData(String cacheItem) {
-        readWriteLock.lock();
-        Map<String, Object> cachedMap = CACHE.get(cacheItem);
-        readWriteLock.unlock();
-        return (null != cachedMap && cachedMap.size() > 0) ? cachedMap : new HashMap<String, Object>(0);
+        try{
+            readWriteLock.lock();
+            Map<String, Object> cachedMap = CACHE.get(cacheItem);
+            return (null != cachedMap && cachedMap.size() > 0) ? cachedMap : new HashMap<String, Object>(0);
+        } finally {
+            readWriteLock.unlock();
+        }
     }
 
     /**
@@ -53,13 +56,16 @@ public class CacheFactory {
      * @return cached data.
      */
     public static Object getCacheData(String cacheItem, String cacheKey) {
-        readWriteLock.lock();
-        Map<String, Object> cachedItem = CACHE.get(cacheItem);
-        readWriteLock.unlock();
-        if (null != cachedItem) {
-            return cachedItem.get(cacheKey);
+        try{
+            readWriteLock.lock();
+            Map<String, Object> cachedItem = CACHE.get(cacheItem);
+            if (null != cachedItem) {
+                return cachedItem.get(cacheKey);
+            }
+            return null;
+        } finally {
+            readWriteLock.unlock();
         }
-        return null;
     }
 
     /**
@@ -78,23 +84,26 @@ public class CacheFactory {
      * Load all data to cache.
      */
     public static void loadAllData() {
-        readWriteLock.lock();
-        readCacheImpl();
-        if (CACHE_IMPL_SET.size() > 0) {
-            for (Class cacheImpl : CACHE_IMPL_SET) {
-                try {
+        try{
+            readWriteLock.lock();
+            readCacheImpl();
+            if (CACHE_IMPL_SET.size() > 0) {
+                for (Class cacheImpl : CACHE_IMPL_SET) {
                     try {
-                        ICache iCache = (ICache) (cacheImpl.newInstance());
-                        CACHE.put(iCache.getClass().getName(), iCache.loadData());
-                    } catch (InstantiationException ie) {
-                        logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), ie);
+                        try {
+                            ICache iCache = (ICache) (cacheImpl.newInstance());
+                            CACHE.put(iCache.getClass().getName(), iCache.loadData());
+                        } catch (InstantiationException ie) {
+                            logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), ie);
+                        }
+                    } catch (IllegalAccessException iae) {
+                        logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), iae);
                     }
-                } catch (IllegalAccessException iae) {
-                    logger.error(String.format("cache %s load failed.", cacheImpl.getClass().getName()), iae);
                 }
             }
+        } finally {
+            readWriteLock.unlock();
         }
-        readWriteLock.unlock();
     }
 
     public static void reloadAll() {

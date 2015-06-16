@@ -28,22 +28,31 @@
 
     <div style="padding: 20px;">
 
-        <form class="form-horizontal" role="form" style="padding-bottom: 30px; padding-bottom: 30px;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  margin-bottom: 20px;">
-            <fieldset>
-                <legend>Execution</legend>
 
-                <div class="col-sm-9 col-sm-offset-2">
+        <div role="tabpanel" style="padding: 20px; background-color: #fff; border-radius: 5px; margin-bottom: 40px;">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="execTab">
+                <li role="presentation" class="active">
+                    <a href="#executeTab" aria-controls="executeTab" role="tab" data-toggle="tab">
+                        <i class="fa fa-play-circle"></i>
+                        Execution
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane fade in active" id="executeTab">
+
                     <table class="table table-bordered" id="123">
                         <tbody>
                         <tr>
-                            <td>
+                            <td style="border-top: 1px solid #FFF;">
                                 Case Set
                             </td>
-                            <td >
+                            <td style="border-top: 1px solid #FFF;">
                                 <select class="form-control" id="executeCaseVersion">
                                     <option>UPC Offer Case Set</option>
                                     <option>UPC Product Case Set</option>
@@ -98,61 +107,106 @@
                         <button type="button" class="btn btn-primary" id="execute">Execute</button>
                     </div>
 
+
                 </div>
 
+            </div>
+        </div>
 
+        <div role="tabpanel" style="padding: 20px; background-color: #fff; border-radius: 5px;">
 
-            </fieldset>
-        </form>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li role="presentation" class="active">
+                    <a href="#scheduleTask" aria-controls="scheduleTask" role="tab" data-toggle="tab">
+                        <i class="fa fa-tasks"></i>
+                        Schedule Task
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#newTask" aria-controls="newTask" role="tab" data-toggle="tab">
+                        <i class="fa fa-pencil-square-o"></i>
+                        New Schedule
+                    </a>
+                </li>
+            </ul>
 
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="scheduleTask">
 
-        <form class="form-horizontal" role="form" style="padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;">
-            <fieldset>
-                <legend>Schedule</legend>
-                <div class="col-sm-offset-3">
-                    <label class="col-sm-2 control-label" for="caseVersion">Case Set</label>
-                    <div class="col-sm-2">
-                        <select class="form-control" id="caseVersion">
-                            <option>UPC Offer Case Set</option>
-                            <option>UPC Product Case Set</option>
-                            <option>UPC Service Case Set</option>
-                        </select>
-                    </div>
-                    <label class="col-sm-1 control-label time-picking-text" for="timePicking">Time Picking</label>
-                    <div class="col-sm-2">
-                        <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="timePicking" data-link-format="hh:ii">
-                            <input id="timePickingReadonly" class="form-control" size="16" type="text" value="" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                        </div>
-                        <input id="timePicking" type="hidden" value="" /><br/>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-primary" onclick="addNewSchedule()">Submit</button>
-                    </div>
-                </div>
-                <div class="col-sm-9 col-sm-offset-2">
-                    <table class="table table-bordered table-striped" id="timePickingTable">
+                    <!-- cell-border -->
+                    <table class="row-border" id="scheduleTaskTable" style="clear: both" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>Case Set</th>
-                            <th>Time Picking</th>
-                            <th></th>
+                            <th>Schedule Type</th>
+                            <th>Effective Pattern</th>
+                            <th>Creator</th>
+                            <th>Control</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="schedule in schedules" >
-                            <td>{{ schedule.case_version }}</td>
-                            <td>{{ schedule.execute_time }}</td>
-                            <td class='time-picking-table-action'><i class='glyphicon glyphicon-trash' style='cursor: pointer;' onclick='delRow($(this))'></i></td>
+                        <tr>
+                            <td>UPC Offer Case Set</td>
+                            <td>Interval</td>
+                            <td>Everyday 06:45</td>
+                            <td>hanll</td>
+                            <td>
+                                <a><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>UPC Product Case Set</td>
+                            <td>Timing</td>
+                            <td>Every 23:05 From 06-12 To 06-24</td>
+                            <td>hanll</td>
+                            <td>
+
+                                <a><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>UPC Service Case Set</td>
+                            <td>Timing</td>
+                            <td>Every 06:00 From 06-10 To 06-23</td>
+                            <td>tianhj</td>
+                            <td>
+                                <a><i class="fa fa-trash-o"></i></a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
+
                 </div>
-            </fieldset>
-        </form>
+                <div role="tabpanel" class="tab-pane fade" id="newTask">
+
+                    <div class="col-sm-offset-3">
+                        <label class="col-sm-2 control-label" for="caseVersion">Case Set</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="caseVersion">
+                                <option>UPC Offer Case Set</option>
+                                <option>UPC Product Case Set</option>
+                                <option>UPC Service Case Set</option>
+                            </select>
+                        </div>
+                        <label class="col-sm-1 control-label time-picking-text" for="timePicking">Time Picking</label>
+                        <div class="col-sm-2">
+                            <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="timePicking" data-link-format="hh:ii">
+                                <input id="timePickingReadonly" class="form-control" size="16" type="text" value="" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                            <input id="timePicking" type="hidden" value="" /><br/>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary" onclick="addNewSchedule()">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -161,6 +215,59 @@
 <script type="text/javascript">
 
     $(function () {
+
+        $('#myTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        $('#execTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        var scheduleTaskTable = $('#scheduleTaskTable').dataTable( {
+            "paging":   true,
+            "ordering": true,
+            "info":     false,
+            "searching": false,
+            "info":     false,
+            "bLengthChange": false,
+            "columnDefs": [
+                {
+                    "targets": [ 0 ],
+                    "searchable": false,
+                    "orderable": false
+                },
+                {
+                    "targets": [ 1 ],
+                    "searchable": false,
+                    "orderable": true,
+                    className: "center"
+                },
+                {
+                    "targets": [ 2 ],
+                    "searchable": true,
+                    "orderable": false,
+                    className: "center"
+                },
+                {
+                    "targets": [ 3 ],
+                    "searchable": true,
+                    "orderable": false,
+                    "visible": true,
+                    className: "center"
+                },
+                {
+                    "targets": [ 4 ],
+                    "searchable": true,
+                    "orderable": false,
+                    "visible": true,
+                    className: "center"
+                }
+            ]
+        } );
+
 
         $('#functionalRadio').bind("click", function(){
             $("[name='funcCheckBox']").attr("disabled", false);

@@ -23,7 +23,7 @@ public class ChainedTransactionManager extends AbstractPlatformTransactionManage
     public void setTransactionManagers(
             List<PlatformTransactionManager> transactionManagers) {
         this.transactionManagers = transactionManagers;
-        reversed = new ArrayList<>(transactionManagers);
+        reversed = new ArrayList<PlatformTransactionManager>(transactionManagers);
         Collections.reverse(reversed);
     }
 

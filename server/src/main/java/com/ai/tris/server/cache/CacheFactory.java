@@ -19,9 +19,9 @@ public class CacheFactory {
     /**
      * Store cache data.
      */
-    private static Map<String, Map<String, Object>> CACHE = new HashMap<>();
+    private static Map<String, Map<String, Object>> CACHE = new HashMap<String, Map<String, Object>>();
 
-    private static Set<Class<?>> CACHE_IMPL_SET = new HashSet<>();
+    private static Set<Class<?>> CACHE_IMPL_SET = new HashSet<Class<?>>();
 
     private static ReentrantLock readWriteLock = new ReentrantLock();
 

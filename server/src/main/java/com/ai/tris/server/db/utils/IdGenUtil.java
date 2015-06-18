@@ -25,7 +25,7 @@ public class IdGenUtil {
     // use mysql id generator default
     private static String GEN_IMPL_CLASS = MysqlIdGenerator.class.getName();
 
-    private static Map<String, IdGenerator> ID_GS = new ConcurrentHashMap<>();
+    private static Map<String, IdGenerator> ID_GS = new ConcurrentHashMap<String, IdGenerator>();
 
     static {
         initIdGens();

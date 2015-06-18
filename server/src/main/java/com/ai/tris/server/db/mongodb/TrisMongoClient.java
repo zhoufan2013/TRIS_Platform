@@ -38,7 +38,7 @@ public class TrisMongoClient {
     /**
      * Mongodb client pool
      */
-    private final static Map<String, Object> clientPool = new ConcurrentHashMap<>();
+    private final static Map<String, Object> clientPool = new ConcurrentHashMap<String, Object>();
     private static String clientUri = null;
 
     static {

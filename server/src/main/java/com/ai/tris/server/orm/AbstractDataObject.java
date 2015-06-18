@@ -24,12 +24,12 @@ public abstract class AbstractDataObject implements IDataObject {
     /**
      * Put table column names into this <code>Set</code>
      */
-    protected Set<String> colNames = new HashSet<>();
+    protected Set<String> colNames = new HashSet<String>();
 
     /**
      * Store db data.
      */
-    protected Map<String, Object> data = new HashMap<>();
+    protected Map<String, Object> data = new HashMap<String, Object>();
 
     /**
      * Get all column names, and put them into <code>colNames</code>.

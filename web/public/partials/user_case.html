@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="/stylesheets/bootstrap-switch.css" media="screen"/>
+<script src="/javascripts/bootstrap-switch.js"></script>
+
+<script src="/javascripts/bootstrap-suggest.min.js"></script>
+
 <div class="div-padding" ng-controller="userCaseController">
 
     <div class="daohang">
@@ -24,116 +29,216 @@
     </div>
 
     <div class="col-sm-12 user-case-panel">
+        <!--
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="test_data">
+                    <div class="input-group-btn">
+                        <button id="search" class="btn btn-primary" type="button">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
         <div id="toolbar" class="col-sm-12" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom: 1px solid #DDD;">
             <div class="input-group col-sm-4 col-sm-offset-8" style="padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
                 <input name="userCase" type="text" class="form-control" placeholder="Search For...">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Seach <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li><a href="#">Requirement</a></li>
+                        <li><a href="#">User Case</a></li>
+                        <li><a href="#">Owner</a></li>
+                        <!--<li class="divider"></li>-->
+                    </ul>
+                </div><!-- /btn-group -->
+                <!--
                 <span class="input-group-btn">
                     <button id="search" class="btn btn-primary" type="button">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
-                </span>
+                </span>-->
             </div>
         </div>
 
-        <table class="row-border" id="table" style="clear: both" cellspacing="0" width="100%">
+        <table class="row-border" id="userCaseTable" style="clear: both" cellspacing="0" width="100%">
             <thead>
-            <tr>
-                <th>Requirement</th>
-                <th>User Case</th>
-                <th>Owner</th>
-                <th>Execution Info</th>
-                <th>Status</th>
-            </tr>
+                <tr>
+                    <th style="text-align: center;">Detail</th>
+                    <th>Requirement</th>
+                    <th>User Case</th>
+                    <th>Case Type</th>
+                    <th>Owner</th>
+                    <th>Execution Info</th>
+                    <th>Status</th>
+                </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>【自优化】offer全景展示页面</td>
-                <td>测试新建 DSL Main Offer 正常流</td>
-                <td><a href="#" id="owner" data-type="text" data-placement="top" data-title="Case Owner">zhoufan</a></td>
-                <td><a href="#" id="username" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_001</a></td>
-                <td>
-                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='glyphicon glyphicon-ok'></i>" data-off-label="<i class='glyphicon glyphicon-remove'></i>">
-                        <input type="checkbox" name="my-checkbox" checked />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>【自优化】offer全景展示页面</td>
-                <td>测试发布 Offer 到 E2E 环境</td>
-                <td><a href="#" id="owner2" data-type="text" data-placement="top" data-title="Case Owner">tianhj</a></td>
-                <td><a href="#" id="execInfo2" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_002</a></td>
-                <td>
-                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
-                        <input type="checkbox" name="my-checkbox" checked />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>【自优化】offer全景展示页面</td>
-                <td>测试删除 Offer 功能</td>
-                <td><a href="#" id="owner3" data-type="text" data-placement="top" data-title="Case Owner">tianhj</a></td>
-                <td><a href="#" id="execInfo3" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_003</a></td>
 
-                <td>
-                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
-                        <input type="checkbox" name="my-checkbox" checked />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>【自优化】offer全景展示页面</td>
-                <td>测试销售品关联产品功能</td>
-                <td><a href="#" id="owner4" data-type="text" data-placement="top" data-title="Case Owner">zhoufan</a></td>
-                <td><a href="#" id="execInfo4" data-type="text" data-placement="top" data-title="Execution Info">UPC_CRM_004</a></td>
-                <td>
-                    <div class="bootstrap-switch bootstrap-switch-mini" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
-                        <input type="checkbox" name="my-checkbox" checked />
-                    </div>
-                </td>
-            </tr>
-            </tbody>
         </table>
     </div>
 
-
 </div>
-
-
-
-
-
 
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $('#table').dataTable( {
+
+        var userCaseTable = $('#userCaseTable').DataTable( {
+            "ajax": "/data/objects.txt",
+            "columns": [
+                {
+                    "class":          'details-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": ''
+                },
+                { "data": "req_name" },
+                { "data": "case_name" },
+                { "data": "case_type" },
+                {
+                    "class":        'center',
+                    "orderable":    false,
+                    //"data": null,
+                    //"defaultContent": '<a>123123123123</a>',
+                    "render": function(data, type, row, meta){
+                        debugger;
+                        var pk_owner = meta.row + 1;
+                        //return '<a href="#" data-type="text" data-pk="'+ pk_owner +'" data-placement="top" data-title="Case Owner">zhoufan</a>';
+
+                        return '<a href="#" data-type="select2" data-pk="'+ pk_owner +'" data-value="2" data-placement="top" data-title="Case Owner" class="editable editable-click" data-original-title="" title="">田慧健</a>';
+                    }
+                },
+                {
+                    "class":        'center',
+                    "orderable":    false,
+                    //"data": null,
+                    //"defaultContent": '<a>123123123123</a>',
+                    "render": function(data, type, row, meta){
+                        debugger;
+                        var pk_owner = meta.row + 1;
+                        return '<a href="#" data-type="text" data-pk="'+ pk_owner +'" data-placement="top" data-title="Case Owner">'+row.exec_info+'</a>';
+                    }
+                }
+            ],
+            "columnDefs": [
+                {
+                    "targets": [ 6 ],
+                    "searchable": false,
+                    "orderable": false,
+                    "visible": true,
+                    className: "center",
+                    "data": null,
+                    "defaultContent": "<div>" +
+                            "<input type='checkbox' name='status' checked />" +
+                            "</div>"
+                }
+            ],
             "paging":   true,
             "ordering": false,
             "info":     false,
             "searching": false,
             "info":     false,
-            "bLengthChange": false
+            "bLengthChange": false,
+            "drawCallback": function( settings ){
+            },
+            "fnInitComplete": function(oSettings, json) {
+                $("[name='status']").bootstrapSwitch({
+                    onText:'<span class="fa fa-check"></span>',
+                    offText:'<span class="fa fa-times"></span>'
+                });
+
+                //local source
+                $('#userCaseTable a').editable({
+                    source: [
+                        {id: '1', text: '韩林林'},
+                        {id: '2', text: '田慧健'},
+                        {id: '3', text: '陈猛'},
+                        {id: '4', text: '赵晨'},
+                        {id: '5', text: '蔡为铭'},
+                        {id: '6', text: '周凡'}
+                    ],
+                    select2: {
+                        width: 150,
+                        placeholder: 'Select Tester',
+                        allowClear: false
+                        //theme: "classic"
+                    }
+                });
+
+            }
         } );
+
+        // Add event listener for opening and closing details
+        $('#userCaseTable tbody').on('click', 'td.details-control', function () {
+            debugger;
+            var tr = $(this).closest('tr');
+            var row = userCaseTable.row( tr );
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+            }
+        } );
+
     } );
+
+    /* Formatting function for row details - modify as you need */
+    function format ( d ) {
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+                '<tr>'+
+                '<td>User Case ID :</td>'+
+                '<td>'+d.case_id+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td>Priority :</td>'+
+                '<td>'+d.priority+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td>Description :</td>'+
+                '<td>'+d.description+'</td>'+
+                '</tr>'+
+                '</table>';
+    }
 
     $(document).ready(function() {
+
         $.fn.editable.defaults.mode = 'popup';
-        $('#username').editable();
-        $('#owner').editable();
 
-        $('#owner2').editable();
-        $('#execInfo2').editable();
 
-        $('#owner3').editable();
-        $('#execInfo3').editable();
 
-        $('#owner4').editable();
-        $('#execInfo4').editable();
 
     } );
 
-    $("[name='my-checkbox']").bootstrapSwitch();
-    //$("[name='my-checkbox']").bootstrapSwitch('state', false, true);
+    //定义Status的Checkbox控件尺寸
+    $.fn.bootstrapSwitch.defaults.size = 'mini';
+
+
+    //data 数据中获取
+    var testdataBsSuggest = $("#test_data").bsSuggest({
+        indexId: 2, //data.value 的第几个数据，作为input输入框的内容
+        indexKey: 1, //data.value 的第几个数据，作为input输入框的内容
+        data: {
+            'value':[
+                {'id':'0','word':'lzw','description':'http://lzw.me'},
+                {'id':'1','word':'lzwme','description':'http://w.lzw.me'},
+                {'id':'2','word':'meizu','description':'http://www.meizu.com'},
+                {'id':'3','word':'flyme','description':'http://flyme.meizu.com'}
+            ],
+            'defaults':'http://lzw.me'
+        }
+    });
+
 
 </script>
 

@@ -24,11 +24,11 @@ tris.controller('loginController', ['$scope', '$location', 'localStorageService'
     scope.user = {};
 
     // 如果用户已经登录了$rootScope.user.token，则立即跳转到一个默认主页/upc_home上去，无需再登录
-    if(storageService.get('token')){
-        location.path('/dashboard');
-        location.replace();
-        return;
-    }
+    //if(storageService.get('token')){
+      //  location.path('/dashboard');
+        //location.replace();
+        //return;
+    //}
 
     //登录校验监听事件
     scope.signin = function() {
@@ -142,7 +142,61 @@ tris.controller('upcExecuteController', ['$http', function(http) {
 
 }]);
 
-tris.controller('userCaseController', [function(){
+tris.controller('userCaseController', ['$scope', function(scope){
+
+    debugger;
+
+    scope.usercases = [
+        {
+            "req_name": "【自优化】offer全景展示页面",
+            "case_name": "测试新建 DSL Main Offer 正常流",
+            "owner": "zhoufan",
+            "exec_info": "UPC_CRM_001",
+            "priority": "high",
+            "description": "描述信息"
+        },
+        {
+            "req_name": "【自优化】offer全景展示页面",
+            "case_name": "测试发布 Offer 到 E2E 环境",
+            "owner": "tianhj",
+            "exec_info": "UPC_CRM_002",
+            "priority": "high",
+            "description": "描述信息"
+        },
+        {
+            "req_name": "【自优化】offer全景展示页面",
+            "case_name": "测试删除 Offer 功能",
+            "owner": "hanll",
+            "exec_info": "UPC_CRM_003",
+            "priority": "high",
+            "description": "描述信息"
+        },
+        {
+            "req_name": "【自优化】offer全景展示页面",
+            "case_name": "测试销售品关联产品功能",
+            "owner": "hanll",
+            "exec_info": "UPC_CRM_004",
+            "priority": "high",
+            "description": "描述信息"
+        },
+        {
+            "req_name": "【自优化】offer全景展示页面",
+            "case_name": "测试新建 DSL Main Offer 正常流",
+            "owner": "zhoufan",
+            "exec_info": "UPC_CRM_001",
+            "priority": "high",
+            "description": "描述信息"
+        },
+        {
+            "req_name": "【自优化】offer全景展示页面",
+            "case_name": "测试新建 DSL Main Offer 正常流",
+            "owner": "zhoufan",
+            "exec_info": "UPC_CRM_001",
+            "priority": "high",
+            "description": "描述信息"
+        }
+    ];
+
 
 }]);
 

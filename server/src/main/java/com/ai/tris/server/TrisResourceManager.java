@@ -45,6 +45,7 @@ public class TrisResourceManager {
         String resPackage = prop.getProperty("resource.packages");
         if (StringUtils.isNotEmpty(resPackage)) {
             RES_CONF = new ResourceConfig();
+            RES_CONF.setApplicationName("Tris-Server");
             RES_CONF.packages(Boolean.TRUE, resPackage.split(Pattern.quote(",")));
         }
         // register exception mapper

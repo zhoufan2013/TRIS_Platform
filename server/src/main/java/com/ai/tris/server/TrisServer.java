@@ -5,11 +5,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.http.server.NetworkListener;
+import org.glassfish.grizzly.threadpool.GrizzlyExecutorService;
+import org.glassfish.grizzly.threadpool.ThreadPoolConfig;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.moxy.json.MoxyJsonConfig;
 
 import javax.ws.rs.ext.ContextResolver;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -24,6 +28,9 @@ public class TrisServer {
     final static String DEFAULT_PORT = "48000";
     public static String BASE_PATH = "/";
     public static HttpServer httpServer;
+    final String poolName = "Tris-Server-Pool-%d-%d";
+    final int corePoolSize = 10;
+    final int maxPoolSize = 300;
     /*slf4j log*/
     private static transient Log log = LogFactory.getLog(TrisServer.class);
 
@@ -62,6 +69,25 @@ public class TrisServer {
 
         // start http server.
         httpServer = GrizzlyHttpServerFactory.createHttpServer(java.net.URI.create(strUri), TrisResourceManager.RES_CONF);
+        try{
+            // reconfigure worker thread pool
+            Thread.sleep(4000);
+            NetworkListener listener = httpServer.getListeners().iterator().next();
+            GrizzlyExecutorService workerThreadPool = (GrizzlyExecutorService) listener.getTransport().getWorkerThreadPool();
+            // resize worker thread pool
+            workerThreadPool.reconfigure(
+                    instance.createNewPoolCfg(String.format(instance.poolName, instance.corePoolSize, instance.maxPoolSize),
+                            instance.corePoolSize, instance.maxPoolSize));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try{
+            httpServer.start();
+        } catch (IOException ioe) {
+
+        }
+
+
         if (log.isDebugEnabled()) {
             log.debug(String.format("http server [%s] is running.", strUri));
         }
@@ -73,6 +99,26 @@ public class TrisServer {
         namespacePrefixMapper.put("http://www.w3.org/2001/XMLSchema-instance", "xsi");
         moxyJsonConfig.setNamespacePrefixMapper(namespacePrefixMapper).setNamespaceSeparator(':');
         return moxyJsonConfig.resolver();
+    }
+
+    /**
+     * Create new thread pool size, and pool name, core pool size and max pool size
+     * can be modified.
+     *
+     * @param poolName pool name
+     * @param coreSize core pool size
+     * @param maxSize  max pool size
+     * @return ThreadPoolConfig
+     */
+    ThreadPoolConfig createNewPoolCfg(String poolName, int coreSize, int maxSize) {
+        ThreadPoolConfig tpc = ThreadPoolConfig.defaultConfig().setPoolName(poolName);
+        if (coreSize > 0) {
+            tpc.setCorePoolSize(coreSize);
+        }
+        if (maxSize > 0) {
+            tpc.setMaxPoolSize(maxSize);
+        }
+        return tpc;
     }
 
     /**

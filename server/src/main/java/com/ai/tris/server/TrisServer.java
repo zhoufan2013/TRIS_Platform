@@ -76,9 +76,7 @@ public class TrisServer {
         try {
             // reconfigure worker thread pool
             NetworkListener listener = httpServer.getListeners().iterator().next();
-            listener.getTransport().setWorkerThreadPoolConfig(
-                    instance.createNewPoolCfg(String.format(instance.poolName, instance.corePoolSize, instance.maxPoolSize),
-                            instance.corePoolSize, instance.maxPoolSize));
+            listener.getTransport().setWorkerThreadPoolConfig(instance.createNewPoolCfg());
             httpServer.start();
         } catch (IOException e) {
             log.error("Server starts up failed", e);
@@ -100,24 +98,23 @@ public class TrisServer {
      * Create new thread pool size, and pool name, core pool size and max pool size
      * can be modified.
      *
-     * @param poolName pool name
-     * @param coreSize core pool size
-     * @param maxSize  max pool size
      * @return ThreadPoolConfig
      */
-    ThreadPoolConfig createNewPoolCfg(String poolName, int coreSize, int maxSize) {
-        ThreadPoolConfig tpc = ThreadPoolConfig.defaultConfig().setPoolName(poolName);
+    ThreadPoolConfig createNewPoolCfg() {
+        ThreadPoolConfig tpc =
+                ThreadPoolConfig.defaultConfig().setPoolName(
+                        String.format(poolName, corePoolSize, maxPoolSize));
         tpc.setThreadFactory(
                 new ThreadFactoryBuilder()
                         .setNameFormat("tris-http-server-%d")
                         .setUncaughtExceptionHandler(new JerseyProcessingUncaughtExceptionHandler())
                         .build());
         tpc.setMemoryManager(new HeapMemoryManager());
-        if (coreSize > 0) {
-            tpc.setCorePoolSize(coreSize);
+        if (corePoolSize > 0) {
+            tpc.setCorePoolSize(corePoolSize);
         }
-        if (maxSize > 0) {
-            tpc.setMaxPoolSize(maxSize);
+        if (maxPoolSize > 0) {
+            tpc.setMaxPoolSize(maxPoolSize);
         }
         return tpc;
     }

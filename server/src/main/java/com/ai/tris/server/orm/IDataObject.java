@@ -61,6 +61,7 @@ public interface IDataObject {
 
     /**
      * Get new number type primary key.
+     *
      * @return new id
      */
     long getNewId();

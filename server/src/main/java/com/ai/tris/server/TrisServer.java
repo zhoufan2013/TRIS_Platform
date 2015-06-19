@@ -1,16 +1,18 @@
 package com.ai.tris.server;
 
 import com.ai.tris.server.security.SecurityTokenFilter;
+import jersey.repackaged.com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.NetworkListener;
-import org.glassfish.grizzly.threadpool.GrizzlyExecutorService;
+import org.glassfish.grizzly.memory.HeapMemoryManager;
 import org.glassfish.grizzly.threadpool.ThreadPoolConfig;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.moxy.json.MoxyJsonConfig;
+import org.glassfish.jersey.process.JerseyProcessingUncaughtExceptionHandler;
 
 import javax.ws.rs.ext.ContextResolver;
 import java.io.IOException;
@@ -23,16 +25,16 @@ import java.util.*;
  */
 public class TrisServer {
     final static String OPTIONS_EXAMPLE = "-port 48000 -bPath api -MoxyJson true -enableLog true";
-    final static String[] OPTIONS = new String[]{"-port", "-bPath", "-MoxyJson", "-enableLog"};
+    final static String[] OPTIONS = new String[]{"-port", "-bPath", "-MoxyJson", "-enableLog", "-corePoolSize", "-maxPoolSize"};
     final static String V_URI = "http://0.0.0.0";
     final static String DEFAULT_PORT = "48000";
     public static String BASE_PATH = "/";
     public static HttpServer httpServer;
-    final String poolName = "Tris-Server-Pool-%d-%d";
-    final int corePoolSize = 10;
-    final int maxPoolSize = 300;
-    /*slf4j log*/
     private static transient Log log = LogFactory.getLog(TrisServer.class);
+    final String poolName = "Worker-Pool-%d-%d";
+    //final String kernelPoolName = "Kernel-Pool-%d-%d";
+    int corePoolSize = 8;
+    int maxPoolSize = 8;
 
     /**
      * Start a process.
@@ -63,33 +65,26 @@ public class TrisServer {
         }
         instance.enableMoxyJson(options);
         instance.enableLoggingFilter(options);
+        instance.reconfigurePoolSize(options);
 
         // register request filter
         TrisResourceManager.RES_CONF.registerClasses(SecurityTokenFilter.class);
 
-        // start http server.
-        httpServer = GrizzlyHttpServerFactory.createHttpServer(java.net.URI.create(strUri), TrisResourceManager.RES_CONF);
-        try{
+        // create http server.
+        httpServer =
+                GrizzlyHttpServerFactory.createHttpServer(java.net.URI.create(strUri), TrisResourceManager.RES_CONF, Boolean.FALSE);
+        try {
             // reconfigure worker thread pool
-            Thread.sleep(4000);
             NetworkListener listener = httpServer.getListeners().iterator().next();
-            GrizzlyExecutorService workerThreadPool = (GrizzlyExecutorService) listener.getTransport().getWorkerThreadPool();
-            // resize worker thread pool
-            workerThreadPool.reconfigure(
+            listener.getTransport().setWorkerThreadPoolConfig(
                     instance.createNewPoolCfg(String.format(instance.poolName, instance.corePoolSize, instance.maxPoolSize),
                             instance.corePoolSize, instance.maxPoolSize));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try{
             httpServer.start();
-        } catch (IOException ioe) {
-
+        } catch (IOException e) {
+            log.error("Server starts up failed", e);
         }
-
-
-        if (log.isDebugEnabled()) {
-            log.debug(String.format("http server [%s] is running.", strUri));
+        if (log.isInfoEnabled()) {
+            log.info(String.format("http server [%s] is running.", strUri));
         }
     }
 
@@ -112,6 +107,12 @@ public class TrisServer {
      */
     ThreadPoolConfig createNewPoolCfg(String poolName, int coreSize, int maxSize) {
         ThreadPoolConfig tpc = ThreadPoolConfig.defaultConfig().setPoolName(poolName);
+        tpc.setThreadFactory(
+                new ThreadFactoryBuilder()
+                        .setNameFormat("tris-http-server-%d")
+                        .setUncaughtExceptionHandler(new JerseyProcessingUncaughtExceptionHandler())
+                        .build());
+        tpc.setMemoryManager(new HeapMemoryManager());
         if (coreSize > 0) {
             tpc.setCorePoolSize(coreSize);
         }
@@ -151,6 +152,29 @@ public class TrisServer {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
+    }
+
+    /**
+     * Reconfigure execute service thread pool size.
+     *
+     * @param options main args
+     */
+    void reconfigurePoolSize(Map<String, String> options) {
+        if (options.containsKey("-corePoolSize")
+                && StringUtils.isNotEmpty(options.get("-corePoolSize")) && options.get("-corePoolSize").matches("\\d+")) {
+            corePoolSize = Integer.parseInt(options.get("-corePoolSize"));
+        }
+        if (options.containsKey("-maxPoolSize")
+                && StringUtils.isNotEmpty(options.get("-maxPoolSize")) && options.get("-maxPoolSize").matches("\\d+")) {
+            maxPoolSize = Integer.parseInt(options.get("-maxPoolSize"));
+        }
+        if (corePoolSize > maxPoolSize) {
+            if (log.isInfoEnabled()) {
+                log.info(String.format("Because corePoolSize is greater than maxPoolSize, " +
+                        "use corePoolSize[%d] instead of maxPoolSize", corePoolSize));
+            }
+            maxPoolSize = corePoolSize;
+        }
     }
 
     /**

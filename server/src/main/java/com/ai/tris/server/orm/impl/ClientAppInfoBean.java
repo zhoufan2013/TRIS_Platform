@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  * Object bean mapping to table tris.client_app_info.
- *
+ * <p/>
  * Created by Sam on 2015/6/9.
  */
 public class ClientAppInfoBean extends AbstractDataObject implements IClientAppInfoValue {
@@ -27,7 +27,8 @@ public class ClientAppInfoBean extends AbstractDataObject implements IClientAppI
 
     /**
      * Override method <code>toString</code>
-     * @return  String
+     *
+     * @return String
      */
     @Override
     public String toString() {

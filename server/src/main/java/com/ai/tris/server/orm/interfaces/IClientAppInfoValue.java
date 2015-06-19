@@ -1,7 +1,5 @@
 package com.ai.tris.server.orm.interfaces;
 
-import com.ai.tris.server.orm.AbstractDataObject;
-
 /**
  * Object bean interface mapping to table tris.client_app_info
  * Created by Sam on 2015/6/9.

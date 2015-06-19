@@ -39,7 +39,7 @@ public class CacheFactory {
      * @return cached map value
      */
     public static Map<String, Object> getCacheData(String cacheItem) {
-        try{
+        try {
             readWriteLock.lock();
             Map<String, Object> cachedMap = CACHE.get(cacheItem);
             return (null != cachedMap && cachedMap.size() > 0) ? cachedMap : new HashMap<String, Object>(0);
@@ -56,7 +56,7 @@ public class CacheFactory {
      * @return cached data.
      */
     public static Object getCacheData(String cacheItem, String cacheKey) {
-        try{
+        try {
             readWriteLock.lock();
             Map<String, Object> cachedItem = CACHE.get(cacheItem);
             if (null != cachedItem) {
@@ -84,7 +84,7 @@ public class CacheFactory {
      * Load all data to cache.
      */
     public static void loadAllData() {
-        try{
+        try {
             readWriteLock.lock();
             readCacheImpl();
             if (CACHE_IMPL_SET.size() > 0) {

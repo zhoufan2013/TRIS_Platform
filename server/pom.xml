@@ -19,6 +19,7 @@
                     <target>1.6</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
+                <version>3.3</version>
             </plugin>
         </plugins>
     </build>

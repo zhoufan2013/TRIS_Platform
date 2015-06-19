@@ -93,12 +93,17 @@
 
                         <tr>
                             <td>
-                                <label class="checkbox-inline" >
-                                    <input id="sendEmailCheckBox" type="checkbox" value="" onclick="whetherSendEmail()"> Send Email with Test Report
-                                </label>
+                                CC Report
                             </td>
-                            <td colspan="2">
-                                <textarea id="emailTextarea" class="form-control" rows="2" placeholder="Enter email account, separated by ;" disabled></textarea>
+                            <td>
+                                <select id="singleExecutionCC" multiple="multiple" style="width: 100%;">
+                                    <option value="hanll">韩林林</option>
+                                    <option value="tianhj">田慧健</option>
+                                    <option value="chengmeng">陈猛</option>
+                                    <option value="zhaocheng">赵晨</option>
+                                    <option value="caiwm">蔡为铭</option>
+                                    <option value="zhoufan">周凡</option>
+                                </select>
                             </td>
                         </tr>
                         </tbody>
@@ -181,6 +186,85 @@
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="newTask">
 
+                    <form class="form-horizontal" style="padding-top: 20px;">
+                        <div class="form-group">
+                            <label for="schedule" class="col-sm-1 control-label">Name</label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control input-sm" id="schedule" placeholder="">
+                            </div>
+                            <label for="scheduleType" class="col-sm-1 control-label">Type</label>
+                            <div class="col-sm-4">
+                                <select class="form-control input-sm" id="scheduleType">
+                                    <option value="W">自动执行</option>
+                                    <option value="U">定时执行</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="timingFormGroup">
+                            <label class="col-sm-1 control-label">Timing</label>
+                            <div class="col-sm-4">
+                                <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="timePicking" data-link-format="hh:ii">
+                                    <input id="timePickingReadonly" class="form-control" size="16" type="text" value="" readonly>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                </div>
+                                <input id="timePicking" type="hidden" value="" />
+                            </div>
+                        </div>
+                        <div id="intervalFormGroup" style="display: none;">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label">Start Time</label>
+                                <div class="col-sm-4">
+                                    <input id="startTime" type="text" value="" readonly class="form-control input-sm">
+                                </div>
+                                <label class="col-sm-1 control-label">End Time</label>
+                                <div class="col-sm-4">
+                                    <input id="endTime" type="text" value="" readonly class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label">Interval</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="interval" value="" class="form-control input-sm" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">Environment</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="">
+                                    <option>功能测试环境</option>
+                                    <option>集成环境</option>
+                                    <option>准发布环境</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">CC Report</label>
+                            <div class="col-sm-9">
+                                <select id="cc" multiple="multiple" style="width: 100%;">
+                                    <option value="hanll">韩林林</option>
+                                    <option value="tianhj">田慧健</option>
+                                    <option value="chengmeng">陈猛</option>
+                                    <option value="zhaocheng">赵晨</option>
+                                    <option value="caiwm">蔡为铭</option>
+                                    <option value="zhoufan">周凡</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea id="description" class="form-control input-sm" rows="2" placeholder="最美的不是下雨天，是曾与你躲过雨的屋檐"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!--
                     <div class="col-sm-offset-3">
                         <label class="col-sm-2 control-label" for="caseVersion">Case Set</label>
                         <div class="col-sm-2">
@@ -203,6 +287,7 @@
                             <button type="button" class="btn btn-primary" onclick="addNewSchedule()">Submit</button>
                         </div>
                     </div>
+                    -->
 
                 </div>
             </div>
@@ -215,6 +300,21 @@
 <script type="text/javascript">
 
     $(function () {
+
+        $('#cc').select2();
+        $('#singleExecutionCC').select2();
+
+        $("#scheduleType").change(function(){
+
+            if($("#scheduleType").val() == 'W') {
+                $('#timingFormGroup').css('display', '');
+                $('#intervalFormGroup').css('display', 'none');
+            } else if ($("#scheduleType").val() == 'U') {
+                $('#timingFormGroup').css('display', 'none');
+                $('#intervalFormGroup').css('display', '');
+            }
+
+        });
 
         $('#myTab a').click(function (e) {
             e.preventDefault();
@@ -304,6 +404,9 @@
         });
 
     });
+
+    $("#startTime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+    $("#endTime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 
     function whetherSendEmail() {
         if($('#sendEmailCheckBox').is(':checked')){

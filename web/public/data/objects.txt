@@ -1,0 +1,64 @@
+{
+    "data": [
+                {
+                    "req_name": "【自优化】offer全景展示页面",
+                    "case_id": 1234,
+                    "case_name": "测试新建 DSL Main Offer 正常流",
+                    "case_type": "Saas",
+                    "owner": "zhoufan",
+                    "exec_info": "UPC_CRM_001",
+                    "priority": "high",
+                    "description": "描述信息"
+                },
+                {
+                    "req_name": "【自优化】offer全景展示页面",
+                    "case_id": 1234,
+                    "case_name": "测试发布 Offer 到 E2E 环境",
+                    "case_type": "Saas",
+                    "owner": "tianhj",
+                    "exec_info": "UPC_CRM_002",
+                    "priority": "high",
+                    "description": "描述信息"
+                },
+                {
+                    "req_name": "【自优化】offer全景展示页面",
+                    "case_id": 1234,
+                    "case_name": "测试删除 Offer 功能",
+                    "case_type": "Saas",
+                    "owner": "hanll",
+                    "exec_info": "UPC_CRM_003",
+                    "priority": "high",
+                    "description": "描述信息"
+                },
+                {
+                    "req_name": "【自优化】offer全景展示页面",
+                    "case_id": 1234,
+                    "case_name": "测试销售品关联产品功能",
+                    "case_type": "Saas",
+                    "owner": "hanll",
+                    "exec_info": "UPC_CRM_004",
+                    "priority": "high",
+                    "description": "描述信息"
+                },
+                {
+                    "req_name": "【自优化】offer全景展示页面",
+                    "case_name": "测试新建 DSL Main Offer 正常流",
+                    "case_type": "Saas",
+                    "case_id": 1234,
+                    "owner": "zhoufan",
+                    "exec_info": "UPC_CRM_001",
+                    "priority": "high",
+                    "description": "描述信息"
+                },
+                {
+                    "req_name": "【自优化】offer全景展示页面",
+                    "case_name": "测试新建 DSL Main Offer 正常流",
+                    "case_type": "Saas",
+                    "case_id": 1234,
+                    "owner": "zhoufan",
+                    "exec_info": "UPC_CRM_001",
+                    "priority": "high",
+                    "description": "描述信息"
+                }
+            ]
+}
